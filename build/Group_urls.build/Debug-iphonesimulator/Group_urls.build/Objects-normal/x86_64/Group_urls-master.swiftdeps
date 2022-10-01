@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
+options: "7c210285ad91bfaec743ad1cdc75c0a36a39d4994ee93a2203d801d0d6081829"
+build_start_time: [1660247312, 87599039]
+build_end_time: [1660247331, 521105051]
+inputs:
+  "/Users/aoli/Desktop/\u591A\u4EE3\u7406/Group_urls/Group_urls/AppDelegate.swift": !private [1660244885, 145147800]
+  "/Users/aoli/Desktop/\u591A\u4EE3\u7406/Group_urls/Group_urls/SceneDelegate.swift": !private [1660244885, 280245780]
+  "/Users/aoli/Desktop/\u591A\u4EE3\u7406/Group_urls/Group_urls/ViewController.swift": !private [1660244885, 303986072]

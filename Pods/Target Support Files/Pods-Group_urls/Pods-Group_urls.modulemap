@@ -1,0 +1,6 @@
+module Pods_Group_urls {
+  umbrella header "Pods-Group_urls-umbrella.h"
+
+  export *
+  module * { export * }
+}
