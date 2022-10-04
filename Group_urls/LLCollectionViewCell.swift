@@ -26,16 +26,19 @@ class LLCollectionViewCell: UICollectionViewCell {
     
     func initView(){
 
-        
         imageView = UIImageView.init()
         imageView?.backgroundColor = UIColor.red
+        imageView?.contentMode = .scaleAspectFit
         self.addSubview(imageView!)
-
+        self.backgroundColor = UIColor.green
         
         titleLable = UILabel.init()
         titleLable?.backgroundColor = UIColor.yellow
         titleLable?.layer.cornerRadius = 4
         titleLable?.layer.borderWidth = 0.5
+        //仅仅显示2行，=0 时，显示无限行
+        titleLable?.numberOfLines = 2
+        titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.addSubview(titleLable!)
@@ -56,11 +59,10 @@ class LLCollectionViewCell: UICollectionViewCell {
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.addSubview(subPriceTitle!)
         
-        
     }
     
     func updateModel(){
-        titleLable?.text = "京东PLUS会员"
+        titleLable?.text = "京东PLUS会员京东PLUS会员京东PLUS会员"
         priceTitle?.text = "1370元（双重折扣）"
         subTitleLb?.text = "精选 低于日常价格"
         subPriceTitle?.text = "京东｜09:58"
@@ -72,28 +74,29 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(10)
             make.top.equalTo(15)
             make.width.equalTo(100)
-            make.bottom.equalTo(10)
+            make.bottom.equalTo(-10)
         })
         titleLable?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(10)
-            make.width.equalTo(superview!.snp.width)
+            //距离右边边距 10
+            make.right.equalToSuperview().offset(-10)
         })
         subTitleLb?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(titleLable!.snp.bottom).offset(10)
-            make.width.equalTo(superview!.snp.width)
+            make.right.equalToSuperview().offset(-10)
         })
         priceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(subTitleLb!.snp.bottom).offset(10)
-            make.width.equalTo(superview!.snp.width)
+            make.right.equalToSuperview().offset(-10)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(priceTitle!.snp.bottom).offset(10)
-            make.width.equalTo(superview!.snp.width)
+            make.right.equalToSuperview().offset(-10)
         })
     }
 }

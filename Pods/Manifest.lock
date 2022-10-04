@@ -1,11 +1,15 @@
 PODS:
   - Alamofire (5.6.2)
+  - ESPullToRefresh (2.9.3)
+  - ESTabBarController-swift (2.8.0)
   - Kingfisher (7.3.2)
   - SnapKit (5.6.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
+  - ESPullToRefresh
+  - ESTabBarController-swift
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.6.0)
   - SwiftyJSON (~> 4.0)
@@ -13,16 +17,20 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - ESPullToRefresh
+    - ESTabBarController-swift
     - Kingfisher
     - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
+  ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 41ad574c2e3511c8dcc1a31b2fd18963e3c809b3
+PODFILE CHECKSUM: 3ac5ef8af21ad874690b0227138f631e5c08e59c
 
 COCOAPODS: 1.10.1

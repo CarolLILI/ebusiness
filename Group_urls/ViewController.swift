@@ -11,9 +11,10 @@ import UIKit
 //sdwebimage 库：Kingfisher（https://github.com/onevcat/Kingfisher）
 //请求数据解析库：https://github.com/SwiftyJSON/SwiftyJSON (https://www.jianshu.com/p/288b3d15cfde)
 //SnapKit 自动布局：https://github.com/SnapKit/SnapKit
-//DGElasticPullToRefresh
+//ESPullToRefresh 上下拉刷新：https://www.jianshu.com/p/c3f2b8ef9c4b
 import Alamofire
 import SnapKit
+import ESPullToRefresh
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -37,7 +38,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.itemSize = CGSize(width: screen_width/2, height: screen_height/3)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
+        //设置行间隔距离
+        layout.minimumLineSpacing = 5
         
         collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout:layout)
         collectionView?.register(LLCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -48,6 +50,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
         
+        collectionView!.es.addPullToRefresh {
+            [unowned self] in
+            //刷新相关的事件
+            
+            //刷新成功，设置completion自动重制footer 的状态
+            collectionView!.es.stopPullToRefresh()
+            // 设置ignoreFotter 来处理不需要显示footer
+        }
+        
+        collectionView?.es.addInfiniteScrolling(handler: {
+            [unowned self] in
+            //加载更多
+            
+            //加载更多事件成功，调用stop
+            collectionView!.es.stopLoadingMore()
+            //通知暂无数据更新状态
+//            collectionView!.es.noticeNoMoreData()
+        })
+        
+    }
+    
+    @objc func updateData(){
+        // 下拉刷新，更新下一页面的数据
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -57,22 +82,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-    
-    // update cell 
-    
+    // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
         cell.updateModel()
         return cell
     }
-    
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
          return CGSize(width: screen_width, height: 200)
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: screen_width, height: 100.0)
+        return CGSize(width: screen_width, height: 150.0)
     }
     // update header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

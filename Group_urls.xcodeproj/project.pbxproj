@@ -17,6 +17,10 @@
 		E959332F28A58B3A00BCC95C /* Group_urlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959332E28A58B3A00BCC95C /* Group_urlsTests.swift */; };
 		E959333928A58B3A00BCC95C /* Group_urlsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959333828A58B3A00BCC95C /* Group_urlsUITests.swift */; };
 		E959333B28A58B3A00BCC95C /* Group_urlsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959333A28A58B3A00BCC95C /* Group_urlsUITestsLaunchTests.swift */; };
+		E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */; };
+		E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */; };
+		E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */; };
+		E9B53A1C28EA760300599CB2 /* LLTabBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */; };
 		EA654C1EEF5A686E78C88BE2 /* libPods-Group_urls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +59,10 @@
 		E959333428A58B3A00BCC95C /* Group_urlsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Group_urlsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E959333828A58B3A00BCC95C /* Group_urlsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_urlsUITests.swift; sourceTree = "<group>"; };
 		E959333A28A58B3A00BCC95C /* Group_urlsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_urlsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControl.swift; sourceTree = "<group>"; };
+		E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControl.swift; sourceTree = "<group>"; };
+		E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewControl.swift; sourceTree = "<group>"; };
+		E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLTabBarControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,10 @@
 			children = (
 				E959331728A58B1500BCC95C /* AppDelegate.swift */,
 				E959331B28A58B1500BCC95C /* ViewController.swift */,
+				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
+				E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */,
+				E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */,
+				E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */,
 				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
 				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
 				E959331D28A58B1500BCC95C /* Main.storyboard */,
@@ -165,6 +177,7 @@
 				E959331028A58B1400BCC95C /* Sources */,
 				E959331128A58B1400BCC95C /* Frameworks */,
 				E959331228A58B1400BCC95C /* Resources */,
+				83F31DBF5755FAB1FB908039 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,6 +317,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		83F31DBF5755FAB1FB908039 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group_urls/Pods-Group_urls-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group_urls/Pods-Group_urls-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group_urls/Pods-Group_urls-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,8 +343,12 @@
 			files = (
 				E94F1CF428E74FF100D661A7 /* LLCollectionViewCell.swift in Sources */,
 				E959331C28A58B1500BCC95C /* ViewController.swift in Sources */,
+				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
 				E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */,
+				E9B53A1C28EA760300599CB2 /* LLTabBarControl.swift in Sources */,
+				E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */,
+				E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

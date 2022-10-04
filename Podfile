@@ -5,4 +5,6 @@ target 'Group_urls' do
 	pod 'SwiftyJSON','~> 4.0'
 	pod 'Kingfisher', '~> 7.0'
 	pod 'SnapKit', '~> 5.6.0'
+	pod 'ESPullToRefresh'
+	pod "ESTabBarController-swift"
 end

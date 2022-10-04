@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ESTabBarController_swift
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let tabBarControl = ESTabBarController_swift
+        let control_1 = ViewController.init()
+        let control_2 = SecondViewControl.init()
+        let control_3 = ThirdViewControl.init()
+        let control_4 = FourthViewControl.init()
+        
+        
+        
+        
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         self.window?.rootViewController = ViewController.init()
