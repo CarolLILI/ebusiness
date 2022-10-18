@@ -8,29 +8,48 @@
 import UIKit
 //swift 第三方库：（https://wenku.baidu.com/view/693d222eeb7101f69e3143323968011ca300f7f3.html）
 //网络请求库：Alamofire （https://www.cnblogs.com/lfri/p/14067146.html）
-//sdwebimage 库：Kingfisher（https://github.com/onevcat/Kingfisher）
 //请求数据解析库：https://github.com/SwiftyJSON/SwiftyJSON (https://www.jianshu.com/p/288b3d15cfde)
+
+//sdwebimage 库：Kingfisher（https://github.com/onevcat/Kingfisher）
 //SnapKit 自动布局：https://github.com/SnapKit/SnapKit
 //ESPullToRefresh 上下拉刷新：https://www.jianshu.com/p/c3f2b8ef9c4b
 import Alamofire
+import SwiftyJSON
 import SnapKit
 import ESPullToRefresh
 
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+@available(iOS 13.0, *)
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var screen_width:CGFloat!
     var screen_height:CGFloat!
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
+    var globalData = [skuModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = false
+        self.title = "值得买"
+        self.navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.systemGray4
+
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestData()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .darkContent
     }
     
     func setCollectionView(){
@@ -47,7 +66,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.white
         self.view.addSubview(collectionView!)
-        
+        collectionView?.snp.makeConstraints({ make in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.top.equalTo(UIDevice.xp_navigationFullHeight())
+            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
+        })
+
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
         
         collectionView!.es.addPullToRefresh {
@@ -62,9 +87,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
-            
-            //加载更多事件成功，调用stop
-            collectionView!.es.stopLoadingMore()
+            requestData()
+//            //加载更多事件成功，调用stop
+//            collectionView!.es.stopLoadingMore()
             //通知暂无数据更新状态
 //            collectionView!.es.noticeNoMoreData()
         })
@@ -75,22 +100,51 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // 下拉刷新，更新下一页面的数据
     }
     
+    func requestData(){
+        //获取数据
+        let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
+        let networkLayer = LLSwiftNetworkLayer.shareInstance
+        networkLayer.getRequest(homepage_product_recommend, paramers, "") { [self] result in
+            //请求成功
+            let jsonData = JSON(result)["data"].rawValue
+            let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
+            if globalData.count == 0 {
+                globalData = modelList.skulist
+            }
+            else {
+                globalData.append(contentsOf: modelList.skulist)
+            }
+            collectionView?.reloadData()
+            //加载更多事件成功，调用stop
+            collectionView!.es.stopLoadingMore()
+//            print(result)
+        } failure: { [self] error in
+            //请求失败
+            print(error)
+            //加载更多事件成功，调用stop
+            collectionView!.es.stopLoadingMore()
+        }
+
+        
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return globalData.count
     }
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-        cell.updateModel()
+        var model = globalData[indexPath.row]
+        cell.updateModel(model)
         return cell
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
-         return CGSize(width: screen_width, height: 200)
+         return CGSize(width: screen_width, height: 130)
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

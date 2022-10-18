@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 
-class SecondViewControl: UIViewController {
+@available(iOS 13.0, *)
+class SecondViewControl: BaseViewController {
     
 }

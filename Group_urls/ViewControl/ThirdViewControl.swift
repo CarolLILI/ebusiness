@@ -8,6 +8,8 @@
 import UIKit
 import Foundation
 
-class ThirdViewControl: UIViewController {
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+class ThirdViewControl: BaseViewController {
     
 }

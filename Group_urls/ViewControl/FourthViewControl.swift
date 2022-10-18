@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 
-class FourthViewControl: UIViewController {
+@available(iOS 13.0, *)
+class FourthViewControl: BaseViewController {
     
 }

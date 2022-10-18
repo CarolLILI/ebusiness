@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class LLCollectionViewCell: UICollectionViewCell {
     var titleLable: UILabel?
@@ -27,10 +28,10 @@ class LLCollectionViewCell: UICollectionViewCell {
     func initView(){
 
         imageView = UIImageView.init()
-        imageView?.backgroundColor = UIColor.red
+        imageView?.backgroundColor = UIColor.clear
         imageView?.contentMode = .scaleAspectFit
         self.addSubview(imageView!)
-        self.backgroundColor = UIColor.green
+        self.backgroundColor = UIColor.white
         
         titleLable = UILabel.init()
         titleLable?.backgroundColor = UIColor.yellow
@@ -61,11 +62,15 @@ class LLCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func updateModel(){
-        titleLable?.text = "京东PLUS会员京东PLUS会员京东PLUS会员"
-        priceTitle?.text = "1370元（双重折扣）"
-        subTitleLb?.text = "精选 低于日常价格"
-        subPriceTitle?.text = "京东｜09:58"
+    func updateModel(
+        _ model: skuModel
+    ){
+        titleLable?.text = model.sku_name
+        priceTitle?.text = "\(model.price)元"
+//        subTitleLb?.text = model.best_coupon_lable
+        subPriceTitle?.text = model.best_coupon_lable
+        let url = URL(string: model.image)
+        imageView?.kf.setImage(with: url)
     }
     
     override func layoutSubviews() {
