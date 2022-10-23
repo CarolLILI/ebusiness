@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+
 //typealias 可以用来对已有的类型进行重命名, 可以对闭包进行重新命名，这样在做参数传递的时候更加清晰
 public typealias Success = (_ result : Any) -> ()
 public typealias Failure = (_ error : Any) -> ()

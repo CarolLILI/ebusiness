@@ -27,7 +27,7 @@ class LLHomeHeader: UICollectionReusableView {
     func initView(){
         titleLable = UILabel.init()
         titleLable?.textColor = UIColor.red
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
         self.addSubview(titleLable!)
         
         let num = 5
@@ -35,11 +35,10 @@ class LLHomeHeader: UICollectionReusableView {
             var iconImage = UIImageView.init()
             iconImage.backgroundColor = UIColor.red
             iconImage.layer.cornerRadius = 10
-            iconImage.layer.borderWidth = 0.5
             iconArray.append(iconImage)
             self.addSubview(iconImage)
             var title = UILabel.init()
-            title.textColor = UIColor.black
+            title.textColor = UIColor.init(red: 65/255, green: 65/255, blue: 65/255, alpha: 1)
             title.textAlignment = .center
             title.text = titleTextArray[i]
             title.font = UIFont.systemFont(ofSize: 15)

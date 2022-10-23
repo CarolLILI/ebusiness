@@ -15,6 +15,7 @@ class LLCollectionViewCell: UICollectionViewCell {
     var priceTitle: UILabel?
     var subPriceTitle: UILabel?
     var imageView: UIImageView?
+    var backGroundLayer: UIView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,17 +27,21 @@ class LLCollectionViewCell: UICollectionViewCell {
     }
     
     func initView(){
-
+        
+        backGroundLayer = UIView.init()
+        backGroundLayer?.backgroundColor = UIColor.white
+        backGroundLayer?.layer.cornerRadius = 10
+        self.addSubview(backGroundLayer!)
+        
         imageView = UIImageView.init()
         imageView?.backgroundColor = UIColor.clear
         imageView?.contentMode = .scaleAspectFit
         self.addSubview(imageView!)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.clear
+        
         
         titleLable = UILabel.init()
-        titleLable?.backgroundColor = UIColor.yellow
-        titleLable?.layer.cornerRadius = 4
-        titleLable?.layer.borderWidth = 0.5
+        titleLable?.textColor = UIColor.init(red: 25/255.0, green: 25/255.0, blue: 25/255.0, alpha: 1)
         //仅仅显示2行，=0 时，显示无限行
         titleLable?.numberOfLines = 2
         titleLable?.lineBreakMode = .byTruncatingTail
@@ -47,17 +52,20 @@ class LLCollectionViewCell: UICollectionViewCell {
         subTitleLb = UILabel.init()
         subTitleLb?.textAlignment = NSTextAlignment.left
         subTitleLb?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        subTitleLb?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
         self.addSubview(subTitleLb!)
         
         priceTitle = UILabel.init()
         priceTitle?.textColor = UIColor.red
         priceTitle?.textAlignment = NSTextAlignment.left
+        priceTitle?.textColor = UIColor.init(red: 225/255.0, green: 45/255.0, blue: 45/255.0, alpha: 1)
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
         subPriceTitle?.textAlignment = NSTextAlignment.left
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
         self.addSubview(subPriceTitle!)
         
     }
@@ -75,6 +83,12 @@ class LLCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        backGroundLayer?.snp.makeConstraints({ make in
+            make.top.equalTo(5)
+            make.left.equalTo(5)
+            make.right.equalTo(-5)
+            make.bottom.equalTo(5)
+        })
         imageView?.snp.makeConstraints({ make in
             make.left.equalTo(10)
             make.top.equalTo(15)

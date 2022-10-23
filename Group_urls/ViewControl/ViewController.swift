@@ -17,6 +17,7 @@ import Alamofire
 import SwiftyJSON
 import SnapKit
 import ESPullToRefresh
+import Toast_Swift
 
 
 @available(iOS 13.0, *)
@@ -34,13 +35,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         navigationController?.navigationBar.isHidden = false
         self.title = "值得买"
         self.navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.systemGray4
-
+        [NSAttributedString.Key.foregroundColor: UIColor.init(red: 226/255, green: 36/255, blue: 35/255, alpha: 1),NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+        self.view.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +64,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView?.register(LLCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView?.delegate = self;
         collectionView?.dataSource = self;
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.clear
         self.view.addSubview(collectionView!)
         collectionView?.snp.makeConstraints({ make in
             make.left.equalTo(0)
@@ -123,9 +123,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             print(error)
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
+            self.view.makeToast("error: \(error)")
         }
-
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -172,7 +171,5 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         cell?.backgroundColor = UIColor.white
     }
     
-    
-
 }
 
