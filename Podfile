@@ -6,5 +6,6 @@ target 'Group_urls' do
 	pod 'Kingfisher', '~> 7.0'
 	pod 'SnapKit', '~> 5.6.0'
 	pod 'ESPullToRefresh'
+        pod 'Toast-Swift', '~> 5.0.1'
 	pod "ESTabBarController-swift"
 end
