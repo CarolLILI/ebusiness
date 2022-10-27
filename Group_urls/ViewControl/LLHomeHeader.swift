@@ -23,7 +23,7 @@ class LLHomeHeader: UICollectionReusableView {
     var titleTextArray = ["排行版","购物指南","双11爆料季","白菜","0元试用"]
 //    var imageNameArray = ["sun.max.circle","printer","flag.2.crossed","network.badge.shield.half.filled","globe.asia.australia"]
 //    test
-    var imageNameArray = ["test","test","test","test","test"]
+    var imageNameArray = ["logosc1","logosc2","logosc3","logosc4","logosc5"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

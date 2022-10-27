@@ -85,12 +85,12 @@ class LLCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         backGroundLayer?.snp.makeConstraints({ make in
             make.top.equalTo(5)
-            make.left.equalTo(5)
-            make.right.equalTo(-5)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
             make.bottom.equalTo(5)
         })
         imageView?.snp.makeConstraints({ make in
-            make.left.equalTo(10)
+            make.left.equalTo(20)
             make.top.equalTo(15)
             make.width.equalTo(100)
             make.bottom.equalTo(-10)
@@ -99,23 +99,23 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(10)
             //距离右边边距 10
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-20)
         })
         subTitleLb?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!.snp.right).offset(10)
-            make.top.equalTo(titleLable!.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.equalTo(imageView!.snp.right).offset(15)
+            make.top.equalTo(titleLable!.snp.bottom).offset(15)
+            make.right.equalToSuperview().offset(-20)
         })
         priceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(subTitleLb!.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-20)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(priceTitle!.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-20)
         })
     }
 }
