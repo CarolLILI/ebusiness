@@ -41,11 +41,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestData()
+        self.view.makeToastActivity(.center)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -58,7 +61,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
         //设置行间隔距离
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 15
         
         collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout:layout)
         collectionView?.register(LLCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -117,13 +120,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             collectionView?.reloadData()
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
+            self.view.hideToastActivity()
 //            print(result)
         } failure: { [self] error in
+            self.view.hideToastActivity()
             //请求失败
             print(error)
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
             self.view.makeToast("error: \(error)")
+            
+           
         }
     }
     

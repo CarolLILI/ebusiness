@@ -40,6 +40,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestData()
+        self.view.makeToastActivity(.center)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -107,8 +108,10 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
             collectionView?.reloadData()
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
+            self.view.hideToastActivity()
 //            print(result)
         } failure: { [self] error in
+            self.view.hideToastActivity()
             //请求失败
             print(error)
             //加载更多事件成功，调用stop
