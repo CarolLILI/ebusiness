@@ -94,7 +94,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         //获取数据
         let paramers = parameter
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(favor_list, paramers as! Parameters, "") { [self] result in
+        networkLayer.getRequest(favor_list, (paramers as! Parameters), "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
@@ -141,12 +141,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell!.layer.cornerRadius = 4
-        cell?.backgroundColor = UIColor.yellow
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell!.layer.cornerRadius = 4
         cell?.backgroundColor = UIColor.clear
     }
+
 }
