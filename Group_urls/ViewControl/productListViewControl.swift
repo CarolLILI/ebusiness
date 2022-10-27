@@ -1,34 +1,27 @@
 //
-//  ViewController.swift
+//  productListViewControl.swift
 //  Group_urls
 //
-//  Created by Aoli on 2022/8/11.
+//  Created by Aoli on 2022/10/27.
 //
 
+import Foundation
 import UIKit
-//swift 第三方库：（https://wenku.baidu.com/view/693d222eeb7101f69e3143323968011ca300f7f3.html）
-//网络请求库：Alamofire （https://www.cnblogs.com/lfri/p/14067146.html）
-//请求数据解析库：https://github.com/SwiftyJSON/SwiftyJSON (https://www.jianshu.com/p/288b3d15cfde)
-
-//sdwebimage 库：Kingfisher（https://github.com/onevcat/Kingfisher）
-//SnapKit 自动布局：https://github.com/SnapKit/SnapKit
-//ESPullToRefresh 上下拉刷新：https://www.jianshu.com/p/c3f2b8ef9c4b
-//网络请求的弹窗 https://github.com/scalessec/Toast-Swift
 import Alamofire
 import SwiftyJSON
 import SnapKit
 import ESPullToRefresh
 import Toast_Swift
 
-
 @available(iOS 13.0, *)
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class productListViewControl: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var screen_width:CGFloat!
     var screen_height:CGFloat!
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
+    
+    var parameter: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,15 +90,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         
     }
     
-    @objc func updateData(){
-        // 下拉刷新，更新下一页面的数据
-    }
-    
     func requestData(){
         //获取数据
-        let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
+//        let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(homepage_product_recommend, paramers, "") { [self] result in
+        networkLayer.getRequest(homepage_product_recommend, (parameter as! Parameters), "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
@@ -142,39 +131,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         cell.updateModel(model)
         return cell
     }
-    // header的大小
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
-         return CGSize(width: screen_width, height: 130)
-     }
+
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: screen_width, height: 150.0)
     }
-    // update header view
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var llHearder = LLHomeHeader()
-        if kind == UICollectionView.elementKindSectionHeader {
-            llHearder = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
-        }
-        llHearder.updataMode()
-        return llHearder
-    }
+
     // touch cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell!.layer.cornerRadius = 4
-        cell?.backgroundColor = UIColor.clear
-        
-        let destination = productListViewControl()
-        destination.parameter = ["":"","elite_id":1,"site":"jd"]
-        self.navigationController?.pushViewController(destination, animated: true)
+        cell?.backgroundColor = UIColor.yellow
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell!.layer.cornerRadius = 4
-//        cell?.backgroundColor = UIColor.clear
-//    }
-    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell!.layer.cornerRadius = 4
+        cell?.backgroundColor = UIColor.clear
+    }
 }
-
