@@ -46,8 +46,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        requestData()
-        self.view.makeToastActivity(.center)
+        if globalData.count == 0 {
+            requestData()
+        }
         
     }
     
@@ -104,6 +105,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func requestData(){
+        self.view.makeToastActivity(.center)
         //获取数据
         let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
