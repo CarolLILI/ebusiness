@@ -22,8 +22,7 @@ import Toast_Swift
 
 
 @available(iOS 13.0, *)
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,homeHeaderViewDelegate {
     var screen_width:CGFloat!
     var screen_height:CGFloat!
     var collectionView: UICollectionView?
@@ -156,6 +155,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         if kind == UICollectionView.elementKindSectionHeader {
             llHearder = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
         }
+        llHearder.delegate = self
+        llHearder.isUserInteractionEnabled = true
         llHearder.updataMode()
         return llHearder
     }
@@ -175,6 +176,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //        cell!.layer.cornerRadius = 4
 //        cell?.backgroundColor = UIColor.clear
 //    }
+    
+    func homeHeaderViewClick(index: Int) {
+        let destination = productListViewControl()
+        destination.parameter = ["elite_id":index,"site":"jd"]
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
     
 }
 

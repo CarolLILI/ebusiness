@@ -9,7 +9,14 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+protocol homeHeaderViewDelegate: NSObjectProtocol {
+    func homeHeaderViewClick(index: Int)
+}
+
 class LLHomeHeader: UICollectionReusableView {
+    
+    weak var delegate: homeHeaderViewDelegate?
+    
     var titleLable: UILabel?
     var iconArray = [UIImageView]()
     var titleArray = [UILabel]()
@@ -41,6 +48,10 @@ class LLHomeHeader: UICollectionReusableView {
             let image = UIImage(named: imageName)
             iconImage.image = image
             iconImage.contentMode = UIView.ContentMode.scaleAspectFit
+            iconImage.tag = i + 1
+            iconImage.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer.init(target: self, action:#selector(jumpPage(_:)))
+            iconImage.addGestureRecognizer(tap)
             iconArray.append(iconImage)
             self.addSubview(iconImage)
             var title = UILabel.init()
@@ -50,10 +61,14 @@ class LLHomeHeader: UICollectionReusableView {
             title.font = UIFont.systemFont(ofSize: 15)
             self.addSubview(title)
             titleArray.append(title)
-            
-            
         }
-        
+    }
+    
+    @objc func jumpPage(
+       _ sender: UITapGestureRecognizer
+    ){
+        let tapLocation = sender.view
+        self.delegate?.homeHeaderViewClick(index:tapLocation!.tag)
     }
     
     func updataMode(){
