@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9270E9F290A666A007DF2FE /* productListViewControl.swift */; };
 		E94F1CF428E74FF100D661A7 /* LLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */; };
 		E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */; };
 		E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959331728A58B1500BCC95C /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		037B1FDC01431C2BAB57F656 /* Pods-Group_urls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group_urls.release.xcconfig"; path = "Target Support Files/Pods-Group_urls/Pods-Group_urls.release.xcconfig"; sourceTree = "<group>"; };
 		20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Group_urls.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC19143125AA7E8C6DB81BA /* Pods-Group_urls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group_urls.debug.xcconfig"; path = "Target Support Files/Pods-Group_urls/Pods-Group_urls.debug.xcconfig"; sourceTree = "<group>"; };
+		E9270E9F290A666A007DF2FE /* productListViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productListViewControl.swift; sourceTree = "<group>"; };
 		E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLCollectionViewCell.swift; sourceTree = "<group>"; };
 		E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeHeader.swift; sourceTree = "<group>"; };
 		E959331428A58B1500BCC95C /* Group_urls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Group_urls.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
 				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
 				E959331B28A58B1500BCC95C /* ViewController.swift */,
+				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
 				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
 				E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */,
 				E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */,
@@ -386,6 +389,7 @@
 				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
 				E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */,
+				E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */,
 				E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */,
 				E96CA56928F7EE8F0048A685 /* LLSwiftNetworkLayer.swift in Sources */,
 				E9B53A1C28EA760300599CB2 /* LLTabBarControl.swift in Sources */,
@@ -570,6 +574,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -582,7 +587,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "catApp.Group-urls";
+				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -598,6 +603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -610,7 +616,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "catApp.Group-urls";
+				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

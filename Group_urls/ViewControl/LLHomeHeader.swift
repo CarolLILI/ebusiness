@@ -14,6 +14,7 @@ class LLHomeHeader: UICollectionReusableView {
     var iconArray = [UIImageView]()
     var titleArray = [UILabel]()
     var titleTextArray = ["排行版","购物指南","双11爆料季","白菜","0元试用"]
+    var imageNameArray = ["sun.max.circle","printer","flag.2.crossed","network.badge.shield.half.filled","globe.asia.australia"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,8 +34,13 @@ class LLHomeHeader: UICollectionReusableView {
         let num = 5
         for i in 0 ..< num {
             var iconImage = UIImageView.init()
-            iconImage.backgroundColor = UIColor.red
+            iconImage.backgroundColor = UIColor.clear
             iconImage.layer.cornerRadius = 10
+            iconImage.layer.borderWidth = 0.5
+            var imageName = imageNameArray[i]
+            let image = UIImage(named: imageName)
+            iconImage.image = image
+            iconImage.contentMode = UIView.ContentMode.scaleAspectFit
             iconArray.append(iconImage)
             self.addSubview(iconImage)
             var title = UILabel.init()
@@ -44,6 +50,8 @@ class LLHomeHeader: UICollectionReusableView {
             title.font = UIFont.systemFont(ofSize: 15)
             self.addSubview(title)
             titleArray.append(title)
+            
+            
         }
         
     }
