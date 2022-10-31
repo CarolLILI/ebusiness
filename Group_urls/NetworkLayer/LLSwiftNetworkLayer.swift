@@ -59,7 +59,7 @@ class LLSwiftNetworkLayer: NSObject {
     )
     {
         let manager = Alamofire.Session.default
-        manager.session.configuration.timeoutIntervalForRequest = 30
+        manager.session.configuration.timeoutIntervalForRequest = 55
         
         let headers: HTTPHeaders = [
             "Content-Tyoe":"application/json",

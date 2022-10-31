@@ -120,6 +120,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E9270EA1290BC021007DF2FE /* SecondLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
+			);
+			path = SecondLayer;
+			sourceTree = "<group>";
+		};
 		E959330B28A58B1400BCC95C = {
 			isa = PBXGroup;
 			children = (
@@ -197,10 +205,10 @@
 		E96CA56C28F80E9E0048A685 /* ViewControl */ = {
 			isa = PBXGroup;
 			children = (
+				E9270EA1290BC021007DF2FE /* SecondLayer */,
 				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
 				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
 				E959331B28A58B1500BCC95C /* ViewController.swift */,
-				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
 				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
 				E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */,
 				E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */,
@@ -577,6 +585,7 @@
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "多乐优选";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -586,8 +595,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group;
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -606,6 +615,7 @@
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "多乐优选";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -615,8 +625,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group;
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

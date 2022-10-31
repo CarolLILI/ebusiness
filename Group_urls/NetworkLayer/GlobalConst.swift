@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-let BASE_REL = "https://101.43.209.27"
+let BASE_REL = "http://101.43.209.27"
 //home page url
 let homepage_product_recommend = "/sku/recommend"
 //second level page url
