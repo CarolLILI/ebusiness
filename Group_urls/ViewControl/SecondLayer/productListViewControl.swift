@@ -27,7 +27,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.isHidden = false
-        self.title = "值得买"
+        self.title = "多来买"
         self.navigationController?.navigationBar.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.init(red: 226/255, green: 36/255, blue: 35/255, alpha: 1),NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
         self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
