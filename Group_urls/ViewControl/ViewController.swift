@@ -130,7 +130,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             print(error)
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
-            self.view.makeToast("error: \(error)")
+//            self.view.makeToast("error: \(error)")
             
            
         }
@@ -192,7 +192,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func homeHeaderViewClick(index: Int) {
         let destination = productListViewControl()
         //仅仅暂时措施
-        var num = index 
+        var num = index
         if index == 5 {
             num = 1
         }

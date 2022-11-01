@@ -35,7 +35,7 @@ class LLCollectionViewCell: UICollectionViewCell {
         
         imageView = UIImageView.init()
         imageView?.backgroundColor = UIColor.clear
-        imageView?.contentMode = .scaleAspectFit
+        imageView?.contentMode = .scaleToFill
         self.addSubview(imageView!)
         self.backgroundColor = UIColor.clear
         
@@ -47,6 +47,7 @@ class LLCollectionViewCell: UICollectionViewCell {
         titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        titleLable?.font = UIFont.systemFont(ofSize: 18)
         self.addSubview(titleLable!)
         
         subTitleLb = UILabel.init()
@@ -56,16 +57,17 @@ class LLCollectionViewCell: UICollectionViewCell {
         self.addSubview(subTitleLb!)
         
         priceTitle = UILabel.init()
-        priceTitle?.textColor = UIColor.red
         priceTitle?.textAlignment = NSTextAlignment.left
         priceTitle?.textColor = UIColor.init(red: 225/255.0, green: 45/255.0, blue: 45/255.0, alpha: 1)
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        priceTitle?.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 2))
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
         subPriceTitle?.textAlignment = NSTextAlignment.left
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
+        subPriceTitle?.font = UIFont.systemFont(ofSize: 15)
         self.addSubview(subPriceTitle!)
         
     }
@@ -90,14 +92,14 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(5)
         })
         imageView?.snp.makeConstraints({ make in
-            make.left.equalTo(20)
+            make.left.equalTo(25)
             make.top.equalTo(15)
             make.width.equalTo(100)
             make.bottom.equalTo(-10)
         })
         titleLable?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
-            make.top.equalTo(10)
+            make.top.equalTo(20)
             //距离右边边距 10
             make.right.equalToSuperview().offset(-20)
         })
