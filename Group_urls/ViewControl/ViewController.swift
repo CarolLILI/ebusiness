@@ -176,7 +176,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         cell?.backgroundColor = UIColor.clear
         
         let destination = productListViewControl()
-        destination.parameter = ["":"","elite_id":1,"site":"jd"]
+        //仅仅暂时措施
+        var num = indexPath.row % 4 + 1
+        
+        destination.parameter = ["":"","elite_id":num,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
@@ -188,7 +191,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     func homeHeaderViewClick(index: Int) {
         let destination = productListViewControl()
-        destination.parameter = ["elite_id":index,"site":"jd"]
+        //仅仅暂时措施
+        var num = index 
+        if index == 5 {
+            num = 1
+        }
+        destination.parameter = ["elite_id":num,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
