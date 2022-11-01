@@ -32,7 +32,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.isHidden = false
-        self.title = "值得买"
+        self.title = "多来买"
         self.navigationController?.navigationBar.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.init(red: 226/255, green: 36/255, blue: 35/255, alpha: 1),NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
         self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
@@ -40,7 +40,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
-        
+        requestData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +73,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.top.equalTo(UIDevice.xp_navigationFullHeight())
-            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
+//            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
+            make.bottom.equalTo(0)
         })
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")

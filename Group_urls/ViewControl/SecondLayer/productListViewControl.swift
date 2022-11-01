@@ -65,7 +65,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.top.equalTo(UIDevice.xp_navigationFullHeight())
-            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
+            make.bottom.equalTo(0)
         })
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")

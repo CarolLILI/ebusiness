@@ -43,7 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
-        self.window?.rootViewController = tabBarControl
+//        self.window?.rootViewController = tabBarControl
+        self.window?.rootViewController = navigation_1
         self.window?.makeKeyAndVisible()
         return true
     }
