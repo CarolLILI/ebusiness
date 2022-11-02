@@ -10,6 +10,9 @@ import UIKit
 
 @available(iOS 13.0, *)
 class BaseViewController: UIViewController {
+    
+    var bgImg: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,6 +21,15 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isHidden = true
         addNavBar(.cyan)
+        
+        bgImg = UIImageView.init()
+        bgImg!.backgroundColor = UIColor.clear
+        self.view.addSubview(bgImg!)
+        
+        bgImg!.snp.makeConstraints { make in
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
