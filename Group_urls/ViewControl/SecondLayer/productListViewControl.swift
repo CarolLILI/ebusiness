@@ -15,8 +15,7 @@ import Toast_Swift
 
 @available(iOS 13.0, *)
 class productListViewControl: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var screen_width:CGFloat!
-    var screen_height:CGFloat!
+
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
@@ -145,6 +144,13 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.cellForItem(at: indexPath)
         cell!.layer.cornerRadius = 4
         cell?.backgroundColor = UIColor.clear
+        
+        let destination = productDetialControl()
+        let model = globalData[indexPath.row]
+        destination.globalData = globalData
+        destination.firstModel = [model]
+        self.navigationController?.pushViewController(destination, animated: true)
+        
     }
 
 }

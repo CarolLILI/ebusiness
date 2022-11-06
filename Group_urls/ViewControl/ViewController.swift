@@ -22,8 +22,7 @@ import Toast_Swift
 
 @available(iOS 13.0, *)
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,homeHeaderViewDelegate {
-    var screen_width:CGFloat!
-    var screen_height:CGFloat!
+
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
@@ -146,7 +145,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-        var model = globalData[indexPath.row]
+        let model = globalData[indexPath.row]
         cell.updateModel(model)
         return cell
     }
@@ -175,20 +174,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         cell!.layer.cornerRadius = 4
         cell?.backgroundColor = UIColor.clear
         
-        let destination = productListViewControl()
-        //仅仅暂时措施
-        var num = indexPath.row % 4 + 1
-        
-        destination.parameter = ["":"","elite_id":num,"site":"jd"]
+        let destination = productDetialControl()
+        let model = globalData[indexPath.row]
+        destination.globalData = globalData
+        destination.firstModel = [model]
         self.navigationController?.pushViewController(destination, animated: true)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell!.layer.cornerRadius = 4
-//        cell?.backgroundColor = UIColor.clear
-//    }
-    
+
     func homeHeaderViewClick(index: Int) {
         let destination = productListViewControl()
         //仅仅暂时措施

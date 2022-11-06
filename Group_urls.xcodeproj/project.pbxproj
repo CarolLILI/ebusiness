@@ -20,6 +20,7 @@
 		E96CA56928F7EE8F0048A685 /* LLSwiftNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */; };
 		E96CA57228F817E20048A685 /* skuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA57128F817E20048A685 /* skuModel.swift */; };
 		E96CA57428F866D60048A685 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA57328F866D60048A685 /* GlobalConst.swift */; };
+		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
 		E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */; };
 		E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */; };
 		E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */; };
@@ -27,6 +28,7 @@
 		E9B53A1E28EDDC2900599CB2 /* UIDevice+LLAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */; };
 		E9B8C39828F1870400BEAA93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C39728F1870300BEAA93 /* Assets.xcassets */; };
 		E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */; };
+		E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FA43FA291622F300879D12 /* productDetialControl.swift */; };
 		EA654C1EEF5A686E78C88BE2 /* libPods-Group_urls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,7 @@
 		E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSwiftNetworkLayer.swift; sourceTree = "<group>"; };
 		E96CA57128F817E20048A685 /* skuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skuModel.swift; sourceTree = "<group>"; };
 		E96CA57328F866D60048A685 /* GlobalConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
+		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
 		E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewControl.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+LLAddition.swift"; sourceTree = "<group>"; };
 		E9B8C39728F1870300BEAA93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E9FA43FA291622F300879D12 /* productDetialControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetialControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
+				E9FA43FA291622F300879D12 /* productDetialControl.swift */,
+				E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */,
 			);
 			path = SecondLayer;
 			sourceTree = "<group>";
@@ -397,12 +403,14 @@
 				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
 				E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */,
+				E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */,
 				E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */,
 				E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */,
 				E96CA56928F7EE8F0048A685 /* LLSwiftNetworkLayer.swift in Sources */,
 				E9B53A1C28EA760300599CB2 /* LLTabBarControl.swift in Sources */,
 				E96CA57228F817E20048A685 /* skuModel.swift in Sources */,
 				E96CA57428F866D60048A685 /* GlobalConst.swift in Sources */,
+				E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */,
 				E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */,
 				E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */,
 			);
@@ -580,6 +588,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
@@ -588,10 +597,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "多乐买";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,6 +620,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
@@ -619,10 +629,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "多乐买";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,6 +12,8 @@ import UIKit
 class BaseViewController: UIViewController {
     
     var bgImg: UIImageView?
+    var screen_width:CGFloat!
+    var screen_height:CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class BaseViewController: UIViewController {
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view)
         }
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
