@@ -20,6 +20,8 @@
 		E96CA56928F7EE8F0048A685 /* LLSwiftNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */; };
 		E96CA57228F817E20048A685 /* skuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA57128F817E20048A685 /* skuModel.swift */; };
 		E96CA57428F866D60048A685 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96CA57328F866D60048A685 /* GlobalConst.swift */; };
+		E996D7D62933318A00153BD5 /* String+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D52933318A00153BD5 /* String+Number.swift */; };
+		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
 		E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */; };
 		E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */; };
@@ -70,6 +72,8 @@
 		E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSwiftNetworkLayer.swift; sourceTree = "<group>"; };
 		E96CA57128F817E20048A685 /* skuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skuModel.swift; sourceTree = "<group>"; };
 		E96CA57328F866D60048A685 /* GlobalConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
+		E996D7D52933318A00153BD5 /* String+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Number.swift"; sourceTree = "<group>"; };
+		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
 		E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControl.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */,
 				E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */,
 				E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */,
+				E996D7D52933318A00153BD5 /* String+Number.swift */,
 				E96CA56C28F80E9E0048A685 /* ViewControl */,
 				E96CA56B28F80E840048A685 /* NetworkLayer */,
 				E96CA56A28F80E770048A685 /* Model */,
@@ -213,6 +218,7 @@
 			children = (
 				E9270EA1290BC021007DF2FE /* SecondLayer */,
 				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
+				E996D7D7293351F900153BD5 /* LLSearchBar.swift */,
 				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
 				E959331B28A58B1500BCC95C /* ViewController.swift */,
 				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
@@ -402,6 +408,7 @@
 				E9B53A1E28EDDC2900599CB2 /* UIDevice+LLAddition.swift in Sources */,
 				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
+				E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */,
 				E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */,
 				E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */,
 				E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */,
@@ -412,6 +419,7 @@
 				E96CA57428F866D60048A685 /* GlobalConst.swift in Sources */,
 				E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */,
 				E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */,
+				E996D7D62933318A00153BD5 /* String+Number.swift in Sources */,
 				E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +598,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
@@ -622,7 +630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;

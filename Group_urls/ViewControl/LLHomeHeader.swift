@@ -9,32 +9,36 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-protocol homeHeaderViewDelegate: NSObjectProtocol {
-    func homeHeaderViewClick(index: Int)
+protocol sectionIconHeaderViewDelegate: NSObjectProtocol {
+    func sectionIconHeaderClick(index: Int)
 }
 
 class LLHomeHeader: UICollectionReusableView {
     
-    weak var delegate: homeHeaderViewDelegate?
+    weak var delegate: sectionIconHeaderViewDelegate?
     
     var titleLable: UILabel?
     var iconArray = [UIImageView]()
     var titleArray = [UILabel]()
-    var titleTextArray = ["排行版","购物指南","双11爆料季","白菜","0元试用"]
-//    var imageNameArray = ["sun.max.circle","printer","flag.2.crossed","network.badge.shield.half.filled","globe.asia.australia"]
-//    test
+    var titleTextArray = ["天猫超市","京东超市","百亿补贴","淘宝推荐","多多优惠"]
     var imageNameArray = ["logosc1","logosc2","logosc3","logosc4","logosc5"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initView()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    func initView(){
+    @objc func jumpPage(
+       _ sender: UITapGestureRecognizer
+    ){
+        let tapLocation = sender.view
+        self.delegate?.sectionIconHeaderClick(index:tapLocation!.tag)
+    }
+    
+    func updataMode(){
         titleLable = UILabel.init()
         titleLable?.textColor = UIColor.red
         self.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
@@ -57,57 +61,44 @@ class LLHomeHeader: UICollectionReusableView {
             iconImage.addGestureRecognizer(tap)
             iconArray.append(iconImage)
             self.addSubview(iconImage)
-            var title = UILabel.init()
-            title.textColor = UIColor.init(red: 65/255, green: 65/255, blue: 65/255, alpha: 1)
+            let title = UILabel.init()
+            title.textColor = "#222222".uicolor()
             title.textAlignment = .center
             title.text = titleTextArray[i]
-            title.font = UIFont.systemFont(ofSize: 15)
+            title.font = UIFont.systemFont(ofSize: 22)
             self.addSubview(title)
             titleArray.append(title)
         }
     }
     
-    @objc func jumpPage(
-       _ sender: UITapGestureRecognizer
-    ){
-        let tapLocation = sender.view
-        self.delegate?.homeHeaderViewClick(index:tapLocation!.tag)
-    }
-    
-    func updataMode(){
-//        titleLable?.text = "购物优惠搜索"
-      
-        
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
+
         titleLable?.snp.makeConstraints({ make in
             make.left.equalTo(0)
             make.top.equalTo(5)
             make.width.equalTo(UIScreen.main.bounds.size.width)
             make.height.equalTo(30)
         })
-        var leftSize = 10.0
-        var titleLeft = 0.0
+        var leftSize = 42.0 + 18.0;
         if iconArray.count != 0 {
             for iconElement in iconArray {
                 iconElement.snp.makeConstraints { make in
                     make.left.equalTo(leftSize)
-                    make.top.equalTo(20)
-                    make.width.equalTo((UIScreen.main.bounds.size.width-100)/5)
-                    make.height.equalTo(60)
+                    make.top.equalTo(28)
+                    make.width.equalTo(80)
+                    make.height.equalTo(80)
                 }
-                leftSize += (UIScreen.main.bounds.size.width-100)/5 + 20
+                leftSize += 80;
                 
                 let indexCell = iconArray.firstIndex(of: iconElement)
                 let titleLb = titleArray[indexCell!]
                 titleLb.snp.makeConstraints { make in
                     make.top.equalTo(iconElement.snp.bottom).offset(5)
-                    make.left.equalTo(titleLeft)
-                    make.width.equalTo((UIScreen.main.bounds.size.width)/5)
+                    make.height.equalTo(36)
+                    make.width.equalTo(88)
+                    make.centerX.equalTo(iconElement)
                 }
-                titleLeft += (UIScreen.main.bounds.size.width)/5
             }
         }
 

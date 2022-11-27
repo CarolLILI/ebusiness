@@ -21,7 +21,8 @@ import Toast_Swift
 
 
 @available(iOS 13.0, *)
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,homeHeaderViewDelegate {
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate {
+    
 
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
@@ -30,11 +31,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.isHidden = false
-        self.title = "多乐买"
-        self.navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.init(red: 226/255, green: 36/255, blue: 35/255, alpha: 1),NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+        self.navigationController?.navigationBar.backgroundColor = "#FC4A41".uicolor()
         self.view.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
@@ -71,12 +68,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView?.snp.makeConstraints({ make in
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.top.equalTo(UIDevice.xp_navigationFullHeight())
+//            make.top.equalTo(UIDevice.xp_navigationFullHeight())
 //            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
+            make.top.equalTo(0)
             make.bottom.equalTo(0)
         })
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
+        collectionView?.register(LLSearchBar.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionSearchBar")
         
         collectionView!.es.addPullToRefresh {
             [unowned self] in
@@ -136,11 +135,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return globalData.count
+
+        if section == 1{
+            return 0
+        }
+        else {
+            return globalData.count
+        }
     }
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -151,22 +156,42 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
-         return CGSize(width: screen_width, height: 130)
+        if section == 0 {return CGSize(width: screen_width, height: 75)}
+        return CGSize(width: screen_width, height: 180)
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: screen_width, height: 150.0)
     }
-    // update header view
+    // update section header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var llHearder = LLHomeHeader()
-        if kind == UICollectionView.elementKindSectionHeader {
-            llHearder = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
+        if indexPath.section == 0 {
+            var sectionSearchBarHeaderView = LLSearchBar()
+            if kind == UICollectionView.elementKindSectionHeader {
+                sectionSearchBarHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionSearchBar", for: indexPath) as! LLSearchBar
+            }
+            sectionSearchBarHeaderView .delegate = self
+            sectionSearchBarHeaderView .isUserInteractionEnabled = true
+            sectionSearchBarHeaderView .updataMode()
+            
+            return sectionSearchBarHeaderView
         }
-        llHearder.delegate = self
-        llHearder.isUserInteractionEnabled = true
-        llHearder.updataMode()
-        return llHearder
+        else {
+            var sectionIconHeaderView = LLHomeHeader()
+            if kind == UICollectionView.elementKindSectionHeader {
+                sectionIconHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
+            }
+            sectionIconHeaderView .delegate = self
+            sectionIconHeaderView .isUserInteractionEnabled = true
+            sectionIconHeaderView .layer.cornerRadius = 10
+            sectionIconHeaderView .layer.borderWidth = 5
+            sectionIconHeaderView .layer.borderColor = "#FFF3F0".uicolor().cgColor
+            sectionIconHeaderView .backgroundColor = "#FFFAF9".uicolor()
+            sectionIconHeaderView .updataMode()
+
+            return sectionIconHeaderView
+        }
+
     }
     // touch cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -181,7 +206,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.navigationController?.pushViewController(destination, animated: true)
     }
 
-    func homeHeaderViewClick(index: Int) {
+    func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
         //仅仅暂时措施
         var num = index
@@ -190,6 +215,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
         destination.parameter = ["elite_id":num,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func searchBarClick(index: Int) {
+        
     }
     
 }

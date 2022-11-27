@@ -49,6 +49,7 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
         collectionView?.delegate = self;
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.clear
+        collectionView?.showsVerticalScrollIndicator = false
         self.view.addSubview(collectionView!)
         collectionView?.snp.makeConstraints({ make in
             make.left.equalTo(0)
