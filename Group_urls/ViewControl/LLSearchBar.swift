@@ -12,11 +12,9 @@ protocol LLSearchBarDelegate: NSObjectProtocol {
 }
 
 class LLSearchBar: UICollectionReusableView {
+    
     weak var delegate: LLSearchBarDelegate?
-    
     var searchBarImageView: UIImageView?
-
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         updataMode()

@@ -33,6 +33,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.backgroundColor = "#FC4A41".uicolor()
         self.view.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+//        setStatusBarColor(color: "#FC4A41".uicolor())
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
@@ -41,6 +42,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         if globalData.count == 0 {
             requestData()
         }
@@ -49,6 +51,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .darkContent
+    }
+    
+    func setStatusBarColor(color:UIColor){
+        let statusBarWindow: UIWindow = UIApplication.shared.value(forKey: "statusBarWindow") as! UIWindow
+        let statusView:UIView = statusBarWindow.value(forKey: "statusBar") as!UIView
+        statusView.backgroundColor = color
     }
     
     func setCollectionView(){
@@ -77,14 +85,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
         collectionView?.register(LLSearchBar.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionSearchBar")
         
-        collectionView!.es.addPullToRefresh {
-            [unowned self] in
-            //刷新相关的事件
-            
-            //刷新成功，设置completion自动重制footer 的状态
-            collectionView!.es.stopPullToRefresh()
-            // 设置ignoreFotter 来处理不需要显示footer
-        }
+//        collectionView!.es.addPullToRefresh {
+//            [unowned self] in
+//            //刷新相关的事件
+//
+//            //刷新成功，设置completion自动重制footer 的状态
+//            collectionView!.es.stopPullToRefresh()
+//            // 设置ignoreFotter 来处理不需要显示footer
+//        }
         
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
@@ -217,8 +225,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
+    //搜索框，跳转到第二页
     func searchBarClick(index: Int) {
-        
+        let destination = SearchViewControl()
+        destination.parameter = ["elite_id":1,"site":"jd"]
+        self.navigationController?.pushViewController(destination, animated: true)
     }
     
 }

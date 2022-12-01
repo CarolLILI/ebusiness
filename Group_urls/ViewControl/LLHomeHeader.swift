@@ -57,6 +57,7 @@ class LLHomeHeader: UICollectionReusableView {
             iconImage.contentMode = UIView.ContentMode.scaleAspectFit
             iconImage.tag = i + 1
             iconImage.isUserInteractionEnabled = true
+//            iconImage.backgroundColor = UIColor.red
             let tap = UITapGestureRecognizer.init(target: self, action:#selector(jumpPage(_:)))
             iconImage.addGestureRecognizer(tap)
             iconArray.append(iconImage)
@@ -65,7 +66,8 @@ class LLHomeHeader: UICollectionReusableView {
             title.textColor = "#222222".uicolor()
             title.textAlignment = .center
             title.text = titleTextArray[i]
-            title.font = UIFont.systemFont(ofSize: 22)
+            title.font = UIFont.systemFont(ofSize: 11)
+//            title.backgroundColor = UIColor.yellow
             self.addSubview(title)
             titleArray.append(title)
         }
@@ -80,24 +82,24 @@ class LLHomeHeader: UICollectionReusableView {
             make.width.equalTo(UIScreen.main.bounds.size.width)
             make.height.equalTo(30)
         })
-        var leftSize = 42.0 + 18.0;
+        var leftSize = 30.0;
         if iconArray.count != 0 {
             for iconElement in iconArray {
                 iconElement.snp.makeConstraints { make in
                     make.left.equalTo(leftSize)
                     make.top.equalTo(28)
-                    make.width.equalTo(80)
-                    make.height.equalTo(80)
+                    make.width.equalTo((UIScreen.main.bounds.size.width-180)/5)
+                    make.height.equalTo(60)
                 }
-                leftSize += 80;
+                leftSize += (UIScreen.main.bounds.size.width-180)/5+30;
                 
                 let indexCell = iconArray.firstIndex(of: iconElement)
                 let titleLb = titleArray[indexCell!]
                 titleLb.snp.makeConstraints { make in
-                    make.top.equalTo(iconElement.snp.bottom).offset(5)
-                    make.height.equalTo(36)
-                    make.width.equalTo(88)
+                    make.top.equalTo(iconElement.snp.bottom).offset(5.0)
                     make.centerX.equalTo(iconElement)
+//                    make.height.equalTo(36)
+                    
                 }
             }
         }
