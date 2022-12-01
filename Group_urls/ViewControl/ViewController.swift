@@ -165,7 +165,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
         if section == 0 {return CGSize(width: screen_width, height: 75)}
-        return CGSize(width: screen_width, height: 180)
+        return CGSize(width: screen_width, height: 180+50)
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -191,12 +191,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             }
             sectionIconHeaderView .delegate = self
             sectionIconHeaderView .isUserInteractionEnabled = true
-            sectionIconHeaderView .layer.cornerRadius = 10
-            sectionIconHeaderView .layer.borderWidth = 5
-            sectionIconHeaderView .layer.borderColor = "#FFF3F0".uicolor().cgColor
-            sectionIconHeaderView .backgroundColor = "#FFFAF9".uicolor()
-            sectionIconHeaderView .updataMode()
-
             return sectionIconHeaderView
         }
 
@@ -223,6 +217,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
         destination.parameter = ["elite_id":num,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    //点击实时热销，更新界面
+    func sectionTabBarClick(index: Int){
+        
+        NSLog("%d",index)
     }
     
     //搜索框，跳转到第二页
