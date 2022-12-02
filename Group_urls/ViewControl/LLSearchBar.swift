@@ -17,6 +17,18 @@ class LLSearchBar: UICollectionReusableView {
     var searchBarImageView: UIImageView?
     override init(frame: CGRect) {
         super.init(frame: frame)
+        //swift 背景渐变
+        let layer1 = CAGradientLayer()
+        layer1.colors = [UIColor(red: 1, green: 0.282, blue: 0.29, alpha: 1).cgColor,
+                         UIColor(red: 1, green: 0.91, blue: 0.873, alpha: 0.49).cgColor,
+                         UIColor(red: 1, green: 0.938, blue: 0.873, alpha: 0).cgColor,
+                         UIColor(red: 1, green: 0.939, blue: 0.874, alpha: 1).cgColor]
+        layer1.locations = [0,0.89,1,1]
+        layer1.startPoint = CGPoint(x: 0.5, y: 0)
+        layer1.endPoint = CGPoint(x: 0.5, y: 1)
+        layer1.frame = CGRectMake(0, 0, UIScreen.main.bounds.size.width, 500)
+        layer1.position = self.center
+        self.layer.addSublayer(layer1)
         updataMode()
     }
     
@@ -32,7 +44,6 @@ class LLSearchBar: UICollectionReusableView {
     }
     
     func updataMode(){
-        self.backgroundColor = "#FC4A41".uicolor()
         searchBarImageView = UIImageView.init()
         searchBarImageView?.image = UIImage(named: "search_bar_01")
         searchBarImageView?.contentMode = UIView.ContentMode.scaleAspectFit
