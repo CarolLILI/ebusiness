@@ -21,7 +21,7 @@ import Toast_Swift
 
 
 @available(iOS 13.0, *)
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate {
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate,iconHeaderClickDelegate {
     
 
     var collectionView: UICollectionView?
@@ -30,10 +30,19 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.backgroundColor = "#FC4A41".uicolor()
-        self.view.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
-//        setStatusBarColor(color: "#FC4A41".uicolor())
+        //swift 背景渐变
+        let layer1 = CAGradientLayer()
+        layer1.colors = [UIColor(red: 1, green: 0.282, blue: 0.29, alpha: 1).cgColor,
+                         UIColor(red: 1, green: 0.91, blue: 0.873, alpha: 0.49).cgColor,
+                         UIColor(red: 1, green: 0.938, blue: 0.873, alpha: 0).cgColor,
+                         UIColor(red: 1, green: 0.939, blue: 0.874, alpha: 1).cgColor]
+        layer1.locations = [0,0.89,1,1]
+        layer1.startPoint = CGPoint(x: 0.5, y: 0)
+        layer1.endPoint = CGPoint(x: 0.5, y: 1)
+        layer1.frame = CGRectMake(0, 0, UIScreen.main.bounds.size.width, 686)
+        layer1.position = self.view.center
+        self.view.layer.addSublayer(layer1)
+
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
@@ -64,11 +73,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         layout.itemSize = CGSize(width: screen_width/2, height: screen_height/3)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.sectionFootersPinToVisibleBounds = true
         //设置行间隔距离
         layout.minimumLineSpacing = 15
         
         collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout:layout)
         collectionView?.register(LLCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView?.register(LLHomePageIconCell.self, forCellWithReuseIdentifier: "iconCell")
         collectionView?.delegate = self;
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.clear
@@ -142,30 +154,45 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
     }
     
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if section == 1{
-            return 0
+        if section == 0{
+            return 1
         }
         else {
-            return globalData.count
+//            return globalData.count
+            return 20
         }
     }
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! LLHomePageIconCell
+            cell.delegate = self
+            return cell
+        }
+        else {
+            let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
+    //        let model = globalData[indexPath.row]
+    //        cell.updateModel(model)
+            return cell
+        }
+        
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-        let model = globalData[indexPath.row]
-        cell.updateModel(model)
+//        let model = globalData[indexPath.row]
+//        cell.updateModel(model)
         return cell
+        
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
         if section == 0 {return CGSize(width: screen_width, height: 75)}
-        return CGSize(width: screen_width, height: 180+50)
+        return CGSize(width: screen_width, height: 75)
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -197,15 +224,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // touch cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell!.layer.cornerRadius = 4
-        cell?.backgroundColor = UIColor.clear
-        
-        let destination = productDetialControl()
-        let model = globalData[indexPath.row]
-        destination.globalData = globalData
-        destination.firstModel = [model]
-        self.navigationController?.pushViewController(destination, animated: true)
+        if indexPath.section == 1 {
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell!.layer.cornerRadius = 4
+            cell?.backgroundColor = UIColor.clear
+            
+            let destination = productDetialControl()
+            let model = globalData[indexPath.row]
+            destination.globalData = globalData
+            destination.firstModel = [model]
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
     }
 
     func sectionIconHeaderClick(index: Int) {
