@@ -1,16 +1,20 @@
 PODS:
-  - Alamofire (5.6.2)
+  - Alamofire (5.6.4)
+  - EllipsePageControl (0.0.4)
   - ESPullToRefresh (2.9.3)
   - ESTabBarController-swift (2.8.0)
-  - Kingfisher (7.3.2)
+  - FSPagerView (0.8.3)
+  - Kingfisher (7.4.1)
   - SnapKit (5.6.0)
   - SwiftyJSON (4.3.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
+  - EllipsePageControl (~> 0.0.4)
   - ESPullToRefresh
   - ESTabBarController-swift
+  - FSPagerView
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.6.0)
   - SwiftyJSON (~> 4.0)
@@ -19,22 +23,26 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - EllipsePageControl
     - ESPullToRefresh
     - ESTabBarController-swift
+    - FSPagerView
     - Kingfisher
     - SnapKit
     - SwiftyJSON
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  EllipsePageControl: d6c436006d72119c6cbba45af6648d15a7af7d3a
   ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: cf366c01d01dccd0d0a62c669253c4a2d88d08ad
+PODFILE CHECKSUM: 38e3a4666ec3e591ab787c10b12ce4844dbaf6f0
 
 COCOAPODS: 1.10.1

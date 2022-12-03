@@ -21,7 +21,7 @@ import Toast_Swift
 
 
 @available(iOS 13.0, *)
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate,iconHeaderClickDelegate {
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate,iconHeaderClickDelegate,bannerClickDelegate {
     
 
     var collectionView: UICollectionView?
@@ -39,7 +39,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         layer1.locations = [0,0.89,1,1]
         layer1.startPoint = CGPoint(x: 0.5, y: 0)
         layer1.endPoint = CGPoint(x: 0.5, y: 1)
-        layer1.frame = CGRectMake(0, 0, UIScreen.main.bounds.size.width, 686)
+        layer1.bounds = self.view.bounds
         layer1.position = self.view.center
         self.view.layer.addSublayer(layer1)
 
@@ -81,6 +81,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout:layout)
         collectionView?.register(LLCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView?.register(LLHomePageIconCell.self, forCellWithReuseIdentifier: "iconCell")
+        collectionView?.register(LLHomePageBannerCell.self, forCellWithReuseIdentifier: "bannerCell")
         collectionView?.delegate = self;
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.clear
@@ -162,7 +163,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if section == 0{
-            return 1
+            return 2
         }
         else {
 //            return globalData.count
@@ -172,9 +173,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! LLHomePageIconCell
-            cell.delegate = self
-            return cell
+            if indexPath.row == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath) as! LLHomePageBannerCell
+                cell.delegate = self
+                return cell
+            }
+            else{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! LLHomePageIconCell
+                cell.delegate = self
+                return cell
+            }
+
         }
         else {
             let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
@@ -237,6 +246,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
     }
 
+    
+// propol
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
         //仅仅暂时措施
@@ -259,6 +270,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         let destination = SearchViewControl()
         destination.parameter = ["elite_id":1,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    //点击banner广告位
+    func didBannerClick(index: Int) {
+        NSLog("%d",index)
     }
     
 }

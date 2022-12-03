@@ -17,9 +17,9 @@ protocol sectionIconHeaderViewDelegate: NSObjectProtocol {
 
 class LLHomeHeader: UICollectionReusableView {
     
+    
     weak var delegate: sectionIconHeaderViewDelegate?
     
-
     var tabTitleArray = [UILabel]()
     var tabRedScorllArray = [UIView]()
     var tabTitle = ["实时热销","大额优惠","9.9专区"]

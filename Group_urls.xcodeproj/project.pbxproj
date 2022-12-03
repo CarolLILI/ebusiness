@@ -23,6 +23,7 @@
 		E98A8EF22933AE89002CE667 /* SearchViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF12933AE88002CE667 /* SearchViewControl.swift */; };
 		E98A8EF42933B289002CE667 /* LLSearchBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */; };
 		E98A8EF6293A6250002CE667 /* LLHomePageIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */; };
+		E98A8EF8293A6A73002CE667 /* LLHomePageBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */; };
 		E996D7D62933318A00153BD5 /* String+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D52933318A00153BD5 /* String+Number.swift */; };
 		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
@@ -78,6 +79,8 @@
 		E98A8EF12933AE88002CE667 /* SearchViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControl.swift; sourceTree = "<group>"; };
 		E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBarControl.swift; sourceTree = "<group>"; };
 		E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomePageIconCell.swift; sourceTree = "<group>"; };
+		E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomePageBannerCell.swift; sourceTree = "<group>"; };
+		E98A8EF9293B3F3D002CE667 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E996D7D52933318A00153BD5 /* String+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Number.swift"; sourceTree = "<group>"; };
 		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		E959330B28A58B1400BCC95C = {
 			isa = PBXGroup;
 			children = (
+				E98A8EF9293B3F3D002CE667 /* Bridging-Header.h */,
 				E959331628A58B1500BCC95C /* Group_urls */,
 				E959332D28A58B3A00BCC95C /* Group_urlsTests */,
 				E959333728A58B3A00BCC95C /* Group_urlsUITests */,
@@ -229,6 +233,7 @@
 				E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */,
 				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
 				E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */,
+				E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */,
 				E959331B28A58B1500BCC95C /* ViewController.swift */,
 				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
 				E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */,
@@ -419,6 +424,7 @@
 				E9B53A1E28EDDC2900599CB2 /* UIDevice+LLAddition.swift in Sources */,
 				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
+				E98A8EF8293A6A73002CE667 /* LLHomePageBannerCell.swift in Sources */,
 				E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */,
 				E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */,
 				E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */,
@@ -629,6 +635,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -661,6 +668,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -8,4 +8,6 @@ target 'Group_urls' do
 	pod 'ESPullToRefresh'
         pod 'Toast-Swift', '~> 5.0.1'
 	pod "ESTabBarController-swift"
+	pod 'FSPagerView' 
+	pod 'EllipsePageControl','~> 0.0.4'
 end
