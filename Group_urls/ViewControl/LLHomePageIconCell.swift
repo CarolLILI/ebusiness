@@ -53,7 +53,7 @@ class LLHomePageIconCell: UICollectionViewCell {
         
         iconImageBg?.snp.makeConstraints({ make in
             make.left.equalTo(9)
-            make.top.equalTo(28)
+            make.top.equalTo(0)
             make.width.equalTo((UIScreen.main.bounds.size.width-18))
             make.height.equalTo(120)
         })

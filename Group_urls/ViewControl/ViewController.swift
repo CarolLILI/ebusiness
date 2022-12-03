@@ -39,12 +39,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         layer1.locations = [0,0.89,1,1]
         layer1.startPoint = CGPoint(x: 0.5, y: 0)
         layer1.endPoint = CGPoint(x: 0.5, y: 1)
-        layer1.bounds = self.view.bounds
-        layer1.position = self.view.center
+        layer1.bounds = CGRectMake(0, 0, UIScreen.main.bounds.size.width, 343)
+        layer1.position = CGPoint(x: self.view.center.x, y: self.view.center.y-UIScreen.main.bounds.size.height/2+70+UIDevice.xp_navigationFullHeight())
         self.view.layer.addSublayer(layer1)
 
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
+        
         setCollectionView()
         requestData()
     }
@@ -191,12 +192,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //        cell.updateModel(model)
             return cell
         }
-        
-        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-//        let model = globalData[indexPath.row]
-//        cell.updateModel(model)
-        return cell
-        
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
@@ -205,7 +200,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
      }
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: screen_width, height: 150.0)
+        if indexPath.section == 0{
+            if indexPath.row == 0 {
+                return CGSize(width: screen_width, height: 150.0)
+            }
+            return CGSize(width: screen_width, height: 120.0)
+        }
+        return CGSize(width: screen_width, height: 130.0)
     }
     // update section header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -247,7 +248,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
 
     
-// propol
+// protocol
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
         //仅仅暂时措施

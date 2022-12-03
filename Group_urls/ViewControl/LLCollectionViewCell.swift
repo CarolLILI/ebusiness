@@ -87,8 +87,8 @@ class LLCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         backGroundLayer?.snp.makeConstraints({ make in
             make.top.equalTo(5)
-            make.left.equalTo(15)
-            make.right.equalTo(-15)
+            make.left.equalTo(9)
+            make.right.equalTo(-9)
             make.bottom.equalTo(5)
         })
         imageView?.snp.makeConstraints({ make in

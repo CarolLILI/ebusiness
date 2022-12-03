@@ -24,7 +24,6 @@ class LLHomePageBannerCell: UICollectionViewCell ,FSPagerViewDelegate,FSPagerVie
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = UIColor.yellow
         initView()
     }
     
@@ -82,7 +81,7 @@ class LLHomePageBannerCell: UICollectionViewCell ,FSPagerViewDelegate,FSPagerVie
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.image = UIImage(named: "logosc1")
+        cell.imageView?.image = UIImage(named: "banner")
         return cell
     }
     
