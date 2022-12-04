@@ -60,23 +60,21 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.clear
         self.view.addSubview(collectionView!)
+
         collectionView?.snp.makeConstraints({ make in
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.top.equalTo(UIDevice.xp_navigationFullHeight())
             make.bottom.equalTo(0)
         })
+        
+        //头部
+        collectionView?.contentInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
+        let headerView = UIImageView.init(frame: CGRectMake(0, -150, screen_width, 150))
+        headerView.image = UIImage(named: "productBg")
+        collectionView?.addSubview(headerView)
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
-        
-        collectionView!.es.addPullToRefresh {
-            [unowned self] in
-            //刷新相关的事件
-            
-            //刷新成功，设置completion自动重制footer 的状态
-            collectionView!.es.stopPullToRefresh()
-            // 设置ignoreFotter 来处理不需要显示footer
-        }
         
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in

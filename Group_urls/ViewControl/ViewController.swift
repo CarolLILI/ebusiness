@@ -25,6 +25,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
 
     var collectionView: UICollectionView?
+    var sectionSearchBarHeaderView: LLSearchBar?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
     
@@ -45,7 +46,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
-        
+        searchBar()
         setCollectionView()
         requestData()
     }
@@ -69,7 +70,23 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         statusView.backgroundColor = color
     }
     
+    func searchBar(){
+        sectionSearchBarHeaderView = LLSearchBar()
+        sectionSearchBarHeaderView!.delegate = self
+        sectionSearchBarHeaderView!.isUserInteractionEnabled = true
+        sectionSearchBarHeaderView!.updataMode()
+        self.view.addSubview(sectionSearchBarHeaderView!)
+        
+        sectionSearchBarHeaderView?.snp.makeConstraints({ make in
+            make.top.equalTo(UIDevice.xp_navigationBarHeight())
+            make.left.equalTo(0)
+            make.width.equalTo(screen_width)
+            make.height.equalTo(75)
+        })
+    }
+    
     func setCollectionView(){
+            
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize(width: screen_width/2, height: screen_height/3)
         layout.scrollDirection = .vertical
@@ -87,27 +104,16 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView?.dataSource = self;
         collectionView?.backgroundColor = UIColor.clear
         self.view.addSubview(collectionView!)
+
+        
         collectionView?.snp.makeConstraints({ make in
             make.left.equalTo(0)
             make.right.equalTo(0)
-//            make.top.equalTo(UIDevice.xp_navigationFullHeight())
-//            make.bottom.equalTo(-UIDevice.xp_tabBarFullHeight())
-            make.top.equalTo(0)
+            make.top.equalTo(sectionSearchBarHeaderView!.snp.bottom)
             make.bottom.equalTo(0)
         })
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
-        collectionView?.register(LLSearchBar.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionSearchBar")
-        
-//        collectionView!.es.addPullToRefresh {
-//            [unowned self] in
-//            //刷新相关的事件
-//
-//            //刷新成功，设置completion自动重制footer 的状态
-//            collectionView!.es.stopPullToRefresh()
-//            // 设置ignoreFotter 来处理不需要显示footer
-//        }
-        
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
@@ -119,6 +125,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         })
         
     }
+
     
     @objc func updateData(){
         // 下拉刷新，更新下一页面的数据
@@ -195,9 +202,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
-        if section == 0 {return CGSize(width: screen_width, height: 75)}
-        return CGSize(width: screen_width, height: 75)
+        if section == 1 {return CGSize(width: screen_width, height: 75)}
+        return CGSize(width:0, height: 0)
      }
+
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
@@ -210,27 +218,18 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // update section header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if indexPath.section == 0 {
-            var sectionSearchBarHeaderView = LLSearchBar()
+        var sectionIconHeader = LLHomeHeader()
+        if indexPath.section == 1 {
+ 
             if kind == UICollectionView.elementKindSectionHeader {
-                sectionSearchBarHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionSearchBar", for: indexPath) as! LLSearchBar
-            }
-            sectionSearchBarHeaderView .delegate = self
-            sectionSearchBarHeaderView .isUserInteractionEnabled = true
-            sectionSearchBarHeaderView .updataMode()
-            
-            return sectionSearchBarHeaderView
-        }
-        else {
-            var sectionIconHeaderView = LLHomeHeader()
-            if kind == UICollectionView.elementKindSectionHeader {
+                var sectionIconHeaderView = LLHomeHeader()
                 sectionIconHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
+                sectionIconHeaderView .delegate = self
+                sectionIconHeaderView .isUserInteractionEnabled = true
+                return sectionIconHeaderView
             }
-            sectionIconHeaderView .delegate = self
-            sectionIconHeaderView .isUserInteractionEnabled = true
-            return sectionIconHeaderView
         }
-
+        return sectionIconHeader
     }
     // touch cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
