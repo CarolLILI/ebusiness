@@ -17,6 +17,9 @@ class LLCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView?
     var backGroundLayer: UIView?
     
+    var labelImg: UIImageView?
+    var lableHotArray = [UILabel]()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initView()
@@ -38,6 +41,11 @@ class LLCollectionViewCell: UICollectionViewCell {
         imageView?.contentMode = .scaleToFill
         self.addSubview(imageView!)
         self.backgroundColor = UIColor.clear
+        
+        labelImg = UIImageView.init()
+        labelImg?.backgroundColor = UIColor.clear
+        labelImg?.contentMode = .scaleToFill
+        self.addSubview(labelImg!)
         
         
         titleLable = UILabel.init()
@@ -70,17 +78,34 @@ class LLCollectionViewCell: UICollectionViewCell {
         subPriceTitle?.font = UIFont.systemFont(ofSize: 15)
         self.addSubview(subPriceTitle!)
         
+        
     }
     
     func updateModel(
         _ model: skuModel
     ){
         titleLable?.text = model.sku_name
-        priceTitle?.text = "\(model.price)元"
+        priceTitle?.text = "¥\(model.price)元"
 //        subTitleLb?.text = model.best_coupon_lable
-        subPriceTitle?.text = model.best_coupon_lable
+        subPriceTitle?.text = model.site_name
         let url = URL(string: model.image)
         imageView?.kf.setImage(with: url)
+        
+        var lbNum = model.tags.count
+        for i in 0 ..< lbNum {
+            let lb = UILabel.init()
+            lb.textAlignment = NSTextAlignment.center
+            lb.textColor = "#FF4840".uicolor()
+            lb.font = UIFont.systemFont(ofSize: 9)
+            lb.layer.cornerRadius = 8
+            lb.layer.borderColor = "#FF4840".uicolor().cgColor
+            lb.layer.borderWidth = 1
+            lb.textAlignment = .center
+            lb.backgroundColor = UIColor.white
+            lb.text = model.tags[i]
+            lableHotArray.append(lb)
+            self.addSubview(lb)
+        }
     }
     
     override func layoutSubviews() {
@@ -97,8 +122,14 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(100)
             make.bottom.equalTo(-10)
         })
-        titleLable?.snp.makeConstraints({ make in
+        labelImg?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
+            make.top.equalTo(20)
+            make.width.equalTo(44)
+            make.height.equalTo(18)
+        })
+        titleLable?.snp.makeConstraints({ make in
+            make.left.equalTo(labelImg!.snp.right).offset(2)
             make.top.equalTo(20)
             //距离右边边距 10
             make.right.equalToSuperview().offset(-20)
@@ -119,5 +150,28 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(priceTitle!.snp.bottom).offset(10)
             make.right.equalToSuperview().offset(-20)
         })
+        
+        
+        
+        var leftTabTitleLbl = 10.0
+        for tabElement in lableHotArray {
+            tabElement.snp.makeConstraints { make in
+                make.left.equalTo(imageView!.snp.right).offset(leftTabTitleLbl)
+                make.top.equalTo(titleLable!.snp.bottom).offset(3)
+                make.height.equalTo(15)
+                
+                let text_size = getStrBoundRect(str: tabElement.text!, font: UIFont.systemFont(ofSize: 9), constrainedSize: CGSize(width: self.contentView.frame.width, height: 15))
+                leftTabTitleLbl += text_size.width+25
+                
+                make.width.equalTo(text_size.width + 16)
+            }
+        }
+        
+    }
+    
+    func getStrBoundRect(str:String,font:UIFont, constrainedSize:CGSize,option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
+        let attr = [NSAttributedString.Key.font:font]
+        let rect=str.boundingRect(with: constrainedSize, options: option, attributes: attr, context: nil)
+        return rect
     }
 }

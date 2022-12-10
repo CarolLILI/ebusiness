@@ -14,7 +14,6 @@ protocol sectionIconHeaderViewDelegate: NSObjectProtocol {
     func sectionTabBarClick(index: Int)
 }
 
-
 class LLHomeHeader: UICollectionReusableView {
     
     
@@ -24,12 +23,8 @@ class LLHomeHeader: UICollectionReusableView {
     var tabRedScorllArray = [UIView]()
     var tabTitle = ["实时热销","大额优惠","9.9专区"]
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-
-        updataMode()
     }
     
     required init?(coder: NSCoder) {
@@ -51,15 +46,15 @@ class LLHomeHeader: UICollectionReusableView {
         redScroll.center.x = tabElement.center.x
     }
     
-    func updataMode(){
-
-        
-        let titleNum = 3
+    func updataMode(pageConfigurationList:homePageConfigurationList){
+        let titleNum = pageConfigurationList.fp_tabs.count
         for i in 0 ..< titleNum {
+            let skuConfiguraModel = pageConfigurationList.fp_tabs[i]
+            
             let titleLb = UILabel.init()
             titleLb.textColor = "#222222".uicolor()
             titleLb.textAlignment = .center
-            titleLb.text = tabTitle[i]
+            titleLb.text = skuConfiguraModel.name
             titleLb.font = UIFont.systemFont(ofSize: 14)
             titleLb.textAlignment = .center
             titleLb.backgroundColor = "#FFFFFF".uicolor()
@@ -82,9 +77,6 @@ class LLHomeHeader: UICollectionReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        
-        
         var leftTabTitleLbl = 0.0
         for tabElement in tabTitleArray {
             tabElement.snp.makeConstraints { make in

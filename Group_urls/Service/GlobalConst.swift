@@ -10,8 +10,12 @@ import UIKit
 
 let BASE_REL = "http://101.43.209.27"
 //home page url
-let homepage_product_recommend = "/sku/recommend"
+//let homepage_product_recommend = "/sku/recommend"
 //second level page url
 let favor_list = "/sku/like"
+//default configuration
+let home_page_configuration = "/comm/config"
+//banner
+let home_page_banner = "/sku/activity"
 
 

@@ -25,21 +25,33 @@ class skuModelList: NSObject {
 class skuModel: NSObject {
     var sku_id = ""
     var sku_name = ""
-    var image = ""
     var price = 0.0
     var min_price = 0.0
     var site = ""
+    
+    var site_name = ""
+    var couponsArray = [couponsModel]()
+    var rec_reason = ""
+    var head_tag = ""
+    var tags = [String]()
     var best_coupon_lable = ""
     var good_comments_rate = 0.0
     var detail_url = ""
     var coupon_url = ""
-    var couponsArray = [couponsModel]()
+
     var shopObj = shopModel.init(jsondata: [:])
+    var image = ""
+    var image_list = ""
+    var jump_url = ""
     
     init(jsondata: JSON) {
         sku_id = jsondata["sku_id"].stringValue
         sku_name = jsondata["sku_name"].stringValue
+        site_name = jsondata["site_name"].stringValue
+        rec_reason = jsondata["rec_reason"].stringValue
+        head_tag = jsondata["head_tag"].stringValue
         image = jsondata["image"].stringValue
+        image_list = jsondata["image_list"].stringValue
         price = jsondata["price"].doubleValue
         min_price = jsondata["min_price"].doubleValue
         site = jsondata["site"].stringValue
@@ -47,6 +59,7 @@ class skuModel: NSObject {
         good_comments_rate = jsondata["good_comments_rate"].doubleValue
         detail_url = jsondata["detail_url"].stringValue
         coupon_url = jsondata["coupon_url"].stringValue
+        jump_url = jsondata["jump_url"].stringValue
         
         //json 中嵌套了数组
         let coupons = jsondata["coupons"].arrayValue
@@ -58,6 +71,12 @@ class skuModel: NSObject {
         //json 中嵌套了对象
         let shop = jsondata["shop"].stringValue
         shopObj = shopModel.init(jsondata: JSON(shop))
+        
+        //中部标签集
+        let tags_lable = jsondata["tags"].arrayValue
+        for elems in tags_lable {
+            tags.append(elems.stringValue)
+        }
         
     }
 }
@@ -89,9 +108,11 @@ class shopModel: NSObject {
     var shop_id = ""
     var shop_name = ""
     var shop_level = 0.0
+    var shop_label = ""
     init(jsondata: JSON) {
         shop_id = jsondata["shop_id"].stringValue
         shop_name = jsondata["shop_name"].stringValue
         shop_level = jsondata["shop_level"].doubleValue
+        shop_label = jsondata["shop_lebel"].stringValue
     }
 }

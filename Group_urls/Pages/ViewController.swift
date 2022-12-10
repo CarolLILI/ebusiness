@@ -19,6 +19,10 @@ import SnapKit
 import ESPullToRefresh
 import Toast_Swift
 
+struct defaultsKeys {
+    static let homePage_Configuration = "homePage_Configuration"
+    static let homePage_Banner = "homePage_Banner"
+}
 
 @available(iOS 13.0, *)
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,sectionIconHeaderViewDelegate,LLSearchBarDelegate,iconHeaderClickDelegate,bannerClickDelegate {
@@ -28,6 +32,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     var sectionSearchBarHeaderView: LLSearchBar?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
+    var banner :homePageBannerList?
+    var homeConfig : homePageConfigurationList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +54,19 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         screen_height = UIScreen.main.bounds.size.height
         searchBar()
         setCollectionView()
+        requestBanner()
+        requestConfiguration()
+        setConfiguration()
         requestData()
+        
     }
-    
+    func setConfiguration(){
+        let json_banner = readLocalBanner()
+        banner = homePageBannerList(jsondata: JSON(rawValue: json_banner) ?? [])
+        
+        let json_config = readLocalConfiguration()
+        homeConfig = homePageConfigurationList(jsondata: JSON(rawValue: json_config) ?? [])
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -136,7 +152,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         //获取数据
         let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(homepage_product_recommend, paramers, "") { [self] result in
+        networkLayer.getRequest(favor_list, paramers, "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
@@ -163,19 +179,89 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
     }
     
+    func requestConfiguration(){
+        let paramers = ["pos":1] as [String : Any]
+        let networkLayer = LLSwiftNetworkLayer.shareInstance
+        networkLayer.getRequest(home_page_configuration, paramers,"") { [self] result in
+            let jsonData = JSON(result)["data"].rawValue
+            storageHomeConfiguration(jsonData as! NSDictionary)
+            
+        } failure: { error in
+            
+        }
+    }
+    
+    func requestBanner(){
+        let paramers = ["pos":1] as [String : Any]
+        let networkLayer = LLSwiftNetworkLayer.shareInstance
+        networkLayer.getRequest(home_page_banner, paramers,"") { [self] result in
+            let jsonData = JSON(result)["data"].rawValue
+            storeHomeBanner(jsonData as! NSDictionary)
+            
+        } failure: { error in
+            
+        }
+    }
+    
+    
+    func storageHomeConfiguration(_ jsonString: NSDictionary){
+        let defaults = UserDefaults.standard
+        defaults.setValue(jsonString, forKey: defaultsKeys.homePage_Configuration)
+    }
+    
+    func storeHomeBanner(_ jsonString: NSDictionary){
+        let defaults = UserDefaults.standard
+        defaults.setValue(jsonString, forKey: defaultsKeys.homePage_Banner)
+    }
+    
+    func readLocalConfiguration() -> NSDictionary{
+        let defaults = UserDefaults.standard
+        let value = defaults.dictionary(forKey: defaultsKeys.homePage_Configuration)
+        
+        if (value != nil) {
+            return value as! NSDictionary
+        }
+        return NSDictionary()
+    }
+    
+    func readLocalBanner() -> NSDictionary{
+        let defaults = UserDefaults.standard
+        let value = defaults.dictionary(forKey: defaultsKeys.homePage_Banner)
+        if (value != nil) {
+            return value as! NSDictionary
+        }
+        return NSDictionary()
+    }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        
+        if banner!.list.count > 0 || (homeConfig?.fp_channles.count)!>0{
+            return 2
+        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if section == 0{
-            return 2
+            
+            if banner!.list.count > 0 && (homeConfig?.fp_channles.count)!>0{
+                return 2
+            }
+            else if banner!.list.count > 0{
+                return 1
+            }
+            else if (homeConfig?.fp_channles.count)!>0{
+                return 1
+            }
+            else {
+                return 0
+            }
         }
         else {
-//            return globalData.count
-            return 20
+            return globalData.count
+
         }
     }
     // update cell
@@ -184,19 +270,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             if indexPath.row == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath) as! LLHomePageBannerCell
                 cell.delegate = self
+                cell.bannerModelList = banner
+                cell.pagerView?.reloadData()
                 return cell
             }
             else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! LLHomePageIconCell
                 cell.delegate = self
+                cell.updateModel(configuraModel: homeConfig!)
                 return cell
             }
 
         }
         else {
             let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-    //        let model = globalData[indexPath.row]
-    //        cell.updateModel(model)
+            let model = globalData[indexPath.row]
+            cell.updateModel(model)
             return cell
         }
     }
@@ -218,14 +307,19 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // update section header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var sectionIconHeader = LLHomeHeader()
+        var sectionIconHeader = UICollectionReusableView()
         if indexPath.section == 1 {
  
             if kind == UICollectionView.elementKindSectionHeader {
-                var sectionIconHeaderView = LLHomeHeader()
+                let json_config = readLocalConfiguration()
+                let homeConfig = homePageConfigurationList(jsondata: JSON(rawValue: json_config) ?? [])
+                
+                var sectionIconHeaderView = LLHomeHeader(frame: CGRectZero)
                 sectionIconHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
                 sectionIconHeaderView .delegate = self
                 sectionIconHeaderView .isUserInteractionEnabled = true
+                sectionIconHeaderView.updataMode(pageConfigurationList: homeConfig)
+                sectionIconHeaderView.reloadInputViews()
                 return sectionIconHeaderView
             }
         }
@@ -273,8 +367,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     //点击banner广告位
-    func didBannerClick(index: Int) {
-        NSLog("%d",index)
+    func didBannerClick(index: banner) {
+        NSLog("%d",index.jump_url)
     }
     
 }
