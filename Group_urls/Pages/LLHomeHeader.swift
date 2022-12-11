@@ -81,7 +81,7 @@ class LLHomeHeader: UICollectionReusableView {
         for tabElement in tabTitleArray {
             tabElement.snp.makeConstraints { make in
                 make.left.equalTo(leftTabTitleLbl)
-                make.top.equalTo(18)
+                make.top.equalTo(0)
                 make.width.equalTo((UIScreen.main.bounds.size.width)/3)
                 make.height.equalTo(38)
                 

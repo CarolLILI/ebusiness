@@ -17,13 +17,13 @@ class LLCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView?
     var backGroundLayer: UIView?
     
-    var labelImg: UIImageView?
     var lableHotArray = [UILabel]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initView()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -41,12 +41,6 @@ class LLCollectionViewCell: UICollectionViewCell {
         imageView?.contentMode = .scaleToFill
         self.addSubview(imageView!)
         self.backgroundColor = UIColor.clear
-        
-        labelImg = UIImageView.init()
-        labelImg?.backgroundColor = UIColor.clear
-        labelImg?.contentMode = .scaleToFill
-        self.addSubview(labelImg!)
-        
         
         titleLable = UILabel.init()
         titleLable?.textColor = UIColor.init(red: 25/255.0, green: 25/255.0, blue: 25/255.0, alpha: 1)
@@ -84,12 +78,23 @@ class LLCollectionViewCell: UICollectionViewCell {
     func updateModel(
         _ model: skuModel
     ){
-        titleLable?.text = model.sku_name
+//        titleLable?.text = model.sku_name
         priceTitle?.text = "¥\(model.price)元"
-//        subTitleLb?.text = model.best_coupon_lable
         subPriceTitle?.text = model.site_name
         let url = URL(string: model.image)
         imageView?.kf.setImage(with: url)
+        //图文混合
+        var textString = NSMutableAttributedString(string: model.sku_name)
+        textString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, textString.length))
+        var textAttachment = NSTextAttachment()
+        let imgView = UIImageView()
+        imgView.kf.setImage(with: URL(string: BASE_REL + model.head_tag))
+        textAttachment.image = imgView.image
+        
+        textAttachment.bounds = CGRectMake(0, 0, 30, 15)
+        var textAttachmengString = NSAttributedString(attachment: textAttachment)
+        textString.insert(textAttachmengString, at: 0)
+        titleLable?.attributedText = textString
         
         var lbNum = model.tags.count
         for i in 0 ..< lbNum {
@@ -122,14 +127,8 @@ class LLCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(100)
             make.bottom.equalTo(-10)
         })
-        labelImg?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!.snp.right).offset(10)
-            make.top.equalTo(20)
-            make.width.equalTo(44)
-            make.height.equalTo(18)
-        })
         titleLable?.snp.makeConstraints({ make in
-            make.left.equalTo(labelImg!.snp.right).offset(2)
+            make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(20)
             //距离右边边距 10
             make.right.equalToSuperview().offset(-20)

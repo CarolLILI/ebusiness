@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "201C460D-C361-4C30-B972-A753E25E2BC5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Group_urls/Pages/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9344F2D9-7B61-41BC-83EA-E97CBF86661A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -34,6 +18,54 @@
             endingLineNumber = "158"
             landmarkName = "requestData()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A11A04C-9426-434D-9C53-770953A81EE2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Group_urls/Pages/LLCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "updateModel(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6A11A04C-9426-434D-9C53-770953A81EE2 - d18d41652569925d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Group_urls.LLCollectionViewCell.updateModel(Group_urls.skuModel) -&gt; ()"
+                  moduleName = "Group_urls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aoli/ebusiness/Group_urls/Pages/LLCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "2005">
+               </Location>
+               <Location
+                  uuid = "6A11A04C-9426-434D-9C53-770953A81EE2 - d18d41652569925d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Group_urls.LLCollectionViewCell.updateModel(Group_urls.skuModel) -&gt; ()"
+                  moduleName = "Group_urls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aoli/ebusiness/Group_urls/Pages/LLCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "2312">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

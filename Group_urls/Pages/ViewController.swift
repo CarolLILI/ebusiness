@@ -150,7 +150,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func requestData(){
         self.view.makeToastActivity(.center)
         //获取数据
-        let paramers = ["elite_id":1,"site":"jd"] as [String : Any]
+        let paramers = ["elite_id":1,"site":"jd","pos":1] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
         networkLayer.getRequest(favor_list, paramers, "") { [self] result in
             //请求成功
