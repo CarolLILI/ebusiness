@@ -32,7 +32,7 @@ class homePageConfigurationList: NSObject {
     var fp_tabs = [skuConfObj]()
     
     init(jsondata: JSON) {
-        let modelList = jsondata["fp_channles"].arrayValue
+        let modelList = jsondata["fp_channels"].arrayValue
         for elements_model in modelList {
             let elems = JSON.init(elements_model)
             let skuModel = skuConfObj(jsondata: elems)

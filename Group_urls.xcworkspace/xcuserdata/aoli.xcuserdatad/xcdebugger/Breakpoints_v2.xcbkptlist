@@ -7,65 +7,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9344F2D9-7B61-41BC-83EA-E97CBF86661A"
+            uuid = "A2686B71-F84D-49C2-B505-CEFE56A67DFC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Group_urls/Pages/ViewController.swift"
+            filePath = "Group_urls/Pages/LLHomePageIconCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "requestData()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "updateModel(configuraModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6A11A04C-9426-434D-9C53-770953A81EE2"
+            uuid = "9C0DBA7D-15EB-4B36-A0D4-815AA5E11563"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Group_urls/Pages/LLCollectionViewCell.swift"
+            filePath = "Group_urls/Pages/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "updateModel(_:)"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "requestConfiguration()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6A11A04C-9426-434D-9C53-770953A81EE2 - d18d41652569925d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Group_urls.LLCollectionViewCell.updateModel(Group_urls.skuModel) -&gt; ()"
-                  moduleName = "Group_urls"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aoli/ebusiness/Group_urls/Pages/LLCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "2005">
-               </Location>
-               <Location
-                  uuid = "6A11A04C-9426-434D-9C53-770953A81EE2 - d18d41652569925d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Group_urls.LLCollectionViewCell.updateModel(Group_urls.skuModel) -&gt; ()"
-                  moduleName = "Group_urls"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aoli/ebusiness/Group_urls/Pages/LLCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "2312">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91B8EC56-2560-4B91-A844-71285767C215"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Group_urls/Pages/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D03F6747-6781-49E7-B313-A45C93A8845E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Group_urls/Pages/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "setConfiguration()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA693E0B-79F1-4779-87EB-1B9A49D24552"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Group_urls/Model/homePageConfigurationList.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "init(jsondata:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

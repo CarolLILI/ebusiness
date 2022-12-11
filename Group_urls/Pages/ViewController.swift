@@ -246,13 +246,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 
         if section == 0{
             
-            if banner!.list.count > 0 && (homeConfig?.fp_channles.count)!>0{
+            if banner!.list.count > 0 && homeConfig!.fp_channles.count > 0{
                 return 2
             }
             else if banner!.list.count > 0{
                 return 1
             }
-            else if (homeConfig?.fp_channles.count)!>0{
+            else if homeConfig!.fp_channles.count > 0{
                 return 1
             }
             else {

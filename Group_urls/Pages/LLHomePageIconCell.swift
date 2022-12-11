@@ -105,7 +105,7 @@ class LLHomePageIconCell: UICollectionViewCell {
             iconImage.backgroundColor = UIColor.clear
             iconImage.layer.cornerRadius = 10
             iconImage.layer.masksToBounds = true
-            let url = URL(string: skuCongirModel.icon)
+            let url = URL(string: BASE_REL + skuCongirModel.icon)
             iconImage.kf.setImage(with: url)
             iconImage.contentMode = UIView.ContentMode.scaleAspectFit
             iconImage.tag = i + 1
