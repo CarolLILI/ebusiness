@@ -96,8 +96,8 @@ class LLCollectionViewCell: UICollectionViewCell {
         textString.insert(textAttachmengString, at: 0)
         titleLable?.attributedText = textString
         
-        var lbNum = model.tags.count
-        for i in 0 ..< lbNum {
+        //保证复用不会重复 
+        for i in lableHotArray.count ..< model.tags.count {
             let lb = UILabel.init()
             lb.textAlignment = NSTextAlignment.center
             lb.textColor = "#FF4840".uicolor()
