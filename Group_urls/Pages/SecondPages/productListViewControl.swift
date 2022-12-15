@@ -19,18 +19,17 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
+    var configModel: skuConfObj!
     
     var parameter: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.isHidden = false
-        self.title = "多乐买"
-        self.navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.init(red: 226/255, green: 36/255, blue: 35/255, alpha: 1),NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .semibold)]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
-        self.view.backgroundColor = UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+        self.bgImg?.isHidden = false
+        self.baseTitle?.text = configModel.name
+        self.baseTitle?.textColor = UIColor.white
+        self.view.backgroundColor = "#6CDA00".uicolor()
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()

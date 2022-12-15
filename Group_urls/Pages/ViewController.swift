@@ -346,12 +346,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 // protocol
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
+        let model = homeConfig?.fp_channles[index]
         //仅仅暂时措施
         var num = index
         if index == 5 {
             num = 1
         }
         destination.parameter = ["elite_id":num,"site":"jd"]
+        destination.configModel = model
         self.navigationController?.pushViewController(destination, animated: true)
     }
     

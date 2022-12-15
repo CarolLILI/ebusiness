@@ -108,7 +108,7 @@ class LLHomePageIconCell: UICollectionViewCell {
             let url = URL(string: BASE_REL + skuCongirModel.icon)
             iconImage.kf.setImage(with: url)
             iconImage.contentMode = UIView.ContentMode.scaleAspectFit
-            iconImage.tag = i + 1
+            iconImage.tag = i
             iconImage.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action:#selector(jumpPage(_:)))
             iconImage.addGestureRecognizer(tap)
