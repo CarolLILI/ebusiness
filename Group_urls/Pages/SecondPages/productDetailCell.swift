@@ -48,26 +48,26 @@ class productDetailCell: UICollectionViewCell {
         titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        titleLable?.font = UIFont.systemFont(ofSize: 25)
+        titleLable?.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(titleLable!)
         
         subTitleLb = UILabel.init()
-        subTitleLb?.textAlignment = NSTextAlignment.left
+        subTitleLb?.textAlignment = NSTextAlignment.right
         subTitleLb?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        subTitleLb?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
+        subTitleLb?.textColor = "#999999".uicolor()
         self.addSubview(subTitleLb!)
         
         priceTitle = UILabel.init()
         priceTitle?.textAlignment = NSTextAlignment.left
-        priceTitle?.textColor = UIColor.init(red: 225/255.0, green: 45/255.0, blue: 45/255.0, alpha: 1)
+        priceTitle?.textColor = "#FF4840".uicolor()
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        priceTitle?.font = UIFont.systemFont(ofSize: 35, weight: UIFont.Weight(rawValue: 2))
+        priceTitle?.font = UIFont.systemFont(ofSize: 35, weight: UIFont.Weight(rawValue: 1))
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
         subPriceTitle?.textAlignment = NSTextAlignment.left
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
+        subPriceTitle?.textColor = "#FF4840".uicolor()
         subPriceTitle?.font = UIFont.systemFont(ofSize: 20)
         self.addSubview(subPriceTitle!)
         
@@ -77,7 +77,7 @@ class productDetailCell: UICollectionViewCell {
         _ model: skuModel
     ){
         titleLable?.text = model.sku_name
-        priceTitle?.text = "预估到手¥\(model.min_price)"
+        priceTitle?.text = "¥\(model.min_price)"
         subTitleLb?.text = model.best_coupon_lable
         subPriceTitle?.text = "原价\(model.price)"
         let url = URL(string: model.image)
@@ -95,33 +95,31 @@ class productDetailCell: UICollectionViewCell {
         })
         
         imageView?.snp.makeConstraints({ make in
-            make.left.equalTo(15)
-            make.top.equalTo(5)
-            make.width.equalTo(UIScreen.main.bounds.size.width - 30)
-            make.height.equalTo((UIScreen.main.bounds.size.height-UIDevice.xp_navigationFullHeight())/2)
+            make.left.equalTo(12)
+            make.top.equalTo(0)
+            make.width.equalTo(UIScreen.main.bounds.size.width - 24)
+            make.height.equalTo(433/2)
+        })
+        
+        titleLable?.snp.makeConstraints({ make in
+            make.left.equalTo(12)
+            make.top.equalTo(imageView!.snp.bottom).offset(25)
+            make.right.equalToSuperview().offset(-12)
         })
         
         priceTitle?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!).offset(10)
-            make.top.equalTo(imageView!.snp.bottom).offset(10)
+            make.left.equalTo(titleLable!).offset(10)
+            make.top.equalTo(titleLable!.snp.bottom).offset(10)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!).offset(10)
-            make.top.equalTo(priceTitle!.snp.bottom).offset(10)
-        })
-
-
-        titleLable?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!).offset(10)
-            make.top.equalTo(subPriceTitle!.snp.bottom).offset(20)
-            //距离右边边距 10
-            make.right.equalToSuperview().offset(-50)
-        })
-        subTitleLb?.snp.makeConstraints({ make in
-            make.left.equalTo(imageView!).offset(10)
+            make.left.equalTo(priceTitle!.snp.right).offset(10)
             make.top.equalTo(titleLable!.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-20)
+        })
+
+        subTitleLb?.snp.makeConstraints({ make in
+            make.top.equalTo(imageView!.snp.bottom).offset(10)
+            make.right.equalToSuperview().offset(12)
         })
 
     }

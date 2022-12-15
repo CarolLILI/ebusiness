@@ -49,6 +49,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         layer1.bounds = CGRectMake(0, 0, UIScreen.main.bounds.size.width, 343)
         layer1.position = CGPoint(x: self.view.center.x, y: self.view.center.y-UIScreen.main.bounds.size.height/2+70+UIDevice.xp_navigationFullHeight())
         self.view.layer.addSublayer(layer1)
+        
+        self.bgImg?.isHidden = true
 
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
