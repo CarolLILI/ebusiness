@@ -7,8 +7,12 @@
 
 import UIKit
 
-class LLSearchBarControl: UIView,UISearchBarDelegate {
-    var searchBar: UISearchBar?
+@available(iOS 13.0, *)
+class LLSearchBarControl: UIView,UITextFieldDelegate{
+    var searchBar: UITextField?
+    var bgImg: UIImageView?
+    var searchIcon: UILabel?
+    var searchLeftIcon: UIImageView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,80 +25,106 @@ class LLSearchBarControl: UIView,UISearchBarDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        bgImg!.snp.makeConstraints { make in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.width.equalTo(self.frame.size.width-12)
+            make.height.equalTo(self.frame.size.height)
+        }
+        
         searchBar?.snp.makeConstraints({ make in
-            make.left.equalTo(18)
-            make.top.equalTo(100)
-            make.width.equalTo((UIScreen.main.bounds.size.width-36))
-            make.height.equalTo(66)
+            make.left.equalTo(32)
+            make.top.equalTo(1)
+            make.width.equalTo(self.frame.size.width - 32 - 44)
+            make.height.equalTo(self.frame.size.height-2)
+        })
+        
+        searchIcon!.snp.makeConstraints { make in
+            make.right.equalTo(bgImg!.snp.right).offset(0)
+            make.top.equalTo(bgImg!.snp.top).offset(12)
+            make.bottom.equalTo(bgImg!.snp.bottom).offset(-12)
+            make.width.equalTo(61)
+        }
+        
+        searchLeftIcon?.snp.makeConstraints({ make in
+            make.left.equalTo(12)
+            make.top.equalTo(10)
+            make.bottom.equalTo(-10)
+            make.width.equalTo(12.5)
         })
     }
     
     func initContentView(){
-        searchBar = UISearchBar()
-        searchBar!.placeholder = "请输入关键字"
-//        searchBar!.text = "GO"
-        searchBar!.barStyle = UIBarStyle.blackOpaque
-//        searchBar!.prompt = "Yeah!"
-//        searchBar!.showsBookmarkButton = true
-//        searchBar!.showsCancelButton = true
-        searchBar!.setShowsCancelButton(true, animated: true)
-        searchBar!.showsSearchResultsButton = true
-        searchBar!.tintColor = UIColor.red
-        searchBar!.barTintColor = UIColor.white
-        searchBar!.scopeButtonTitles = ["1","2","3","4"]
-        searchBar!.showsScopeBar = true
-        searchBar!.sizeToFit()
-        searchBar!.delegate = self
-        self.addSubview(searchBar!)
+ 
+        
+        bgImg = UIImageView.init()
+        bgImg!.backgroundColor = UIColor.clear
+        bgImg!.image = UIImage(named: "search_bg")
+        bgImg!.contentMode = .scaleAspectFit
+        self.addSubview(bgImg!)
+
+        
+        searchBar = UITextField.init()
+        searchBar?.textColor = "#222222".uicolor()
+        searchBar?.placeholder = "请输入关键字"
+        searchBar?.textAlignment = .left
+        searchBar?.borderStyle = .none
+        searchBar?.delegate = self
+        searchBar?.returnKeyType = UIReturnKeyType.done
+        searchBar?.keyboardType = UIKeyboardType.default
+        bgImg!.addSubview(searchBar!)
+        
+        searchIcon = UILabel.init()
+        searchIcon!.backgroundColor = "#FC473F".uicolor()
+        searchIcon!.text = "搜索"
+        searchIcon!.textColor = UIColor.white
+        searchIcon!.font = UIFont.systemFont(ofSize: 12)
+        searchIcon!.textAlignment = .center
+        searchIcon!.layer.cornerRadius = 15
+        searchIcon!.layer.borderWidth = 0
+        searchIcon!.layer.masksToBounds = true
+        bgImg!.addSubview(searchIcon!)
+        
+        searchLeftIcon = UIImageView.init()
+        searchLeftIcon?.backgroundColor = UIColor.clear
+        searchLeftIcon?.image = UIImage(named: "search_left_icon")
+        searchLeftIcon?.contentMode = .scaleAspectFit
+        bgImg!.addSubview(searchLeftIcon!)
+
     }
     
     //代理回调函数
-    //点击附件视图代理方法的回调
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print(selectedScope)
-    }
-    //当输入文字变化时调用的方法
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //print(searchText)
-    }
-    //点击图书按钮触发的方法
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        print("点击了图书")
-    }
-    //点击搜索结果按钮触发的方法
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-            
-    }
-    //将要进入编辑状态触发的方法
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
-    //将要结束编辑时触发的方法
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+            print("将要开始编辑")
             return true
+        }
+        
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("已经开始编辑")
     }
-    //检测用户的输入文字
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        print(text)
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        print("将要结束编辑")
         return true
     }
-    //点击取消按钮时触发的方法
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("已经结束编辑")
     }
-    //点击搜索按钮触发的方法
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("文本输入内容将要发生变化（每次输入都会调用）")
+        return true
     }
-    //已经进入编辑状态时调用的方法
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        print("将要清除输入内容，返回值是是否要清除掉内容")
+        return true
     }
-    //将要结束编辑时触发的方法
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-            
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        searchBar!.resignFirstResponder()
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("将要按下Return按钮，返回值是是否结束输入（是否失去焦点）")
+        return true
     }
 }

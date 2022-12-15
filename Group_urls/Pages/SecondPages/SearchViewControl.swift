@@ -19,18 +19,18 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
     var collectionView: UICollectionView?
     let headerHeight: CGFloat = 30
     var globalData = [skuModel]()
-    
     var parameter: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
+        self.bgImg?.isHidden = false
+        self.baseTitle?.isHidden = true
+        self.searchBarHeaderView?.isHidden = false
+        
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         
-        var sectionSearchBarHeaderView = LLSearchBarControl()
-        sectionSearchBarHeaderView.isUserInteractionEnabled = true
-        self.view.addSubview(sectionSearchBarHeaderView)
+
         
 //        setCollectionView()
     }
