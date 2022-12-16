@@ -116,3 +116,22 @@ class shopModel: NSObject {
         shop_label = jsondata["shop_lebel"].stringValue
     }
 }
+
+class skuDetailModel: NSObject {
+    var sku = skuModel.init(jsondata: [:])
+    var recommend_list = [skuModel]()
+    
+    
+    init(jsondata: JSON) {
+        let modelList = jsondata["recommend_list"].arrayValue
+        for elements_model in modelList {
+            let elems = JSON.init(elements_model)
+            let skuModel = skuModel(jsondata: elems)
+            recommend_list.append(skuModel)
+        }
+        
+        let model = jsondata["sku"]
+        sku = skuModel.init(jsondata: JSON(model))
+    }
+    
+}

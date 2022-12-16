@@ -82,7 +82,7 @@ class LLCollectionViewCell: UICollectionViewCell {
         priceTitle?.text = "¥\(model.price)元"
         subPriceTitle?.text = model.site_name
         let url = URL(string: model.image)
-        imageView?.kf.setImage(with: url)
+        imageView?.kf.setImage(with: url, placeholder: UIImage(named: "list_img"))
         //图文混合
         var textString = NSMutableAttributedString(string: model.sku_name)
         textString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, textString.length))

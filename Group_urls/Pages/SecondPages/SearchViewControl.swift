@@ -135,8 +135,7 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         
         let destination = productDetialControl()
         let model = globalData[indexPath.row]
-        destination.globalData = globalData
-        destination.firstModel = [model]
+        destination.selectModel = model
         self.navigationController?.pushViewController(destination, animated: true)
         
     }

@@ -18,8 +18,8 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
 
     
     var collectionView: UICollectionView?
-    var globalData = [skuModel]()
-    var firstModel = [skuModel]()
+    var selectModel: skuModel!
+    var detailModel: skuDetailModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,16 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
         screen_height = UIScreen.main.bounds.size.height - UIDevice.xp_navigationFullHeight()
         setCollectionView()
         self.view.backgroundColor = UIColor.white
-//        requestData()
+        requestData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if detailModel?.recommend_list != nil {
+            requestData()
+        }
+        
     }
     
     func setCollectionView(){
@@ -58,18 +67,8 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
 
         collectionView?.register(LLRecommondHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
         
-        
-//        collectionView!.es.addPullToRefresh {
-//            [unowned self] in
-//            //刷新相关的事件
-//
-//            updateOldModeData()
-//        }
-        
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
-            //加载更多
-//            updateModelData()
 
         })
         
@@ -123,25 +122,28 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
         
     }
     
-    func updateModelData(){
-        var index = globalData.firstIndex(of: firstModel.first!)
-        if globalData.count >= (index! + 1) {
-            firstModel = [globalData[index! + 1]]
-        } else {
-            //通知暂无数据更新状态
-            collectionView!.es.noticeNoMoreData()
+    func requestData(){
+        self.view.makeToastActivity(.center)
+        //获取数据
+        let paramers = ["sku_id":selectModel.sku_id,
+                        "site": selectModel.site,
+                        "sku_name":selectModel.sku_name,
+                        "detail_url": selectModel.detail_url,
+                        "coupon_url":selectModel.coupon_url] as [String : Any]
+        let networkLayer = LLSwiftNetworkLayer.shareInstance
+        networkLayer.getRequest(sku_detail, paramers, "") { [self] result in
+            //请求成功
+            let jsonData = JSON(result)["data"].rawValue
+            let model = skuDetailModel(jsondata: JSON(rawValue: jsonData) ?? [])
+            detailModel = model
+            collectionView!.reloadData()
+            self.view.hideToastActivity()
+        } failure: { [self] error in
+            self.view.hideToastActivity()
+            //请求失败
+            print(error)
+
         }
-        collectionView?.reloadData()
-        collectionView!.es.stopLoadingMore()
-    }
-    
-    func updateOldModeData(){
-        var index = globalData.firstIndex(of: firstModel.first!)
-        if globalData.count >= (index! - 1) && (index!-1) >= 0{
-            firstModel = [globalData[index! - 1]]
-        }
-        collectionView?.reloadData()
-        collectionView!.es.stopPullToRefresh()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -153,7 +155,10 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
             return 1
         }
         else {
-            return globalData.count
+            if ((detailModel?.recommend_list.count) != nil) {
+                return (detailModel?.recommend_list.count)!
+            }
+            return 0
         }
     }
     // header的大小
@@ -162,7 +167,7 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
         return CGSize(width:0, height: 0)
      }
     
-    // update section header view
+    // 为您推荐 的标题
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var sectionIconHeader = UICollectionReusableView()
         if indexPath.section == 1 {
@@ -188,14 +193,16 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! productDetailCell
-            let model = firstModel[indexPath.row]
-            cell.updateModel(model)
+            cell.updateModel(selectModel)
+
             return cell
         }
         else {
             let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! LLCollectionViewCell
-            let model = globalData[indexPath.row]
-            cell.updateModel(model)
+            if detailModel?.recommend_list != nil {
+                let model = detailModel?.recommend_list[indexPath.row]
+                cell.updateModel(model!)
+            }
             return cell
         }
 

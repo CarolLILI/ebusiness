@@ -334,14 +334,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             cell!.layer.cornerRadius = 4
             cell?.backgroundColor = UIColor.clear
             
-            let destination = productDetialControl()
             let model = globalData[indexPath.row]
-            destination.globalData = globalData
-            destination.firstModel = [model]
+            let destination = productDetialControl()
+            destination.selectModel = model
             self.navigationController?.pushViewController(destination, animated: true)
+
         }
     }
-
     
 // protocol
     func sectionIconHeaderClick(index: Int) {

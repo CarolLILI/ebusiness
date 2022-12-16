@@ -81,7 +81,7 @@ class productDetailCell: UICollectionViewCell {
         subTitleLb?.text = model.best_coupon_lable
         subPriceTitle?.text = "原价\(model.price)"
         let url = URL(string: model.image)
-        imageView?.kf.setImage(with: url)
+        imageView?.kf.setImage(with: url,placeholder: UIImage(named: "goods_detial"))
     }
     
     override func layoutSubviews() {
