@@ -27,9 +27,15 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.bgImg?.isHidden = false
-        self.baseTitle?.text = configModel.name
+        self.backIcon?.image = UIImage(named: "back_list")
+        
         self.baseTitle?.textColor = UIColor.white
+        self.baseTitle?.font = UIFont(name: "YouSheBiaoTiHei", size: 32)
+        self.baseTitle?.text = configModel.name
         self.view.backgroundColor = "#6CDA00".uicolor()
+        
+
+
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
@@ -78,11 +84,11 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
-            requestData()
+//            requestData()
 //            //加载更多事件成功，调用stop
 //            collectionView!.es.stopLoadingMore()
             //通知暂无数据更新状态
-//            collectionView!.es.noticeNoMoreData()
+            collectionView!.es.noticeNoMoreData()
         })
         
     }
@@ -144,8 +150,7 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         
         let destination = productDetialControl()
         let model = globalData[indexPath.row]
-        destination.globalData = globalData
-        destination.firstModel = [model]
+        destination.selectModel = model
         self.navigationController?.pushViewController(destination, animated: true)
         
     }

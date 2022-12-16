@@ -29,10 +29,17 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
+        setCollectionView()
         
-
         
-//        setCollectionView()
+        searchBarHeaderView?.clickSearchBtn = { [self](keyWord) ->() in
+            print("block \(keyWord)")
+            
+            parameter = ["title":"\(keyWord)","pos": 1 ]
+            requestData()
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +76,7 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
-            requestData()
+//            requestData()
 //            //加载更多事件成功，调用stop
 //            collectionView!.es.stopLoadingMore()
             //通知暂无数据更新状态

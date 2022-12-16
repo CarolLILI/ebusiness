@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 @available(iOS 13.0, *)
 class BaseViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class BaseViewController: UIViewController {
     var backIcon: UIImageView?
     var baseTitle: UILabel?
     var searchBarHeaderView: LLSearchBarControl?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

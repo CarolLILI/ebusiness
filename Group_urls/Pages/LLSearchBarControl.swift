@@ -7,12 +7,16 @@
 
 import UIKit
 
+typealias funcBlock = (String) -> ()
+
 @available(iOS 13.0, *)
 class LLSearchBarControl: UIView,UITextFieldDelegate{
     var searchBar: UITextField?
     var bgImg: UIImageView?
     var searchIcon: UILabel?
     var searchLeftIcon: UIImageView?
+    var clickSearchBtn: funcBlock!
+    var keyWord: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +40,7 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         searchBar?.snp.makeConstraints({ make in
             make.left.equalTo(32)
             make.top.equalTo(1)
-            make.width.equalTo(self.frame.size.width - 32 - 44)
+            make.width.equalTo(self.frame.size.width - 80)
             make.height.equalTo(self.frame.size.height-2)
         })
         
@@ -57,14 +61,13 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
     
     func initContentView(){
  
-        
         bgImg = UIImageView.init()
         bgImg!.backgroundColor = UIColor.clear
         bgImg!.image = UIImage(named: "search_bg")
         bgImg!.contentMode = .scaleAspectFit
+        bgImg!.isUserInteractionEnabled = true
         self.addSubview(bgImg!)
 
-        
         searchBar = UITextField.init()
         searchBar?.textColor = "#222222".uicolor()
         searchBar?.placeholder = "请输入关键字"
@@ -73,6 +76,10 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         searchBar?.delegate = self
         searchBar?.returnKeyType = UIReturnKeyType.done
         searchBar?.keyboardType = UIKeyboardType.default
+        searchBar?.clearButtonMode = .whileEditing
+        searchBar?.keyboardAppearance = UIKeyboardAppearance.light
+        searchBar?.resignFirstResponder()
+        searchBar?.isUserInteractionEnabled = true
         bgImg!.addSubview(searchBar!)
         
         searchIcon = UILabel.init()
@@ -84,21 +91,39 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         searchIcon!.layer.cornerRadius = 15
         searchIcon!.layer.borderWidth = 0
         searchIcon!.layer.masksToBounds = true
+        searchIcon!.isUserInteractionEnabled = true
         bgImg!.addSubview(searchIcon!)
+        let tap = UITapGestureRecognizer.init(target: self, action:#selector(searchRequest(_:)))
+        searchIcon!.addGestureRecognizer(tap)
+        
         
         searchLeftIcon = UIImageView.init()
         searchLeftIcon?.backgroundColor = UIColor.clear
         searchLeftIcon?.image = UIImage(named: "search_left_icon")
         searchLeftIcon?.contentMode = .scaleAspectFit
+        searchLeftIcon?.isUserInteractionEnabled = true
         bgImg!.addSubview(searchLeftIcon!)
+        
+
 
     }
+    
+    @objc func searchRequest(
+        _ sender: UITapGestureRecognizer
+    ){
+        if keyWord!.count > 0 {
+            clickSearchBtn!(keyWord!)
+            
+        }
+        
+    }
+    
     
     //代理回调函数
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
             print("将要开始编辑")
             return true
-        }
+    }
         
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("已经开始编辑")
@@ -114,17 +139,26 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("文本输入内容将要发生变化（每次输入都会调用）")
+        
+        let fullStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        keyWord = fullStr
+        keyWord = keyWord?.replacingOccurrences(of: " ", with: "")
+        
+        print("文本输入内容将要发生变化（每次输入都会调用）\(keyWord)")
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         print("将要清除输入内容，返回值是是否要清除掉内容")
+        keyWord = ""
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("将要按下Return按钮，返回值是是否结束输入（是否失去焦点）")
+        if keyWord!.count > 0 {
+            clickSearchBtn(keyWord!)
+        }
         return true
     }
 }
