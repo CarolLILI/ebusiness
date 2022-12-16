@@ -31,12 +31,29 @@ class LLHomeHeader: UICollectionReusableView {
         fatalError()
     }
     
+    
+    func storeSelecTab(_ tabNum: String){
+        let defaults = UserDefaults.standard
+        defaults.setValue(tabNum, forKey: "home_page_tab_num")
+    }
+      
+    func readLocalSelectTab() -> String{
+        let defaults = UserDefaults.standard
+        let value = defaults.string(forKey: "home_page_tab_num")
+        
+        if (value != nil) {
+            return value as! String
+        }
+        return String()
+    }
 
+    
     @objc func updateTableView(
         _ sender: UITapGestureRecognizer
     ){
         let tapLocation = sender.view
         animalRedScroll(index: tapLocation!.tag)
+        storeSelecTab(String(tapLocation!.tag))
         self.delegate?.sectionTabBarClick(index: tapLocation!.tag)
     }
     
@@ -44,11 +61,12 @@ class LLHomeHeader: UICollectionReusableView {
         let tabElement = tabTitleArray[index]
         let redScroll = tabRedScorllArray[0]
         redScroll.center.x = tabElement.center.x
+        
     }
     
     func updataMode(pageConfigurationList:homePageConfigurationList){
         let titleNum = pageConfigurationList.fp_tabs.count
-        for i in 0 ..< titleNum {
+        for i in tabTitleArray.count ..< titleNum {
             let skuConfiguraModel = pageConfigurationList.fp_tabs[i]
             
             let titleLb = UILabel.init()
@@ -84,24 +102,24 @@ class LLHomeHeader: UICollectionReusableView {
                 make.top.equalTo(0)
                 make.width.equalTo((UIScreen.main.bounds.size.width)/3)
                 make.height.equalTo(38)
-                
-                leftTabTitleLbl += (UIScreen.main.bounds.size.width)/3
-                
-                let indexCell = tabTitleArray.firstIndex(of: tabElement)
-                if indexCell == 0 {
-                    let redScroll = tabRedScorllArray[indexCell!]
-                    redScroll.snp.makeConstraints { make in
-                        make.top.equalTo(tabElement.snp.bottom)
-                        make.centerX.equalTo(tabElement)
-                        make.width.equalTo(18)
-                        make.height.equalTo(3)
-                    }
+            }
+            
+            leftTabTitleLbl += (UIScreen.main.bounds.size.width)/3
+            
+            let indexCell = tabTitleArray.firstIndex(of: tabElement)
+            let localStoreTabNum = readLocalSelectTab()
+            let selecedIndex = Int(localStoreTabNum) ?? 0
+            if indexCell == selecedIndex {
+                let redScroll = tabRedScorllArray[0]
+                redScroll.snp.makeConstraints { make in
+                    make.top.equalTo(tabElement.snp.bottom)
+                    make.centerX.equalTo(tabElement)
+                    make.width.equalTo(18)
+                    make.height.equalTo(3)
                 }
-
-                
             }
         }
-        
 
+        
     }
 }

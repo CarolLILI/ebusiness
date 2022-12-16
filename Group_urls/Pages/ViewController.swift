@@ -34,6 +34,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     var globalData = [skuModel]()
     var banner :homePageBannerList?
     var homeConfig : homePageConfigurationList?
+    var requesrParam: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         requestBanner()
         requestConfiguration()
         setConfiguration()
+        requesrParam = ["elite_id":1,"site":"jd","pos":1] as NSDictionary
         requestData()
         
     }
@@ -152,9 +154,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func requestData(){
         self.view.makeToastActivity(.center)
         //获取数据
-        let paramers = ["elite_id":1,"site":"jd","pos":1] as [String : Any]
+        
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(favor_list, paramers, "") { [self] result in
+        networkLayer.getRequest(favor_list, (requesrParam as! Parameters), "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
@@ -234,7 +236,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
         return NSDictionary()
     }
-    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -346,26 +347,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
         let model = homeConfig?.fp_channles[index]
-        //仅仅暂时措施
-        var num = index
-        if index == 5 {
-            num = 1
-        }
-        destination.parameter = ["elite_id":num,"site":"jd"]
+        destination.parameter = ["elite_id":model?.model_id,"site":model?.name]
         destination.configModel = model
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
     //点击实时热销，更新界面
     func sectionTabBarClick(index: Int){
-        
-        NSLog("%d",index)
+        let model = homeConfig?.fp_tabs[index]
+        requesrParam = ["elite_id":model?.num] as NSDictionary
+        print("%@ --- id: %@",model?.num, model?.model_id)
+        requestData()
     }
     
     //搜索框，跳转到第二页
     func searchBarClick(index: Int) {
         let destination = SearchViewControl()
-        destination.parameter = ["elite_id":1,"site":"jd"]
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
