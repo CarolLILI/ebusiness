@@ -80,7 +80,7 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
 //            //加载更多事件成功，调用stop
 //            collectionView!.es.stopLoadingMore()
             //通知暂无数据更新状态
-//            collectionView!.es.noticeNoMoreData()
+            collectionView!.es.noticeNoMoreData()
         })
         
     }

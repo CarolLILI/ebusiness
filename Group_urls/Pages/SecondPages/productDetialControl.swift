@@ -69,7 +69,7 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
         
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
-
+            collectionView!.es.noticeNoMoreData()
         })
         
         let bottomView = UIView.init()
