@@ -97,16 +97,22 @@ class LLHomePageIconCell: UICollectionViewCell {
     
     func updateModel(configuraModel: homePageConfigurationList){
         
-        let num = ((configuraModel.fp_channles.count)) > 0 ? configuraModel.fp_channles.count : 0
+        let num = ((configuraModel.fp_channles.count)) > 0 ? configuraModel.fp_channles.count : 5
         for i in 0 ..< num {
-            let skuCongirModel = configuraModel.fp_channles[i]
+            let skuCongirModel =  ((configuraModel.fp_channles.count)) > 0 ? configuraModel.fp_channles[i]: nil
             
             let iconImage = UIImageView.init()
             iconImage.backgroundColor = UIColor.clear
             iconImage.layer.cornerRadius = 10
             iconImage.layer.masksToBounds = true
-            let url = URL(string: BASE_REL + skuCongirModel.icon)
-            iconImage.kf.setImage(with: url)
+            if ((configuraModel.fp_channles.count)) > 0 {
+                let url = URL(string: BASE_REL + skuCongirModel!.icon)
+                iconImage.kf.setImage(with: url)
+            }
+            else {
+                iconImage.image = UIImage(named: imageNameArray[i])
+            }
+       
             iconImage.contentMode = UIView.ContentMode.scaleAspectFit
             iconImage.tag = i
             iconImage.isUserInteractionEnabled = true
@@ -117,7 +123,7 @@ class LLHomePageIconCell: UICollectionViewCell {
             let title = UILabel.init()
             title.textColor = "#222222".uicolor()
             title.textAlignment = .center
-            title.text = skuCongirModel.name
+            title.text = ((configuraModel.fp_channles.count)) > 0 ? skuCongirModel!.name: titleTextArray[i]
             title.font = UIFont.systemFont(ofSize: 15)
             iconImageBg!.addSubview(title)
             titleArray.append(title)

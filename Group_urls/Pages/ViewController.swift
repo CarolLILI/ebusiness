@@ -60,6 +60,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         requestBanner()
         requestConfiguration()
         setConfiguration()
+        
         requesrParam = ["elite_id":1,"site":"jd","pos":1] as NSDictionary
         requestData()
         
@@ -239,10 +240,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        if banner!.list.count > 0 || (homeConfig?.fp_channles.count)!>0{
-            return 2
-        }
-        return 1
+//        if banner!.list.count > 0 || (homeConfig?.fp_channles.count)!>0{
+//            return 2
+//        }
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -259,7 +260,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 return 1
             }
             else {
-                return 0
+                return 1
             }
         }
         else {
@@ -270,7 +271,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 && banner!.list.count > 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath) as! LLHomePageBannerCell
                 cell.delegate = self
                 cell.bannerModelList = banner
@@ -294,7 +295,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     // header的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
-        if section == 1 {return CGSize(width: screen_width, height: 75)}
+        if section == 1 && homeConfig!.fp_tabs.count > 0 {return CGSize(width: screen_width, height: 75)}
         return CGSize(width:0, height: 0)
      }
 
@@ -346,7 +347,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 // protocol
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
-        let model = homeConfig?.fp_channles[index]
+        let model = (homeConfig?.fp_channles.count)! > index ? homeConfig?.fp_channles[index]: skuConfObj(jsondata: "")
         destination.parameter = ["elite_id":model?.model_id,"site":model?.name]
         destination.configModel = model
         self.navigationController?.pushViewController(destination, animated: true)
