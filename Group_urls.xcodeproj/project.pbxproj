@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E91949C6294C37650013F9C6 /* YouSheBiaoTiHei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */; };
 		E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9270E9F290A666A007DF2FE /* productListViewControl.swift */; };
 		E94F1CF428E74FF100D661A7 /* LLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */; };
 		E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */; };
@@ -28,6 +29,7 @@
 		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
 		E9A9B3602941D42D0025781E /* homePageConfigurationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9B35F2941D42D0025781E /* homePageConfigurationList.swift */; };
+		E9A9B37B29498AD70025781E /* LLRecommondHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9B37A29498AD70025781E /* LLRecommondHeader.swift */; };
 		E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */; };
 		E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */; };
 		E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */; };
@@ -60,6 +62,7 @@
 		037B1FDC01431C2BAB57F656 /* Pods-Group_urls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group_urls.release.xcconfig"; path = "Target Support Files/Pods-Group_urls/Pods-Group_urls.release.xcconfig"; sourceTree = "<group>"; };
 		20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Group_urls.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC19143125AA7E8C6DB81BA /* Pods-Group_urls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group_urls.debug.xcconfig"; path = "Target Support Files/Pods-Group_urls/Pods-Group_urls.debug.xcconfig"; sourceTree = "<group>"; };
+		E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouSheBiaoTiHei.ttf; sourceTree = "<group>"; };
 		E9270E9F290A666A007DF2FE /* productListViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productListViewControl.swift; sourceTree = "<group>"; };
 		E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLCollectionViewCell.swift; sourceTree = "<group>"; };
 		E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeHeader.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
 		E9A9B35F2941D42D0025781E /* homePageConfigurationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageConfigurationList.swift; sourceTree = "<group>"; };
+		E9A9B37A29498AD70025781E /* LLRecommondHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLRecommondHeader.swift; sourceTree = "<group>"; };
 		E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewControl.swift; sourceTree = "<group>"; };
@@ -139,9 +143,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E91949C4294C374B0013F9C6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		E9270EA1290BC021007DF2FE /* SecondPages */ = {
 			isa = PBXGroup;
 			children = (
+				E9A9B37A29498AD70025781E /* LLRecommondHeader.swift */,
 				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
 				E9FA43FA291622F300879D12 /* productDetialControl.swift */,
 				E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */,
@@ -153,6 +166,7 @@
 		E959330B28A58B1400BCC95C = {
 			isa = PBXGroup;
 			children = (
+				E91949C4294C374B0013F9C6 /* Font */,
 				E98A8EF9293B3F3D002CE667 /* Bridging-Header.h */,
 				E959331628A58B1500BCC95C /* Group_urls */,
 				E959332D28A58B3A00BCC95C /* Group_urlsTests */,
@@ -369,6 +383,7 @@
 			files = (
 				E959332428A58B3800BCC95C /* LaunchScreen.storyboard in Resources */,
 				E9B8C39828F1870400BEAA93 /* Assets.xcassets in Resources */,
+				E91949C6294C37650013F9C6 /* YouSheBiaoTiHei.ttf in Resources */,
 				E959331F28A58B1500BCC95C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +458,7 @@
 				E9B53A1E28EDDC2900599CB2 /* UIDevice+LLAddition.swift in Sources */,
 				E9B53A1828EA75C600599CB2 /* ThirdViewControl.swift in Sources */,
 				E959331828A58B1500BCC95C /* AppDelegate.swift in Sources */,
+				E9A9B37B29498AD70025781E /* LLRecommondHeader.swift in Sources */,
 				E98A8EF8293A6A73002CE667 /* LLHomePageBannerCell.swift in Sources */,
 				E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */,
 				E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */,
