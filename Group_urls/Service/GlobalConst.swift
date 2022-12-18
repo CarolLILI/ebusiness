@@ -13,6 +13,7 @@ let BASE_REL = "http://101.43.209.27"
 //let homepage_product_recommend = "/sku/recommend"
 //second level page url
 let favor_list = "/sku/like"
+let sku_list = "/sku/list"
 let sku_detail = "/sku/detail"
 //default configuration
 let home_page_configuration = "/comm/config"

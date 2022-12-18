@@ -89,7 +89,7 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         //获取数据
         let paramers = parameter
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(favor_list, (paramers as! Parameters), "") { [self] result in
+        networkLayer.getRequest(sku_list, (paramers as! Parameters), "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
