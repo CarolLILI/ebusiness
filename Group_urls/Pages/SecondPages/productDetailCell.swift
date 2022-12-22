@@ -61,7 +61,7 @@ class productDetailCell: UICollectionViewCell {
         priceTitle?.textAlignment = NSTextAlignment.left
         priceTitle?.textColor = "#FF4840".uicolor()
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        priceTitle?.font = UIFont.systemFont(ofSize: 35, weight: UIFont.Weight(rawValue: 1))
+        priceTitle?.font = UIFont(name: "DIN Alternate", size: 42)
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
@@ -78,6 +78,7 @@ class productDetailCell: UICollectionViewCell {
     ){
         titleLable?.text = model.sku_name
         priceTitle?.text = "¥\(model.min_price)"
+        let price = "¥\(model.min_price)"
         subTitleLb?.text = model.best_coupon_lable
         subPriceTitle?.text = "原价\(model.price)"
         let url = URL(string: model.image)
@@ -109,17 +110,17 @@ class productDetailCell: UICollectionViewCell {
         
         priceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(titleLable!).offset(10)
-            make.top.equalTo(titleLable!.snp.bottom).offset(10)
+            make.bottom.equalTo(self.snp.bottom).offset(-20)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(priceTitle!.snp.right).offset(10)
-            make.top.equalTo(titleLable!.snp.bottom).offset(10)
+            make.bottom.equalTo(self.snp.bottom).offset(-20)
         })
 
         subTitleLb?.snp.makeConstraints({ make in
-            make.top.equalTo(imageView!.snp.bottom).offset(10)
             make.right.equalToSuperview().offset(12)
+            make.bottom.equalTo(self.snp.bottom).offset(-20)
         })
 
     }
