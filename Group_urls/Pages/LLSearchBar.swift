@@ -9,12 +9,14 @@ import UIKit
 
 protocol LLSearchBarDelegate: NSObjectProtocol {
     func searchBarClick(index: Int)
+    func shareBtnClick()
 }
 
 class LLSearchBar: UICollectionReusableView {
     
     weak var delegate: LLSearchBarDelegate?
     var searchBarImageView: UIImageView?
+    var shareImg: UIImageView?
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        //swift 背景渐变
@@ -43,6 +45,14 @@ class LLSearchBar: UICollectionReusableView {
         self.delegate?.searchBarClick(index:tapLocation!.tag)
     }
     
+    
+    @objc func shareAction(
+        _ sender: UITapGestureRecognizer
+    ){
+
+        self.delegate?.shareBtnClick()
+    }
+    
     func updataMode(){
         searchBarImageView = UIImageView.init()
         searchBarImageView?.image = UIImage(named: "search_bar_01")
@@ -52,6 +62,15 @@ class LLSearchBar: UICollectionReusableView {
         self.addSubview(searchBarImageView!)
         let tap = UITapGestureRecognizer.init(target: self, action:#selector(jumpPage(_:)))
         searchBarImageView!.addGestureRecognizer(tap)
+        
+        shareImg = UIImageView.init()
+        shareImg!.image = UIImage(named: "share_icon")
+        shareImg!.isUserInteractionEnabled = true
+        shareImg!.contentMode = .scaleAspectFit
+        self.addSubview(shareImg!)
+
+        let tap2 = UITapGestureRecognizer.init(target: self, action:#selector(shareAction(_:)))
+        shareImg!.addGestureRecognizer(tap2)
     }
     
     override func layoutSubviews() {
@@ -64,6 +83,11 @@ class LLSearchBar: UICollectionReusableView {
             make.height.equalTo(66)
         })
 
+        shareImg?.snp.makeConstraints { make in
+            make.right.equalTo(-11)
+            make.centerY.equalTo(searchBarImageView!.snp.centerY)
+            make.width.height.equalTo(20)
+        }
 
     }
 }
