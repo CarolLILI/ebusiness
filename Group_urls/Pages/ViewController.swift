@@ -72,7 +72,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         let json_config = readLocalConfiguration()
         homeConfig = homePageConfigurationList(jsondata: JSON(rawValue: json_config) ?? [])
         
-        
         requestBanner()
         requestConfiguration()
     }
@@ -105,9 +104,31 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         sectionSearchBarHeaderView?.snp.makeConstraints({ make in
             make.top.equalTo(UIDevice.xp_navigationBarHeight())
             make.left.equalTo(0)
-            make.width.equalTo(screen_width)
             make.height.equalTo(75)
         })
+        
+        let shareImg = UIImageView.init()
+        shareImg.image = UIImage(named: "share_icon")
+        shareImg.isUserInteractionEnabled = true
+        shareImg.contentMode = .scaleAspectFit
+        self.view.addSubview(shareImg)
+        
+        shareImg.snp.makeConstraints { make in
+            make.right.equalTo(-11)
+            make.centerY.equalTo(sectionSearchBarHeaderView!.snp.centerY)
+            make.width.height.equalTo(20)
+        }
+        let tap = UITapGestureRecognizer.init(target: self, action:#selector(shareAction(_:)))
+        shareImg.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func shareAction(
+        _ sender: UITapGestureRecognizer
+    ){
+        //分享
+        
+        print("share action")
     }
     
     func setCollectionView(){
@@ -150,6 +171,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         })
         
     }
+
 
     
     @objc func updateData(){
@@ -244,6 +266,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             return value as! NSDictionary
         }
         else{
+            //处理json数据解析
             let url = Bundle.main.url(forResource: "icon", withExtension: "json")
             let data_json = NSData(contentsOf: url!)
             do {
@@ -265,6 +288,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             return value as! NSDictionary
         }
         else{
+            //处理json数据解析
             let url = Bundle.main.url(forResource: "banner", withExtension: "json")
             let data_json = NSData(contentsOf: url!)
             do {
