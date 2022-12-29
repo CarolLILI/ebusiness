@@ -72,52 +72,52 @@ class productDetialControl:  BaseViewController, UICollectionViewDelegate, UICol
             collectionView!.es.noticeNoMoreData()
         })
         
-        let bottomView = UIView.init()
-        bottomView.backgroundColor = UIColor.white
-        self.view.addSubview(bottomView)
-        bottomView.snp.makeConstraints { make in
-            make.width.equalTo(screen_width)
-            make.height.equalTo(82)
-            make.left.equalTo(0)
-            make.bottom.equalTo(self.view.snp.bottom)
-        }
+//        let bottomView = UIView.init()
+//        bottomView.backgroundColor = UIColor.white
+//        self.view.addSubview(bottomView)
+//        bottomView.snp.makeConstraints { make in
+//            make.width.equalTo(screen_width)
+//            make.height.equalTo(82)
+//            make.left.equalTo(0)
+//            make.bottom.equalTo(self.view.snp.bottom)
+//        }
         
-        let shareButton = UILabel.init()
-        shareButton.text = "去分享"
-        shareButton.textAlignment = .center
-        shareButton.textColor = "#666666".uicolor()
-        shareButton.font = UIFont.systemFont(ofSize: 12)
-        shareButton.layer.cornerRadius = 8
-        shareButton.layer.borderWidth = 1
-        shareButton.layer.borderColor = "#999999".uicolor().cgColor
-        bottomView.addSubview(shareButton)
-        shareButton.isUserInteractionEnabled = true
-        
-        let jumpLinkButton = UILabel.init()
-        jumpLinkButton.text = "直达分享"
-        jumpLinkButton.textAlignment = .center
-        jumpLinkButton.textColor = UIColor.white
-        jumpLinkButton.font = UIFont.systemFont(ofSize: 12)
-        jumpLinkButton.layer.cornerRadius = 8
-        jumpLinkButton.layer.borderWidth = 1
-        jumpLinkButton.layer.masksToBounds = true
-        jumpLinkButton.layer.borderColor = "#FF4840".uicolor().cgColor
-        jumpLinkButton.backgroundColor = "#FF4840".uicolor()
-        bottomView.addSubview(jumpLinkButton)
-        
-        shareButton.snp.makeConstraints { make in
-            make.left.equalTo(18)
-            make.width.equalTo((screen_width - 18 - 18 - 12)/2)
-            make.height.equalTo(34)
-            make.top.equalTo(8)
-        }
-        
-        jumpLinkButton.snp.makeConstraints { make in
-            make.left.equalTo(shareButton.snp.right).offset(12)
-            make.width.equalTo((screen_width - 18 - 18 - 12)/2)
-            make.height.equalTo(34)
-            make.top.equalTo(8)
-        }
+//        let shareButton = UILabel.init()
+//        shareButton.text = "去分享"
+//        shareButton.textAlignment = .center
+//        shareButton.textColor = "#666666".uicolor()
+//        shareButton.font = UIFont.systemFont(ofSize: 12)
+//        shareButton.layer.cornerRadius = 8
+//        shareButton.layer.borderWidth = 1
+//        shareButton.layer.borderColor = "#999999".uicolor().cgColor
+//        bottomView.addSubview(shareButton)
+//        shareButton.isUserInteractionEnabled = true
+//
+//        let jumpLinkButton = UILabel.init()
+//        jumpLinkButton.text = "直达分享"
+//        jumpLinkButton.textAlignment = .center
+//        jumpLinkButton.textColor = UIColor.white
+//        jumpLinkButton.font = UIFont.systemFont(ofSize: 12)
+//        jumpLinkButton.layer.cornerRadius = 8
+//        jumpLinkButton.layer.borderWidth = 1
+//        jumpLinkButton.layer.masksToBounds = true
+//        jumpLinkButton.layer.borderColor = "#FF4840".uicolor().cgColor
+//        jumpLinkButton.backgroundColor = "#FF4840".uicolor()
+//        bottomView.addSubview(jumpLinkButton)
+//
+//        shareButton.snp.makeConstraints { make in
+//            make.left.equalTo(18)
+//            make.width.equalTo((screen_width - 18 - 18 - 12)/2)
+//            make.height.equalTo(34)
+//            make.top.equalTo(8)
+//        }
+//
+//        jumpLinkButton.snp.makeConstraints { make in
+//            make.left.equalTo(shareButton.snp.right).offset(12)
+//            make.width.equalTo((screen_width - 18 - 18 - 12)/2)
+//            make.height.equalTo(34)
+//            make.top.equalTo(8)
+//        }
         
         
     }
