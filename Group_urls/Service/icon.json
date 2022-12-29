@@ -1,0 +1,95 @@
+{
+    "code": 0,
+    "data": {
+        "fp_channels": [
+          {
+                "icon": "/pic/jd.png",
+                "model_id": "sku_list",
+                "name": "京东超市",
+                "num": 1,
+                "params": "site=jd&elite_id=25",
+                "params_dict": {
+                    "elite_id": 25,
+                    "site": "jd"
+                  }
+            },
+            {
+                "icon": "/pic/jd.png",
+                "model_id": "sku_list",
+                "name": "京东自营",
+                "num": 2,
+                "params": "site=jd&elite_id=41",
+                "params_dict": {
+                    "elite_id": 41,
+                    "site": "jd"
+                  }
+            },
+            {
+                "icon": "/pic/tb.png",
+                "model_id": "sku_list",
+                "name": "聚划算",
+                "num": 3,
+                "params": "site=tb&elite_id=31371",
+                "params_dict": {
+                    "elite_id": 31371,
+                    "site": "tb"
+                  }
+            },
+            {
+                "icon": "/pic/tm.png",
+                "model_id": "sku_list",
+                "name": "天猫国际",
+                "num": 4,
+                "params": "site=tb&elite_id=44413",
+                "params_dict": {
+                    "elite_id": 44413,
+                    "site": "tb"
+                  }
+            },
+            {
+                "icon": "/pic/tb.png",
+                "model_id": "sku_list",
+                "name": "淘宝特惠",
+                "num": 5,
+                "params": "site=tb&elite_id=4094",
+                "params_dict": {
+                    "elite_id": 4094,
+                    "site": "tb"
+                  }
+            }
+        ],
+        "fp_tabs": [{
+                "icon": "",
+                "model_id": "sku_list",
+                "name": "实时热销",
+                "num": 1,
+                "params": "elite_id=2",
+                "params_dict": {
+                    "elite_id": 2
+                  }
+            },
+            {
+                "icon": "",
+                "model_id": "sku_list",
+                "name": "大额券",
+                "num": 2,
+                "params": "elite_id=3",
+                "params_dict": {
+                    "elite_id": 3
+                  }
+            },
+            {
+                "icon": "",
+                "model_id": "sku_list",
+                "name": "好价专区",
+                "num": 3,
+                "params": "elite_id=4",
+                "params_dict": {
+                    "elite_id": 4
+                  }
+            }
+        ],
+    },
+    "msg": ""
+}
+

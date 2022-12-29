@@ -18,10 +18,12 @@ import SwiftyJSON
 import SnapKit
 import ESPullToRefresh
 import Toast_Swift
+import Foundation
 
 struct defaultsKeys {
     static let homePage_Configuration = "homePage_Configuration"
     static let homePage_Banner = "homePage_Banner"
+    static let homePage_FirstLoading = "homePage_FirstLoading"
 }
 
 @available(iOS 13.0, *)
@@ -57,8 +59,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         screen_height = UIScreen.main.bounds.size.height
         searchBar()
         setCollectionView()
-        requestBanner()
-        requestConfiguration()
         setConfiguration()
         
         requesrParam = ["elite_id":1,"site":"jd","pos":1] as NSDictionary
@@ -71,6 +71,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         
         let json_config = readLocalConfiguration()
         homeConfig = homePageConfigurationList(jsondata: JSON(rawValue: json_config) ?? [])
+        
+        
+        requestBanner()
+        requestConfiguration()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -208,6 +212,19 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         }
     }
     
+    func storageFirstLoadConfiguration(_ jsonString: NSString){
+        let defaults = UserDefaults.standard
+        defaults.setValue(jsonString, forKey: defaultsKeys.homePage_FirstLoading)
+    }
+    
+    func readLocalFirst() -> NSString{
+        let defaults = UserDefaults.standard
+        let value = defaults.dictionary(forKey: defaultsKeys.homePage_FirstLoading)
+        if (value != nil) {
+            return value as! NSString
+        }
+        return NSString()
+    }
     
     func storageHomeConfiguration(_ jsonString: NSDictionary){
         let defaults = UserDefaults.standard
@@ -226,6 +243,18 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         if (value != nil) {
             return value as! NSDictionary
         }
+        else{
+            let url = Bundle.main.url(forResource: "icon", withExtension: "json")
+            let data_json = NSData(contentsOf: url!)
+            do {
+                let jsonData = try! JSON(data: data_json! as Data)["data"].rawValue
+                return jsonData as! NSDictionary
+            } catch {
+                
+            }
+
+            
+        }
         return NSDictionary()
     }
     
@@ -234,6 +263,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         let value = defaults.dictionary(forKey: defaultsKeys.homePage_Banner)
         if (value != nil) {
             return value as! NSDictionary
+        }
+        else{
+            let url = Bundle.main.url(forResource: "banner", withExtension: "json")
+            let data_json = NSData(contentsOf: url!)
+            do {
+                let jsonData = try! JSON(data: data_json! as Data)["data"].rawValue
+                return jsonData as! NSDictionary
+            } catch {
+                
+            }
+            
         }
         return NSDictionary()
     }
@@ -364,7 +404,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //搜索框，跳转到第二页
     func searchBarClick(index: Int) {
         let destination = SearchViewControl()
-        self.navigationController?.pushViewController(destination, animated: true)
+        self.navigationController?.pushViewController(destination, animated: false)
     }
     
     //点击banner广告位
