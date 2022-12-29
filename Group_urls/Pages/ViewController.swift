@@ -388,7 +388,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func sectionIconHeaderClick(index: Int) {
         let destination = productListViewControl()
         let model = (homeConfig?.fp_channles.count)! > index ? homeConfig?.fp_channles[index]: skuConfObj(jsondata: "")
-        destination.parameter = ["elite_id":model?.model_id,"site":model?.name]
+        destination.parameter = ["elite_id":model?.params_dict.elite_id,"site":model?.params_dict.site]
         destination.configModel = model
         self.navigationController?.pushViewController(destination, animated: true)
     }

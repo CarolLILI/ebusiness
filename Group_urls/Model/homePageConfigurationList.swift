@@ -14,6 +14,7 @@ class skuConfObj: NSObject {
     var params = ""
     var icon = ""
     var model_id = ""
+    var params_dict = skuParams.init(jsondata: [:])
     
     init(jsondata: JSON) {
 
@@ -23,8 +24,22 @@ class skuConfObj: NSObject {
         icon = jsondata["icon"].stringValue
         model_id = jsondata["model_id"].stringValue
         
+        //json 中嵌套了对象
+        let paramsD = jsondata["params_dict"].dictionaryValue
+        params_dict = skuParams.init(jsondata: JSON(paramsD))
     }
     
+}
+
+class skuParams: NSObject {
+    var elite_id = ""
+    var site = ""
+    init(jsondata: JSON) {
+
+        elite_id = jsondata["elite_id"].stringValue
+        site = jsondata["site"].stringValue
+        
+    }
 }
 
 class homePageConfigurationList: NSObject {
@@ -68,7 +83,7 @@ class banner: NSObject {
     var image = ""
     var title = ""
     var site = ""
-    var jump_url = ""
+    var jump_url = "" // 跳转web，和直达链接 功能一样
     var start_time = ""
     var end_time = ""
     var tag = ""

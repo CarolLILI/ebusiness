@@ -34,11 +34,10 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         self.baseTitle?.text = configModel.name
         self.view.backgroundColor = "#6CDA00".uicolor()
         
-
-
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
+        requestData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
