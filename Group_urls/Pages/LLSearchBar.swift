@@ -58,9 +58,9 @@ class LLSearchBar: UICollectionReusableView {
         super.layoutSubviews()
 
         searchBarImageView?.snp.makeConstraints({ make in
-            make.left.equalTo(18)
+            make.left.equalTo(9)
             make.top.equalTo(4.5)
-            make.width.equalTo((UIScreen.main.bounds.size.width-36))
+            make.width.equalTo((UIScreen.main.bounds.size.width-52))
             make.height.equalTo(66)
         })
 
