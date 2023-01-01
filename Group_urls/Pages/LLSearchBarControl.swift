@@ -88,7 +88,7 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         searchIcon!.textColor = UIColor.white
         searchIcon!.font = UIFont.systemFont(ofSize: 12)
         searchIcon!.textAlignment = .center
-        searchIcon!.layer.cornerRadius = 15
+        searchIcon!.layer.cornerRadius = 14
         searchIcon!.layer.borderWidth = 0
         searchIcon!.layer.masksToBounds = true
         searchIcon!.isUserInteractionEnabled = true
@@ -112,9 +112,11 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         _ sender: UITapGestureRecognizer
     ){
         if keyWord!.count > 0 {
+            self.endEditing(false)
             clickSearchBtn!(keyWord!)
             
         }
+        
         
     }
     
@@ -136,6 +138,8 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("已经结束编辑")
+        
+        textField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -159,6 +163,7 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         if keyWord!.count > 0 {
             clickSearchBtn(keyWord!)
         }
+        textField.resignFirstResponder()
         return true
     }
 }

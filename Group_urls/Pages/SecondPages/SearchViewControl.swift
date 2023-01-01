@@ -48,6 +48,11 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
 //        self.view.makeToastActivity(.center)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(false)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .darkContent
     }
