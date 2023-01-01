@@ -72,23 +72,7 @@ class LLCollectionViewCell: UICollectionViewCell {
         subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
         subPriceTitle?.font = UIFont.systemFont(ofSize: 15)
         self.addSubview(subPriceTitle!)
-        
-
-        for i in 0 ..< 3 {
-            let lb = UILabel.init()
-            lb.textAlignment = NSTextAlignment.center
-            lb.textColor = "#FF4840".uicolor()
-            lb.font = UIFont.systemFont(ofSize: 9)
-            lb.layer.cornerRadius = 8
-            lb.layer.borderColor = "#FF4840".uicolor().cgColor
-            lb.layer.borderWidth = 1
-            lb.textAlignment = .center
-            lb.backgroundColor = UIColor.white
-            lb.tag = i
-            lableHotArray.append(lb)
-            lb.isHidden = true
-            self.addSubview(lb)
-        }
+    
     }
     
     func updateModel(
@@ -141,12 +125,27 @@ class LLCollectionViewCell: UICollectionViewCell {
         titleLable?.attributedText = textString
         
         
-        //保证复用不会重复 
-        for i in 0 ..< model.tags.count {
-            let lb = lableHotArray[i]
-            lb.text = model.tags[i]
-            lb.isHidden = false
+        //保证复用不会重复
+        
+        if lableHotArray.count < model.tags.count {
+            for i in 0 ..< model.tags.count {
+                let lb = UILabel.init()
+                lb.textAlignment = NSTextAlignment.center
+                lb.textColor = "#FF4840".uicolor()
+                lb.font = UIFont.systemFont(ofSize: 9)
+                lb.layer.cornerRadius = 8
+                lb.layer.borderColor = "#FF4840".uicolor().cgColor
+                lb.layer.borderWidth = 1
+                lb.textAlignment = .center
+                lb.backgroundColor = UIColor.white
+                lb.text = model.tags[i]
+                lb.tag = i
+                lableHotArray.append(lb)
+                self.addSubview(lb)
+            }
         }
+
+
     }
 
     override func layoutSubviews() {
@@ -189,15 +188,12 @@ class LLCollectionViewCell: UICollectionViewCell {
         
         
         var leftTabTitleLbl = 10.0
-        if skuModels!.tags.count > 0 {
-            for i in 0 ..< (skuModels?.tags.count)! {
+        if skuModels!.tags.count > 0 && lableHotArray.count <= (skuModels?.tags.count)!{
+            for i in 0 ..< lableHotArray.count {
                 let tabElement = lableHotArray[i]
-                let tag = skuModels?.tags[i]
-                let labl = UILabel.init()
-                labl.text = tag
-                let text_size = getStrBoundRect(str: labl.text!, font: UIFont.systemFont(ofSize: 9), constrainedSize: CGSize(width: self.contentView.frame.width, height: 15))
+                let text_size = getStrBoundRect(str: tabElement.text!, font: UIFont.systemFont(ofSize: 9), constrainedSize: CGSize(width: self.contentView.frame.width, height: 15))
                 
-                
+
                 tabElement.snp.makeConstraints { make in
                     make.left.equalTo(imageView!.snp.right).offset(leftTabTitleLbl)
                     make.top.equalTo(titleLable!.snp.bottom).offset(3)
@@ -206,7 +202,7 @@ class LLCollectionViewCell: UICollectionViewCell {
                     
                 }
                 
-                leftTabTitleLbl += text_size.width+25
+                leftTabTitleLbl += text_size.width+16 + 5
             }
         }
 
