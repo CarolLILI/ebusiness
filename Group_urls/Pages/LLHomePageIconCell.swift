@@ -107,7 +107,7 @@ class LLHomePageIconCell: UICollectionViewCell {
             iconImage.layer.masksToBounds = true
             if ((configuraModel.fp_channles.count)) > 0 {
                 let url = URL(string: BASE_REL + skuCongirModel!.icon)
-                iconImage.kf.setImage(with: url)
+                iconImage.kf.setImage(with: url,placeholder: UIImage(named: "list_img"))
             }
             else {
                 iconImage.image = UIImage(named: imageNameArray[i])

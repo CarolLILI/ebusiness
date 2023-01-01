@@ -84,7 +84,8 @@ class LLHomePageBannerCell: UICollectionViewCell ,FSPagerViewDelegate,FSPagerVie
 //        cell.imageView?.image = UIImage(named: "banner")
         let bannerModel = bannerModelList?.list[index]
         let url = URL(string: BASE_REL + bannerModel!.image)
-        cell.imageView?.kf.setImage(with: url)
+//        cell.imageView?.kf.setImage(with: url)
+        cell.imageView?.kf.setImage(with: url, placeholder: UIImage(named: "defalut_bgImg"))
         
         return cell
     }
