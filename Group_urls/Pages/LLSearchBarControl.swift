@@ -111,7 +111,7 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
     @objc func searchRequest(
         _ sender: UITapGestureRecognizer
     ){
-        if keyWord!.count > 0 {
+        if (keyWord != nil) && keyWord!.count > 0 {
             self.endEditing(false)
             clickSearchBtn!(keyWord!)
             
