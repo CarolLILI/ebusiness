@@ -124,17 +124,17 @@ class productDetailCell: UICollectionViewCell {
         
         priceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(titleLable!).offset(10)
-            make.bottom.equalTo(self.snp.bottom).offset(-20)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-12)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(priceTitle!.snp.right).offset(10)
-            make.bottom.equalTo(self.snp.bottom).offset(-20)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-17)
         })
 
         subTitleLb?.snp.makeConstraints({ make in
             make.right.equalToSuperview().offset(12)
-            make.bottom.equalTo(self.snp.bottom).offset(-20)
+            make.bottom.equalTo(self.snp.bottom).offset(-17)
         })
 
     }
