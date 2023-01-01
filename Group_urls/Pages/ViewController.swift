@@ -143,10 +143,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             [unowned self] in
             //加载更多
             requestData()
-//            //加载更多事件成功，调用stop
-//            collectionView!.es.stopLoadingMore()
-            //通知暂无数据更新状态
-//            collectionView!.es.noticeNoMoreData()
         })
         
     }
@@ -172,7 +168,17 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             else {
                 globalData.append(contentsOf: modelList.skulist)
             }
-            collectionView?.reloadData()
+//            collectionView?.reloadData()
+            
+            let mutableArry = NSMutableArray()
+            for i in 0 ..< globalData.count {
+                let indexPath = NSIndexPath(item: i, section: 1)
+                mutableArry.add(indexPath)
+            }
+            collectionView?.reloadItems(at: mutableArry as! [IndexPath])
+            
+            
+            
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
             self.view.hideToastActivity()
@@ -320,6 +326,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 cell.bannerModelList = banner
                 cell.pagerView?.reloadData()
                 return cell
+                
+                
             }
             else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! LLHomePageIconCell
@@ -363,6 +371,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 
                 var sectionIconHeaderView = LLHomeHeader(frame: CGRectZero)
                 sectionIconHeaderView  = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionHeader", for: indexPath) as! LLHomeHeader
+                
+                for view in sectionIconHeaderView.subviews{
+                    view.removeFromSuperview()
+                }
+                
                 sectionIconHeaderView .delegate = self
                 sectionIconHeaderView .isUserInteractionEnabled = true
                 sectionIconHeaderView.updataMode(pageConfigurationList: homeConfig)

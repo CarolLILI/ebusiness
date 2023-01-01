@@ -21,10 +21,10 @@ class LLHomeHeader: UICollectionReusableView {
     
     var tabTitleArray = [UILabel]()
     var tabRedScorllArray = [UIView]()
-    var tabTitle = ["实时热销","大额优惠","9.9专区"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +46,11 @@ class LLHomeHeader: UICollectionReusableView {
         }
         return String()
     }
+    
+    func deleteLocalScorllData(){
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "home_page_tab_num")
+    }
 
     
     @objc func updateTableView(
@@ -66,9 +71,11 @@ class LLHomeHeader: UICollectionReusableView {
     
     func updataMode(pageConfigurationList:homePageConfigurationList){
         let titleNum = pageConfigurationList.fp_tabs.count
+        tabTitleArray.removeAll()
+        tabRedScorllArray.removeAll()
+        
         for i in tabTitleArray.count ..< titleNum {
             let skuConfiguraModel = pageConfigurationList.fp_tabs[i]
-            
             let titleLb = UILabel.init()
             titleLb.textColor = "#222222".uicolor()
             titleLb.textAlignment = .center
@@ -91,10 +98,18 @@ class LLHomeHeader: UICollectionReusableView {
             }
 
         }
+        
+        updateLayout()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+
+
+        
+    }
+    
+    func updateLayout(){
         var leftTabTitleLbl = 0.0
         for tabElement in tabTitleArray {
             tabElement.snp.makeConstraints { make in
@@ -119,7 +134,5 @@ class LLHomeHeader: UICollectionReusableView {
                 }
             }
         }
-
-        
     }
 }
