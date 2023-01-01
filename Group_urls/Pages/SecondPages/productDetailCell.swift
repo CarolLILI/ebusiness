@@ -77,12 +77,26 @@ class productDetailCell: UICollectionViewCell {
         _ model: skuModel
     ){
         titleLable?.text = model.sku_name
-        priceTitle?.text = "¥\(model.min_price)"
-        let price = "¥\(model.min_price)"
         subTitleLb?.text = model.best_coupon_lable
-        subPriceTitle?.text = "原价\(model.price)"
         let url = URL(string: model.image)
         imageView?.kf.setImage(with: url,placeholder: UIImage(named: "goods_detial"))
+        
+        let frontStr = "¥"
+        let subString = String(format: "%.2f", model.min_price)
+        let attrStr = NSMutableAttributedString.init(string: frontStr,attributes: [NSAttributedString.Key.font: UIFont(name: "DIN Alternate", size: 24) as Any, NSAttributedString.Key.foregroundColor: "#FF4840".uicolor()])
+        var attrSubString = NSMutableAttributedString(string: subString)
+        attrSubString.insert(attrStr, at: 0)
+        
+        priceTitle?.attributedText = attrSubString
+        
+        let frontSuTitleStr = "原价"
+        let subSubTitleStr = String(format: "%.2f", model.price)
+        let attrSubTitleStr = NSMutableAttributedString.init(string: frontSuTitleStr, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: "#999999".uicolor()])
+        var attrPriceStr = NSMutableAttributedString(string: subSubTitleStr)
+        attrPriceStr.insert(attrSubTitleStr, at: 0)
+        subPriceTitle?.attributedText = attrPriceStr
+        
+        
     }
     
     override func layoutSubviews() {
