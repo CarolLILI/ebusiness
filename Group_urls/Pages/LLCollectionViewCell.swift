@@ -18,6 +18,7 @@ class LLCollectionViewCell: UICollectionViewCell {
     var backGroundLayer: UIView?
     
     var lableHotArray = [UILabel]()
+    var skuModels: skuModel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -72,32 +73,8 @@ class LLCollectionViewCell: UICollectionViewCell {
         subPriceTitle?.font = UIFont.systemFont(ofSize: 15)
         self.addSubview(subPriceTitle!)
         
-        
-    }
-    
-    func updateModel(
-        _ model: skuModel
-    ){
-//        titleLable?.text = model.sku_name
-        priceTitle?.text = "¥\(model.price)元"
-        subPriceTitle?.text = model.site_name
-        let url = URL(string: model.image)
-        imageView?.kf.setImage(with: url, placeholder: UIImage(named: "list_img"))
-        //图文混合
-        var textString = NSMutableAttributedString(string: model.sku_name)
-        textString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, textString.length))
-        var textAttachment = NSTextAttachment()
-        let imgView = UIImageView()
-        imgView.kf.setImage(with: URL(string: BASE_REL + model.head_tag))
-        textAttachment.image = imgView.image
-        
-        textAttachment.bounds = CGRectMake(0, 0, 30, 15)
-        var textAttachmengString = NSAttributedString(attachment: textAttachment)
-        textString.insert(textAttachmengString, at: 0)
-        titleLable?.attributedText = textString
-        
-        //保证复用不会重复 
-        for i in lableHotArray.count ..< model.tags.count {
+
+        for i in 0 ..< 3 {
             let lb = UILabel.init()
             lb.textAlignment = NSTextAlignment.center
             lb.textColor = "#FF4840".uicolor()
@@ -107,12 +84,71 @@ class LLCollectionViewCell: UICollectionViewCell {
             lb.layer.borderWidth = 1
             lb.textAlignment = .center
             lb.backgroundColor = UIColor.white
-            lb.text = model.tags[i]
+            lb.tag = i
             lableHotArray.append(lb)
+            lb.isHidden = true
             self.addSubview(lb)
         }
     }
     
+    func updateModel(
+        _ model: skuModel
+    ){
+        skuModels = model
+//        titleLable?.text = model.sku_name
+        priceTitle?.text = "¥\(model.price)元"
+        subPriceTitle?.text = model.site_name
+        let url = URL(string: model.image)
+        imageView?.kf.setImage(with: url, placeholder: UIImage(named: "list_img"))
+        //图文混合，图片+文字
+        var textString = NSMutableAttributedString(string: model.sku_name)
+        textString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, textString.length))
+        
+//        let imgView = UIImageView()
+//        imgView.kf.setImage(with: URL(string: BASE_REL + model.head_tag))
+//        textAttachment.image = imgView.image
+        
+
+        
+        //图文很合，文字 + 文字
+//        let attrStr = NSMutableAttributedString(string: model.head_tag)
+//        attrStr.addAttributes([NSAttributedString.Key.backgroundColor: "#FF4840".uicolor(), NSAttributedString.Key.font:UIFont(name: "YouSheBiaoTiHei", size: 12) as Any,NSAttributedString.Key.foregroundColor: UIColor.white], range: NSMakeRange(0, attrStr.length))
+        
+        
+        let attrLb = UILabel.init()
+        attrLb.text = model.head_tag
+        //swift 计算字符串长度
+        let text_size = getStrBoundRect(str: attrLb.text!, font: UIFont(name: "YouSheBiaoTiHei", size: 12)!, constrainedSize: CGSize(width: self.contentView.frame.width, height: 16))
+        let frame_width = text_size.width + 10
+        
+        attrLb.frame = CGRectMake(0, 0, CGFloat(frame_width), 16)
+        attrLb.font = UIFont(name: "YouSheBiaoTiHei", size: 12)
+        attrLb.textColor = UIColor.white
+        attrLb.layer.cornerRadius = 6
+        attrLb.clipsToBounds = true
+        attrLb.textAlignment = .center
+        attrLb.backgroundColor = "#FF4840".uicolor()
+        attrLb.contentMode = .scaleAspectFit
+
+        // 服务器返回的文字，文字转换为image，放在字符串前面的标签
+        var textAttachment = NSTextAttachment()
+        textAttachment.image = attrLb.asImage()
+
+        let attrLb_length = model.head_tag.count > 0 ? attrLb.frame.width: 0
+        textAttachment.bounds = CGRectMake(0, 0, attrLb_length,16)
+        var textAttachmengString = NSAttributedString(attachment: textAttachment)
+        textString.insert(textAttachmengString, at: 0)
+        titleLable?.attributedText = textString
+        
+        
+        //保证复用不会重复 
+        for i in 0 ..< model.tags.count {
+            let lb = lableHotArray[i]
+            lb.text = model.tags[i]
+            lb.isHidden = false
+        }
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         backGroundLayer?.snp.makeConstraints({ make in
@@ -153,18 +189,27 @@ class LLCollectionViewCell: UICollectionViewCell {
         
         
         var leftTabTitleLbl = 10.0
-        for tabElement in lableHotArray {
-            tabElement.snp.makeConstraints { make in
-                make.left.equalTo(imageView!.snp.right).offset(leftTabTitleLbl)
-                make.top.equalTo(titleLable!.snp.bottom).offset(3)
-                make.height.equalTo(15)
+        if skuModels!.tags.count > 0 {
+            for i in 0 ..< (skuModels?.tags.count)! {
+                let tabElement = lableHotArray[i]
+                let tag = skuModels?.tags[i]
+                let labl = UILabel.init()
+                labl.text = tag
+                let text_size = getStrBoundRect(str: labl.text!, font: UIFont.systemFont(ofSize: 9), constrainedSize: CGSize(width: self.contentView.frame.width, height: 15))
                 
-                let text_size = getStrBoundRect(str: tabElement.text!, font: UIFont.systemFont(ofSize: 9), constrainedSize: CGSize(width: self.contentView.frame.width, height: 15))
+                
+                tabElement.snp.makeConstraints { make in
+                    make.left.equalTo(imageView!.snp.right).offset(leftTabTitleLbl)
+                    make.top.equalTo(titleLable!.snp.bottom).offset(3)
+                    make.height.equalTo(15)
+                    make.width.equalTo(text_size.width + 16)
+                    
+                }
+                
                 leftTabTitleLbl += text_size.width+25
-                
-                make.width.equalTo(text_size.width + 16)
             }
         }
+
         
     }
     
@@ -174,3 +219,5 @@ class LLCollectionViewCell: UICollectionViewCell {
         return rect
     }
 }
+
+
