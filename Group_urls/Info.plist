@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>YouSheBiaoTiHei.ttf</string>
+		<string>DIN Alternate.ttf</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>

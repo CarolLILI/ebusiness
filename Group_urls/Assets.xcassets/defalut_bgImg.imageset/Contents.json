@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "占位图.png",
+      "filename" : "defalut_bgImg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
