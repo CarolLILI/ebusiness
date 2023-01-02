@@ -33,6 +33,7 @@
 		E994187C2962D354001BBE06 /* PingFangTC-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */; };
 		E994187E2962D58F001BBE06 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */; };
 		E99418802962D882001BBE06 /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187F2962D882001BBE06 /* PingFang Medium.ttf */; };
+		E99418822962E0B0001BBE06 /* PingFang Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99418812962E0B0001BBE06 /* PingFang Bold.ttf */; };
 		E996D7D62933318A00153BD5 /* String+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D52933318A00153BD5 /* String+Number.swift */; };
 		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
@@ -100,6 +101,7 @@
 		E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFangTC-Semibold.ttf"; sourceTree = "<group>"; };
 		E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		E994187F2962D882001BBE06 /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
+		E99418812962E0B0001BBE06 /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
 		E996D7D52933318A00153BD5 /* String+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Number.swift"; sourceTree = "<group>"; };
 		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		E91949C4294C374B0013F9C6 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				E99418812962E0B0001BBE06 /* PingFang Bold.ttf */,
 				E994187F2962D882001BBE06 /* PingFang Medium.ttf */,
 				E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */,
 				E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */,
@@ -406,6 +409,7 @@
 				E959332428A58B3800BCC95C /* LaunchScreen.storyboard in Resources */,
 				E9941876295D82D2001BBE06 /* icon.json in Resources */,
 				E994187E2962D58F001BBE06 /* PingFang SC Regular.ttf in Resources */,
+				E99418822962E0B0001BBE06 /* PingFang Bold.ttf in Resources */,
 				E91949C8294DF5AC0013F9C6 /* DIN Alternate.ttf in Resources */,
 				E91949C6294C37650013F9C6 /* YouSheBiaoTiHei.ttf in Resources */,
 				E994187A2961C0EC001BBE06 /* Assets.xcassets in Resources */,
