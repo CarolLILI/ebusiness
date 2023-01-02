@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PingFang Bold.ttf</string>
 		<string>PingFang Medium.ttf</string>
 		<string>PingFang SC Regular.ttf</string>
 		<string>PingFangTC-Semibold.ttf</string>

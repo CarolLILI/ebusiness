@@ -52,13 +52,23 @@ class BaseViewController: UIViewController {
     //添加自定义导航栏背景
     func addNavBar(_ color: UIColor) {
         
+
+        
         backIcon = UIImageView.init(frame: CGRectMake(12, 15, 7,14))
         backIcon!.image = UIImage(named: "backIcn")
+        backIcon!.contentMode = .scaleAspectFit
         bgImg!.addSubview(backIcon!)
         bgImg?.isUserInteractionEnabled = true
         backIcon?.isUserInteractionEnabled = true
+        
+        let backBgView = UIView.init()
+        backBgView.backgroundColor = UIColor.clear
+        backBgView.frame = CGRectMake(0, 0, 32, 33)
+        backBgView.isUserInteractionEnabled = true
+        bgImg!.addSubview(backBgView)
+        
         let tap = UITapGestureRecognizer.init(target: self, action:#selector(backPreviousPages(_:)))
-        backIcon!.addGestureRecognizer(tap)
+        backBgView.addGestureRecognizer(tap)
         
         baseTitle = UILabel.init(frame: CGRectZero)
         baseTitle?.textAlignment = .center

@@ -74,6 +74,7 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         searchBar?.textAlignment = .left
         searchBar?.borderStyle = .none
         searchBar?.delegate = self
+        searchBar?.font = UIFont(name: "PingFang SC Regular", size: 12)
         searchBar?.returnKeyType = UIReturnKeyType.done
         searchBar?.keyboardType = UIKeyboardType.default
         searchBar?.clearButtonMode = .whileEditing

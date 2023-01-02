@@ -42,10 +42,12 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    override func backPreviousPages(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.popViewController(animated: false)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        requestData()
-//        self.view.makeToastActivity(.center)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
