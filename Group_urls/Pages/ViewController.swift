@@ -139,6 +139,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         })
 
         collectionView?.register(LLHomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionSectionHeader")
+        collectionView?.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "UICollectionSectionFooter")
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
@@ -349,6 +350,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         if section == 1 && homeConfig!.fp_tabs.count > 0 {return CGSize(width: screen_width, height: 75)}
         return CGSize(width:0, height: 0)
      }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize{
+        if section == 0 {return CGSize(width: screen_width, height: 5)}
+        return CGSize(width:0, height: 0)
+    }
 
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -363,6 +369,13 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     // update section header view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var sectionIconHeader = UICollectionReusableView()
+        if indexPath.section == 0 {
+            if kind == UICollectionView.elementKindSectionFooter {
+                sectionIconHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICollectionSectionFooter", for: indexPath)
+                sectionIconHeader.backgroundColor = UIColor.clear
+                return sectionIconHeader
+            }
+        }
         if indexPath.section == 1 {
  
             if kind == UICollectionView.elementKindSectionHeader {

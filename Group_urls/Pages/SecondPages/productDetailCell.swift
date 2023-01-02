@@ -48,7 +48,7 @@ class productDetailCell: UICollectionViewCell {
         titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        titleLable?.font = UIFont(name: "PingFangTC-Semibold", size: 14)
+        titleLable?.font = UIFont(name: "PingFangTC-Semibold", size: 15)
         self.addSubview(titleLable!)
         
         subTitleLb = UILabel.init()
@@ -68,7 +68,7 @@ class productDetailCell: UICollectionViewCell {
         subPriceTitle?.textAlignment = NSTextAlignment.left
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         subPriceTitle?.textColor = "#FF4840".uicolor()
-        subPriceTitle?.font = UIFont.systemFont(ofSize: 20)
+        subPriceTitle?.font = UIFont(name: "PingFang SC Regular", size: 20)
         self.addSubview(subPriceTitle!)
         
     }
@@ -90,8 +90,8 @@ class productDetailCell: UICollectionViewCell {
         priceTitle?.attributedText = attrSubString
         
         let frontSuTitleStr = "原价"
-        let subSubTitleStr = String(format: "%.2f", model.price)
-        let attrSubTitleStr = NSMutableAttributedString.init(string: frontSuTitleStr, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: "#999999".uicolor()])
+        let subSubTitleStr = String(format: "%.2f元", model.price)
+        let attrSubTitleStr = NSMutableAttributedString.init(string: frontSuTitleStr, attributes: [NSAttributedString.Key.font: UIFont(name: "PingFang SC Regular", size: 16), NSAttributedString.Key.foregroundColor: "#999999".uicolor()])
         var attrPriceStr = NSMutableAttributedString(string: subSubTitleStr)
         attrPriceStr.insert(attrSubTitleStr, at: 0)
         subPriceTitle?.attributedText = attrPriceStr

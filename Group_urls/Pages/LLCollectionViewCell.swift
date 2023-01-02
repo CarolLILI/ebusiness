@@ -60,9 +60,9 @@ class LLCollectionViewCell: UICollectionViewCell {
         
         priceTitle = UILabel.init()
         priceTitle?.textAlignment = NSTextAlignment.left
-        priceTitle?.textColor = UIColor.init(red: 225/255.0, green: 45/255.0, blue: 45/255.0, alpha: 1)
+        priceTitle?.textColor = "#FF4840".uicolor()
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        priceTitle?.font = UIFont(name: "PingFang Medium", size: 14)
+        priceTitle?.font = UIFont(name: "PingFangTC-Semibold", size: 15)
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
