@@ -80,7 +80,7 @@ class LLHomeHeader: UICollectionReusableView {
             titleLb.textColor = "#222222".uicolor()
             titleLb.textAlignment = .center
             titleLb.text = skuConfiguraModel.name
-            titleLb.font = UIFont.systemFont(ofSize: 14)
+            titleLb.font = UIFont(name: "PingFangTC-Semibold", size: 14)
             titleLb.textAlignment = .center
             titleLb.backgroundColor = "#FFFFFF".uicolor()
             self.addSubview(titleLb)
@@ -98,6 +98,7 @@ class LLHomeHeader: UICollectionReusableView {
             }
 
         }
+        
         
         updateLayout()
     }

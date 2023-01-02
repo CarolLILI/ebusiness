@@ -48,7 +48,7 @@ class productDetailCell: UICollectionViewCell {
         titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        titleLable?.font = UIFont.systemFont(ofSize: 14)
+        titleLable?.font = UIFont(name: "PingFangTC-Semibold", size: 14)
         self.addSubview(titleLable!)
         
         subTitleLb = UILabel.init()

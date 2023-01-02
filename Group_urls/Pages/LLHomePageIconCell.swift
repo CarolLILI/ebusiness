@@ -25,7 +25,6 @@ class LLHomePageIconCell: UICollectionViewCell {
     var titleTextArray = ["天猫超市","京东超市","百亿补贴","淘宝推荐","多多优惠"]
     var imageNameArray = ["logosc1","logosc2","logosc3","logosc4","logosc5"]
     
-    
     @objc func jumpPage(
        _ sender: UITapGestureRecognizer
     ){
@@ -124,7 +123,7 @@ class LLHomePageIconCell: UICollectionViewCell {
             title.textColor = "#222222".uicolor()
             title.textAlignment = .center
             title.text = ((configuraModel.fp_channles.count)) > 0 ? skuCongirModel!.name: titleTextArray[i]
-            title.font = UIFont.systemFont(ofSize: 15)
+            title.font = UIFont(name: "PingFang SC Regular", size: 15)
             iconImageBg!.addSubview(title)
             titleArray.append(title)
             }

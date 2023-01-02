@@ -50,7 +50,6 @@ class LLCollectionViewCell: UICollectionViewCell {
         titleLable?.lineBreakMode = .byTruncatingTail
         titleLable?.textAlignment = NSTextAlignment.left
         titleLable?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        titleLable?.font = UIFont.systemFont(ofSize: 18)
         self.addSubview(titleLable!)
         
         subTitleLb = UILabel.init()
@@ -63,14 +62,14 @@ class LLCollectionViewCell: UICollectionViewCell {
         priceTitle?.textAlignment = NSTextAlignment.left
         priceTitle?.textColor = UIColor.init(red: 225/255.0, green: 45/255.0, blue: 45/255.0, alpha: 1)
         priceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        priceTitle?.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 2))
+        priceTitle?.font = UIFont(name: "PingFang Medium", size: 14)
         self.addSubview(priceTitle!)
         
         subPriceTitle = UILabel.init()
         subPriceTitle?.textAlignment = NSTextAlignment.left
         subPriceTitle?.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
-        subPriceTitle?.font = UIFont.systemFont(ofSize: 15)
+        subPriceTitle?.font = UIFont(name: "PingFang SC Regular", size: 11)
         self.addSubview(subPriceTitle!)
     
     }
@@ -80,13 +79,14 @@ class LLCollectionViewCell: UICollectionViewCell {
     ){
         skuModels = model
 //        titleLable?.text = model.sku_name
-        priceTitle?.text = "¥\(model.price)元"
+        priceTitle?.text = String(format: "¥%.2f元", model.min_price)
         subPriceTitle?.text = model.site_name
         let url = URL(string: model.image)
         imageView?.kf.setImage(with: url, placeholder: UIImage(named: "list_img"))
         //图文混合，图片+文字
         var textString = NSMutableAttributedString(string: model.sku_name)
         textString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, textString.length))
+        textString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "PingFangTC-Semibold", size: 15) as Any, range: NSMakeRange(0, textString.length))
         
 //        let imgView = UIImageView()
 //        imgView.kf.setImage(with: URL(string: BASE_REL + model.head_tag))
@@ -102,13 +102,13 @@ class LLCollectionViewCell: UICollectionViewCell {
         let attrLb = UILabel.init()
         attrLb.text = model.head_tag
         //swift 计算字符串长度
-        let text_size = getStrBoundRect(str: attrLb.text!, font: UIFont(name: "YouSheBiaoTiHei", size: 12)!, constrainedSize: CGSize(width: self.contentView.frame.width, height: 16))
+        let text_size = getStrBoundRect(str: attrLb.text!, font: UIFont(name: "YouSheBiaoTiHei", size: 14)!, constrainedSize: CGSize(width: self.contentView.frame.width, height: 16))
         let frame_width = text_size.width + 10
         
         attrLb.frame = CGRectMake(0, 0, CGFloat(frame_width), 16)
-        attrLb.font = UIFont(name: "YouSheBiaoTiHei", size: 12)
+        attrLb.font = UIFont(name: "YouSheBiaoTiHei", size: 14)
         attrLb.textColor = UIColor.white
-        attrLb.layer.cornerRadius = 6
+        attrLb.layer.cornerRadius = 3
         attrLb.clipsToBounds = true
         attrLb.textAlignment = .center
         attrLb.backgroundColor = "#FF4840".uicolor()
@@ -119,12 +119,12 @@ class LLCollectionViewCell: UICollectionViewCell {
         textAttachment.image = attrLb.asImage()
 
         let attrLb_length = model.head_tag.count > 0 ? attrLb.frame.width: 0
-        textAttachment.bounds = CGRectMake(0, 0, attrLb_length,16)
+        textAttachment.bounds = CGRectMake(0, -2.5, attrLb_length,16)
         var textAttachmengString = NSAttributedString(attachment: textAttachment)
         textString.insert(textAttachmengString, at: 0)
         titleLable?.attributedText = textString
         
-        
+
         //保证复用不会重复
         
         if lableHotArray.count < model.tags.count {

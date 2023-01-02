@@ -45,9 +45,9 @@ class LLSearchBarControl: UIView,UITextFieldDelegate{
         })
         
         searchIcon!.snp.makeConstraints { make in
-            make.right.equalTo(bgImg!.snp.right).offset(0)
-            make.top.equalTo(bgImg!.snp.top).offset(12)
-            make.bottom.equalTo(bgImg!.snp.bottom).offset(-12)
+            make.right.equalTo(bgImg!.snp.right).offset(-2)
+            make.top.equalTo(bgImg!.snp.top).offset(6)
+            make.bottom.equalTo(bgImg!.snp.bottom).offset(-6)
             make.width.equalTo(61)
         }
         
