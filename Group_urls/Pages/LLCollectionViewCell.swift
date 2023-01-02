@@ -17,6 +17,9 @@ class LLCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView?
     var backGroundLayer: UIView?
     
+    var countLb: UILabel?
+    var countPriceLb: UILabel?
+    
     var lableHotArray = [UILabel]()
     var skuModels: skuModel?
     
@@ -40,6 +43,8 @@ class LLCollectionViewCell: UICollectionViewCell {
         imageView = UIImageView.init()
         imageView?.backgroundColor = UIColor.clear
         imageView?.contentMode = .scaleToFill
+        imageView?.layer.cornerRadius = 5
+        imageView?.layer.masksToBounds = true
         self.addSubview(imageView!)
         self.backgroundColor = UIColor.clear
         
@@ -71,6 +76,28 @@ class LLCollectionViewCell: UICollectionViewCell {
         subPriceTitle?.textColor = UIColor.init(red: 92/255.0, green: 92/255.0, blue: 92/255.0, alpha: 1)
         subPriceTitle?.font = UIFont(name: "PingFang SC Regular", size: 11)
         self.addSubview(subPriceTitle!)
+        
+        countLb = UILabel.init()
+        countLb?.textAlignment = .center
+        countLb?.textColor = "#FF4840".uicolor()
+        countLb?.font = UIFont(name: "PingFang SC Regular", size: 12)
+        countLb?.backgroundColor = UIColor.init(red: 255/255.0, green: 72/255.0, blue: 64/255.0, alpha: 0.08)
+        countLb?.layer.cornerRadius = 2
+        countLb?.layer.borderColor = "#FF4840".uicolor().cgColor
+        countLb?.layer.borderWidth = 1
+        countLb?.layoutMargins = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        self.addSubview(countLb!)
+        
+        countPriceLb = UILabel.init()
+        countPriceLb?.textAlignment = .center
+        countPriceLb?.textColor = "#FF4840".uicolor()
+        countPriceLb?.font = UIFont(name: "PingFang SC Regular", size: 12)
+        countPriceLb?.backgroundColor = UIColor.white
+        countPriceLb?.layer.cornerRadius = 2
+        countPriceLb?.layer.borderColor = "#FF4840".uicolor().cgColor
+        countPriceLb?.layer.borderWidth = 1
+        countPriceLb?.layoutMargins = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        self.addSubview(countPriceLb!)
     
     }
     
@@ -78,8 +105,10 @@ class LLCollectionViewCell: UICollectionViewCell {
         _ model: skuModel
     ){
         skuModels = model
-//        titleLable?.text = model.sku_name
         priceTitle?.text = String(format: "¥%.2f元", model.min_price)
+//        countLb?.text = String(format: "%@", model.discount_info)
+//        countPriceLb?.text = String(format: "%@", model.rec_reason)
+
         subPriceTitle?.text = model.site_name
         let url = URL(string: model.image)
         imageView?.kf.setImage(with: url, placeholder: UIImage(named: "list_img"))
@@ -176,7 +205,7 @@ class LLCollectionViewCell: UICollectionViewCell {
         priceTitle?.snp.makeConstraints({ make in
             make.left.equalTo(imageView!.snp.right).offset(10)
             make.top.equalTo(subTitleLb!.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-20)
+//            make.right.equalToSuperview().offset(-20)
         })
 
         subPriceTitle?.snp.makeConstraints({ make in
@@ -186,6 +215,15 @@ class LLCollectionViewCell: UICollectionViewCell {
         })
         
         
+        countLb?.snp.makeConstraints({ make in
+            make.top.equalTo(subTitleLb!.snp.bottom).offset(10)
+            make.left.equalTo(priceTitle!.snp.right).offset(6)
+        })
+        
+        countPriceLb?.snp.makeConstraints({ make in
+            make.top.equalTo(subTitleLb!.snp.bottom).offset(10)
+            make.left.equalTo(countLb!.snp.right).offset(0)
+        })
         
         var leftTabTitleLbl = 10.0
         if skuModels!.tags.count > 0 && lableHotArray.count <= (skuModels?.tags.count)!{

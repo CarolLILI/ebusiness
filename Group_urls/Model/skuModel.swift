@@ -31,7 +31,8 @@ class skuModel: NSObject {
     
     var site_name = ""
     var couponsArray = [couponsModel]()
-    var rec_reason = ""
+    var rec_reason = "" //领劵30元
+    var discount_info = ""//9.0折
     var head_tag = ""
     var tags = [String]()
     var best_coupon_lable = ""
