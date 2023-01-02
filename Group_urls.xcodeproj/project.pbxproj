@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E91949C6294C37650013F9C6 /* YouSheBiaoTiHei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */; };
+		E91949C8294DF5AC0013F9C6 /* DIN Alternate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91949C7294DF5AA0013F9C6 /* DIN Alternate.ttf */; };
 		E9270EA0290A666B007DF2FE /* productListViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9270E9F290A666A007DF2FE /* productListViewControl.swift */; };
 		E94F1CF428E74FF100D661A7 /* LLCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */; };
 		E94F1CF628E7645B00D661A7 /* LLHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */; };
@@ -25,6 +26,13 @@
 		E98A8EF42933B289002CE667 /* LLSearchBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */; };
 		E98A8EF6293A6250002CE667 /* LLHomePageIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */; };
 		E98A8EF8293A6A73002CE667 /* LLHomePageBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */; };
+		E9941874295D7D56001BBE06 /* banner.json in Resources */ = {isa = PBXBuildFile; fileRef = E9941873295D7D56001BBE06 /* banner.json */; };
+		E9941876295D82D2001BBE06 /* icon.json in Resources */ = {isa = PBXBuildFile; fileRef = E9941875295D82D2001BBE06 /* icon.json */; };
+		E9941878295F6BF1001BBE06 /* UIView+ToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9941877295F6BF1001BBE06 /* UIView+ToImage.swift */; };
+		E994187A2961C0EC001BBE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99418792961C0EC001BBE06 /* Assets.xcassets */; };
+		E994187C2962D354001BBE06 /* PingFangTC-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */; };
+		E994187E2962D58F001BBE06 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */; };
+		E99418802962D882001BBE06 /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187F2962D882001BBE06 /* PingFang Medium.ttf */; };
 		E996D7D62933318A00153BD5 /* String+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D52933318A00153BD5 /* String+Number.swift */; };
 		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
@@ -35,7 +43,6 @@
 		E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */; };
 		E9B53A1C28EA760300599CB2 /* LLTabBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */; };
 		E9B53A1E28EDDC2900599CB2 /* UIDevice+LLAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */; };
-		E9B8C39828F1870400BEAA93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C39728F1870300BEAA93 /* Assets.xcassets */; };
 		E9B8C39A28F2AA9300BEAA93 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */; };
 		E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FA43FA291622F300879D12 /* productDetialControl.swift */; };
 		EA654C1EEF5A686E78C88BE2 /* libPods-Group_urls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */; };
@@ -63,6 +70,7 @@
 		20CC5E945C8520C5C4C0626B /* libPods-Group_urls.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Group_urls.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC19143125AA7E8C6DB81BA /* Pods-Group_urls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group_urls.debug.xcconfig"; path = "Target Support Files/Pods-Group_urls/Pods-Group_urls.debug.xcconfig"; sourceTree = "<group>"; };
 		E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouSheBiaoTiHei.ttf; sourceTree = "<group>"; };
+		E91949C7294DF5AA0013F9C6 /* DIN Alternate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN Alternate.ttf"; sourceTree = "<group>"; };
 		E9270E9F290A666A007DF2FE /* productListViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productListViewControl.swift; sourceTree = "<group>"; };
 		E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLCollectionViewCell.swift; sourceTree = "<group>"; };
 		E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomeHeader.swift; sourceTree = "<group>"; };
@@ -85,6 +93,13 @@
 		E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomePageIconCell.swift; sourceTree = "<group>"; };
 		E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLHomePageBannerCell.swift; sourceTree = "<group>"; };
 		E98A8EF9293B3F3D002CE667 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E9941873295D7D56001BBE06 /* banner.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = banner.json; sourceTree = "<group>"; };
+		E9941875295D82D2001BBE06 /* icon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = icon.json; sourceTree = "<group>"; };
+		E9941877295F6BF1001BBE06 /* UIView+ToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ToImage.swift"; sourceTree = "<group>"; };
+		E99418792961C0EC001BBE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFangTC-Semibold.ttf"; sourceTree = "<group>"; };
+		E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang SC Regular.ttf"; sourceTree = "<group>"; };
+		E994187F2962D882001BBE06 /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
 		E996D7D52933318A00153BD5 /* String+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Number.swift"; sourceTree = "<group>"; };
 		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
@@ -95,7 +110,6 @@
 		E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewControl.swift; sourceTree = "<group>"; };
 		E9B53A1B28EA760300599CB2 /* LLTabBarControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLTabBarControl.swift; sourceTree = "<group>"; };
 		E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+LLAddition.swift"; sourceTree = "<group>"; };
-		E9B8C39728F1870300BEAA93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E9FA43FA291622F300879D12 /* productDetialControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetialControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +160,10 @@
 		E91949C4294C374B0013F9C6 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				E994187F2962D882001BBE06 /* PingFang Medium.ttf */,
+				E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */,
+				E994187B2962D353001BBE06 /* PingFangTC-Semibold.ttf */,
+				E91949C7294DF5AA0013F9C6 /* DIN Alternate.ttf */,
 				E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */,
 			);
 			path = Font;
@@ -196,10 +214,10 @@
 				E96CA56C28F80E9E0048A685 /* Pages */,
 				E96CA56B28F80E840048A685 /* Service */,
 				E96CA56A28F80E770048A685 /* Model */,
-				E9B8C39728F1870300BEAA93 /* Assets.xcassets */,
 				E959331D28A58B1500BCC95C /* Main.storyboard */,
 				E959332228A58B3800BCC95C /* LaunchScreen.storyboard */,
 				E959332528A58B3800BCC95C /* Info.plist */,
+				E99418792961C0EC001BBE06 /* Assets.xcassets */,
 			);
 			path = Group_urls;
 			sourceTree = "<group>";
@@ -235,6 +253,8 @@
 			children = (
 				E96CA57328F866D60048A685 /* GlobalConst.swift */,
 				E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */,
+				E9941873295D7D56001BBE06 /* banner.json */,
+				E9941875295D82D2001BBE06 /* icon.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -262,6 +282,7 @@
 			children = (
 				E996D7D52933318A00153BD5 /* String+Number.swift */,
 				E9B53A1D28EDDC2800599CB2 /* UIDevice+LLAddition.swift */,
+				E9941877295F6BF1001BBE06 /* UIView+ToImage.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -381,9 +402,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E994187C2962D354001BBE06 /* PingFangTC-Semibold.ttf in Resources */,
 				E959332428A58B3800BCC95C /* LaunchScreen.storyboard in Resources */,
-				E9B8C39828F1870400BEAA93 /* Assets.xcassets in Resources */,
+				E9941876295D82D2001BBE06 /* icon.json in Resources */,
+				E994187E2962D58F001BBE06 /* PingFang SC Regular.ttf in Resources */,
+				E91949C8294DF5AC0013F9C6 /* DIN Alternate.ttf in Resources */,
 				E91949C6294C37650013F9C6 /* YouSheBiaoTiHei.ttf in Resources */,
+				E994187A2961C0EC001BBE06 /* Assets.xcassets in Resources */,
+				E9941874295D7D56001BBE06 /* banner.json in Resources */,
+				E99418802962D882001BBE06 /* PingFang Medium.ttf in Resources */,
 				E959331F28A58B1500BCC95C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +500,7 @@
 				E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */,
 				E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */,
 				E996D7D62933318A00153BD5 /* String+Number.swift in Sources */,
+				E9941878295F6BF1001BBE06 /* UIView+ToImage.swift in Sources */,
 				E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */,
 				E98A8EF42933B289002CE667 /* LLSearchBarControl.swift in Sources */,
 			);
@@ -652,7 +680,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
@@ -667,7 +695,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -685,7 +713,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
@@ -700,7 +728,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = catApp.Group2022;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
