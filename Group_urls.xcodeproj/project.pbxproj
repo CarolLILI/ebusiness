@@ -34,6 +34,7 @@
 		E994187E2962D58F001BBE06 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */; };
 		E99418802962D882001BBE06 /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E994187F2962D882001BBE06 /* PingFang Medium.ttf */; };
 		E99418822962E0B0001BBE06 /* PingFang Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99418812962E0B0001BBE06 /* PingFang Bold.ttf */; };
+		E99418842963328B001BBE06 /* LLWebViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99418832963328B001BBE06 /* LLWebViewControl.swift */; };
 		E996D7D62933318A00153BD5 /* String+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D52933318A00153BD5 /* String+Number.swift */; };
 		E996D7D8293351F900153BD5 /* LLSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996D7D7293351F900153BD5 /* LLSearchBar.swift */; };
 		E9A8A40A2917CDAF0037F3F1 /* productDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */; };
@@ -102,6 +103,7 @@
 		E994187D2962D58F001BBE06 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		E994187F2962D882001BBE06 /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
 		E99418812962E0B0001BBE06 /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
+		E99418832963328B001BBE06 /* LLWebViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLWebViewControl.swift; sourceTree = "<group>"; };
 		E996D7D52933318A00153BD5 /* String+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Number.swift"; sourceTree = "<group>"; };
 		E996D7D7293351F900153BD5 /* LLSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLSearchBar.swift; sourceTree = "<group>"; };
 		E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productDetailCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				E9FA43FA291622F300879D12 /* productDetialControl.swift */,
 				E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */,
 				E98A8EF12933AE88002CE667 /* SearchViewControl.swift */,
+				E99418832963328B001BBE06 /* LLWebViewControl.swift */,
 			);
 			path = SecondPages;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				E9A9B3602941D42D0025781E /* homePageConfigurationList.swift in Sources */,
 				E9FA43FB291622F300879D12 /* productDetialControl.swift in Sources */,
 				E9B53A1628EA75B500599CB2 /* SecondViewControl.swift in Sources */,
+				E99418842963328B001BBE06 /* LLWebViewControl.swift in Sources */,
 				E996D7D62933318A00153BD5 /* String+Number.swift in Sources */,
 				E9941878295F6BF1001BBE06 /* UIView+ToImage.swift in Sources */,
 				E9B53A1A28EA75D300599CB2 /* FourthViewControl.swift in Sources */,
@@ -684,7 +688,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
@@ -717,7 +721,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;

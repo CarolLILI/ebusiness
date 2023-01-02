@@ -37,6 +37,8 @@ class productDetailCell: UICollectionViewCell {
         imageView = UIImageView.init()
         imageView?.backgroundColor = UIColor.clear
         imageView?.contentMode = .scaleAspectFit
+        imageView?.layer.cornerRadius = 5
+        imageView?.layer.masksToBounds = true
         self.addSubview(imageView!)
         self.backgroundColor = UIColor.clear
 

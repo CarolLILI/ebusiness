@@ -444,6 +444,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //点击banner广告位
     func didBannerClick(index: banner) {
         NSLog("%d",index.jump_url)
+        if index.jump_url.count > 0 {
+            let webView = LLWebViewControl()
+            webView.jump_url = index.jump_url
+            self.navigationController?.pushViewController(webView, animated: true)
+        }
     }
     
 }
