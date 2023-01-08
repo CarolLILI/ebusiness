@@ -34,10 +34,12 @@ class skuConfObj: NSObject {
 class skuParams: NSObject {
     var elite_id = ""
     var site = ""
+    var pos = ""
     init(jsondata: JSON) {
 
         elite_id = jsondata["elite_id"].stringValue
         site = jsondata["site"].stringValue
+        pos = jsondata["pos"].stringValue
         
     }
 }

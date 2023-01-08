@@ -21,7 +21,8 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     var globalData = [skuModel]()
     var configModel: skuConfObj!
     
-    var parameter: NSDictionary?
+    var pn: Int?
+    var rn: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,9 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         self.baseTitle?.font = UIFont(name: "YouSheBiaoTiHei", size: 32)
         self.baseTitle?.text = configModel.name
         self.view.backgroundColor = "#6CDA00".uicolor()
+        
+        pn = 1
+        rn = 10
         
         screen_width = UIScreen.main.bounds.size.width
         screen_height = UIScreen.main.bounds.size.height
@@ -83,20 +87,27 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
-//            requestData()
+            
 //            //加载更多事件成功，调用stop
 //            collectionView!.es.stopLoadingMore()
             //通知暂无数据更新状态
-            collectionView!.es.noticeNoMoreData()
+//            collectionView!.es.noticeNoMoreData()
+            
+            pn = pn! + 1
+            requestData()
         })
         
     }
     
     func requestData(){
         //获取数据
-        let paramers = parameter
+        let paramers = ["elite_id":configModel?.params_dict.elite_id as Any,
+                        "site":configModel?.params_dict.site as Any,
+                        "pn":pn as Any,
+                        "rn":rn as Any,
+                        "pos":"2"] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
-        networkLayer.getRequest(sku_list, (paramers as! Parameters), "") { [self] result in
+        networkLayer.getRequest(sku_list, paramers, "") { [self] result in
             //请求成功
             let jsonData = JSON(result)["data"].rawValue
             let modelList = skuModelList(jsondata: JSON(rawValue: jsonData) ?? [])
@@ -131,14 +142,14 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     // update cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LLCollectionViewCell
-        var model = globalData[indexPath.row]
+        let model = globalData[indexPath.row]
         cell.updateModel(model)
         return cell
     }
 
     // cell 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: screen_width, height: 150.0)
+        return CGSize(width: screen_width, height: 130.0)
     }
 
     // touch cell
