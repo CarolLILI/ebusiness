@@ -161,7 +161,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E91949C4294C374B0013F9C6 /* Font */ = {
+		E91949C4294C374B0013F9C6 /* LLFont */ = {
 			isa = PBXGroup;
 			children = (
 				E99418812962E0B0001BBE06 /* PingFang Bold.ttf */,
@@ -171,26 +171,12 @@
 				E91949C7294DF5AA0013F9C6 /* DIN Alternate.ttf */,
 				E91949C5294C37650013F9C6 /* YouSheBiaoTiHei.ttf */,
 			);
-			path = Font;
-			sourceTree = "<group>";
-		};
-		E9270EA1290BC021007DF2FE /* SecondPages */ = {
-			isa = PBXGroup;
-			children = (
-				E9A9B37A29498AD70025781E /* LLRecommondHeader.swift */,
-				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
-				E9FA43FA291622F300879D12 /* productDetialControl.swift */,
-				E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */,
-				E98A8EF12933AE88002CE667 /* SearchViewControl.swift */,
-				E99418832963328B001BBE06 /* LLWebViewControl.swift */,
-			);
-			path = SecondPages;
+			path = LLFont;
 			sourceTree = "<group>";
 		};
 		E959330B28A58B1400BCC95C = {
 			isa = PBXGroup;
 			children = (
-				E91949C4294C374B0013F9C6 /* Font */,
 				E98A8EF9293B3F3D002CE667 /* Bridging-Header.h */,
 				E959331628A58B1500BCC95C /* Group_urls */,
 				E959332D28A58B3A00BCC95C /* Group_urlsTests */,
@@ -214,6 +200,7 @@
 		E959331628A58B1500BCC95C /* Group_urls */ = {
 			isa = PBXGroup;
 			children = (
+				E9AD7138296B401C0071461C /* LLRescources */,
 				E959331728A58B1500BCC95C /* AppDelegate.swift */,
 				E9A9B3792944C5530025781E /* BasePage */,
 				E9A9B3782944C5300025781E /* General */,
@@ -259,8 +246,6 @@
 			children = (
 				E96CA57328F866D60048A685 /* GlobalConst.swift */,
 				E96CA56828F7EE8F0048A685 /* LLSwiftNetworkLayer.swift */,
-				E9941873295D7D56001BBE06 /* banner.json */,
-				E9941875295D82D2001BBE06 /* icon.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -268,14 +253,11 @@
 		E96CA56C28F80E9E0048A685 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				E9270EA1290BC021007DF2FE /* SecondPages */,
-				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
-				E996D7D7293351F900153BD5 /* LLSearchBar.swift */,
-				E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */,
-				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
-				E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */,
-				E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */,
-				E959331B28A58B1500BCC95C /* ViewController.swift */,
+				E9AD7137296B3F8D0071461C /* LLMainControl */,
+				E9AD7136296B3F5D0071461C /* LLWebControl */,
+				E9AD7135296B3F310071461C /* LLSearchControl */,
+				E9AD7134296B3F150071461C /* LLProductDetailControl */,
+				E9AD7133296B3EF70071461C /* LLProductListControl */,
 				E9B53A1528EA75B500599CB2 /* SecondViewControl.swift */,
 				E9B53A1928EA75D300599CB2 /* FourthViewControl.swift */,
 				E9B53A1728EA75C600599CB2 /* ThirdViewControl.swift */,
@@ -300,6 +282,64 @@
 				E9B8C39928F2AA9300BEAA93 /* BaseViewController.swift */,
 			);
 			path = BasePage;
+			sourceTree = "<group>";
+		};
+		E9AD7133296B3EF70071461C /* LLProductListControl */ = {
+			isa = PBXGroup;
+			children = (
+				E9270E9F290A666A007DF2FE /* productListViewControl.swift */,
+			);
+			path = LLProductListControl;
+			sourceTree = "<group>";
+		};
+		E9AD7134296B3F150071461C /* LLProductDetailControl */ = {
+			isa = PBXGroup;
+			children = (
+				E9A9B37A29498AD70025781E /* LLRecommondHeader.swift */,
+				E9A8A4092917CDAF0037F3F1 /* productDetailCell.swift */,
+				E9FA43FA291622F300879D12 /* productDetialControl.swift */,
+			);
+			name = LLProductDetailControl;
+			sourceTree = "<group>";
+		};
+		E9AD7135296B3F310071461C /* LLSearchControl */ = {
+			isa = PBXGroup;
+			children = (
+				E98A8EF32933B289002CE667 /* LLSearchBarControl.swift */,
+				E98A8EF12933AE88002CE667 /* SearchViewControl.swift */,
+			);
+			path = LLSearchControl;
+			sourceTree = "<group>";
+		};
+		E9AD7136296B3F5D0071461C /* LLWebControl */ = {
+			isa = PBXGroup;
+			children = (
+				E99418832963328B001BBE06 /* LLWebViewControl.swift */,
+			);
+			path = LLWebControl;
+			sourceTree = "<group>";
+		};
+		E9AD7137296B3F8D0071461C /* LLMainControl */ = {
+			isa = PBXGroup;
+			children = (
+				E94F1CF528E7645B00D661A7 /* LLHomeHeader.swift */,
+				E996D7D7293351F900153BD5 /* LLSearchBar.swift */,
+				E98A8EF7293A6A73002CE667 /* LLHomePageBannerCell.swift */,
+				E98A8EF5293A6250002CE667 /* LLHomePageIconCell.swift */,
+				E94F1CF328E74FF100D661A7 /* LLCollectionViewCell.swift */,
+				E959331B28A58B1500BCC95C /* ViewController.swift */,
+			);
+			path = LLMainControl;
+			sourceTree = "<group>";
+		};
+		E9AD7138296B401C0071461C /* LLRescources */ = {
+			isa = PBXGroup;
+			children = (
+				E91949C4294C374B0013F9C6 /* LLFont */,
+				E9941875295D82D2001BBE06 /* icon.json */,
+				E9941873295D7D56001BBE06 /* banner.json */,
+			);
+			path = LLRescources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,7 +728,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
@@ -721,7 +761,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 3MVW34CZ38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Group_urls/Info.plist;
