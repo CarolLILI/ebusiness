@@ -35,7 +35,7 @@ class SearchViewControl:BaseViewController, UICollectionViewDelegate, UICollecti
         searchBarHeaderView?.clickSearchBtn = { [self](keyWord) ->() in
             print("block \(keyWord)")
             
-            parameter = ["title":"\(keyWord)","pos": 1 ]
+            parameter = ["title":"\(keyWord)","pos": "1" ]
             requestData()
         }
         

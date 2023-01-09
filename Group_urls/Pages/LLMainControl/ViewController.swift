@@ -38,6 +38,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     var homeConfig : homePageConfigurationList?
     var requesrParam: NSDictionary?
     
+    var pn: Int?
+    var rn: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //swift 背景渐变
@@ -61,7 +64,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         setCollectionView()
         setConfiguration()
         
-        requesrParam = ["elite_id":1,"site":"jd","pos":1] as NSDictionary
+        pn = 1
+        rn = 10
+        requesrParam = ["elite_id":1,"site":"jd","pos":1,"pn":pn as Any,
+                        "rn":rn as Any] as NSDictionary
         requestData()
         
     }
@@ -143,6 +149,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         collectionView?.es.addInfiniteScrolling(handler: {
             [unowned self] in
             //加载更多
+            pn = pn!+1
             requestData()
         })
         
@@ -156,8 +163,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     func requestData(){
         self.view.makeToastActivity(.center)
+        let string_pn = String(format: "%d", pn!)
+        let string_rn = String(format: "%d", rn!)
         //获取数据
-        
+        requesrParam = ["elite_id":"1","site":"jd","pos":"1","pn":string_pn,
+                        "rn":string_rn] as NSDictionary
         let networkLayer = LLSwiftNetworkLayer.shareInstance
         networkLayer.getRequest(favor_list, (requesrParam as! Parameters), "") { [self] result in
             //请求成功
@@ -177,9 +187,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 mutableArry.add(indexPath)
             }
             collectionView?.reloadItems(at: mutableArry as! [IndexPath])
-            
-            
-            
+
             //加载更多事件成功，调用stop
             collectionView!.es.stopLoadingMore()
             self.view.hideToastActivity()

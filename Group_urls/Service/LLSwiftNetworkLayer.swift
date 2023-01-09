@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AdSupport
 
 
 //typealias 可以用来对已有的类型进行重命名, 可以对闭包进行重新命名，这样在做参数传递的时候更加清晰
@@ -22,6 +23,36 @@ class LLSwiftNetworkLayer: NSObject {
     var callBack_success: Success?
     var callBack_fail: Failure?
     
+    func getNowTimeStamp()->String {
+        let formatter = DateFormatter.init()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        
+        let timeZone = NSTimeZone(name: "Asia/Shanghai")
+        formatter.timeZone = timeZone as TimeZone?
+        
+        let dateNow = NSDate()
+        
+        let timeStamp = String(format: "%ld", dateNow.timeIntervalSince1970)
+        
+        return timeStamp
+        
+    }
+    
+    func getVersionName()->String {
+        let infoDictionary = Bundle.main.infoDictionary
+        let appVersion = infoDictionary!["CFBundleShortVersionString"]
+        let appBuild = infoDictionary!["CFBundleVersion"]
+        let versionName = String(format: "%@.%@", appVersion as! CVarArg, appBuild as! CVarArg)
+        return versionName
+    }
+    
+    func getIDFA()->String {
+        let addid = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        
+        return addid
+    }
     
     // get request
     func getRequest(
@@ -38,7 +69,7 @@ class LLSwiftNetworkLayer: NSObject {
     //post request
     func postRequest(
         _ urlString: String,
-        _ params:Parameters? = nil,
+        _ params:Parameters? = [:],
         _ Accept: String,
         success: @escaping Success,
         failure: @escaping Failure
@@ -66,10 +97,29 @@ class LLSwiftNetworkLayer: NSObject {
             "Lang":"cn",
             "Accept": "application/json"
         ]
+        
+        var wholeParams = [
+            "os":"ios",
+            "imei":getIDFA(),
+            "st": getNowTimeStamp(),//时间戳
+            "sn":"",
+            "v":getVersionName(),
+            "uid":"",
+            "utk":""
+        ]
+        
+        var mergeParams = params
+        
+        for (key, value) in wholeParams {
+            mergeParams![key] = value
+        }
+        
+        print("......whole params: %@", mergeParams as Any)
+        
 
         manager.request(BASE_REL + urlString,
                         method: method,
-                        parameters:params,
+                        parameters: mergeParams,
                         encoding: URLEncoding.default,
                         headers: headers).responseJSON { (response) in
             

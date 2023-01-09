@@ -42,12 +42,12 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
         screen_height = UIScreen.main.bounds.size.height
         setCollectionView()
         requestData()
+        self.view.makeToastActivity(.center)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        requestData()
-        self.view.makeToastActivity(.center)
+       
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -101,10 +101,12 @@ class productListViewControl: BaseViewController, UICollectionViewDelegate, UICo
     
     func requestData(){
         //获取数据
+        let string_pn = String(format: "%d", pn!)
+        let string_rn = String(format: "%d", rn!)
         let paramers = ["elite_id":configModel?.params_dict.elite_id as Any,
                         "site":configModel?.params_dict.site as Any,
-                        "pn":pn as Any,
-                        "rn":rn as Any,
+                        "pn": string_pn,
+                        "rn": string_rn,
                         "pos":"2"] as [String : Any]
         let networkLayer = LLSwiftNetworkLayer.shareInstance
         networkLayer.getRequest(sku_list, paramers, "") { [self] result in
